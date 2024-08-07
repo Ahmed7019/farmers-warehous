@@ -84,8 +84,8 @@ export default function Dashboard() {
       <Search data={farmsData} />
       {/* here starts the dashboard */}
 
-      <div className="grid grid-cols-7 border border-black p-2 rounded hover:bg-neutral-100 hover:cursor-pointer">
-        <div className="flex flex-col">
+      <div className="grid grid-cols-9 border border-black p-2 rounded hover:bg-neutral-100 hover:cursor-pointer">
+        <div className="flex flex-col col-span-2">
           <p className="font-bold">Name</p>
           {names}
         </div>
@@ -101,7 +101,7 @@ export default function Dashboard() {
           <p className="font-bold">Loaction</p>
           {storageLocation}
         </div>
-        <div>
+        <div className="col-span-2">
           <p className="font-bold">Storage Condition</p>
           {storageCondition}
         </div>
