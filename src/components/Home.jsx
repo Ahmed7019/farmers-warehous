@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-
+import InventoryLevels from "./InventoryLevels";
 export default function Home() {
   return (
     <>
@@ -55,6 +55,10 @@ export default function Home() {
                 its quality for the market ahead.
               </p>
             </div>
+          </section>
+
+          <section className="my-10">
+            <InventoryLevels />
           </section>
         </main>
         <footer className=" w-full overflow-hidden bg-green-600 rounded-t-xl">
