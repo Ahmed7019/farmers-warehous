@@ -26,42 +26,45 @@ export default function InventoryLevels() {
   const storages = [storageA, storageB, storageC];
 
   const levels = storages.map((storage) => {
-
-      switch (storage.capacity()) {
-        case 'great':
-           return( <div
-        key={storage.id}
-        className="border-4 border-green-300 w-40 h-40 rounded-full">
-            <div className="rounded-full bg-neutral-200 w-[9.5rem] h-[9.5rem] flex justify-center items-center">
-          <p>
-            {storage.storageAvailable()}% of storage {storage.name}
-          </p>
+    if (storage.checkCapacity() == "great") {
+      return (
+        <div
+          key={storage.id}
+          className="border-4 border-green-300 w-40 h-40 rounded-full"
+        >
+          <div className="rounded-full bg-neutral-200 w-[9.5rem] h-[9.5rem] flex justify-center items-center">
+            <p>
+              {storage.storageAvailable()}% of storage {storage.name}
+            </p>
+          </div>
         </div>
-      </div>)
-            break;
-        case 'good':
-       return <div
-        key={storage.id}
-        className="border-4 border-yellow-300 w-40 h-40 rounded-full"
-      ><div className="rounded-full bg-neutral-200 w-[9.5rem] h-[9.5rem] flex justify-center items-center">
-      <p>
-        {storage.storageAvailable()}% of storage {storage.name}
-      </p>
-    </div>
-  </div>
-        case 'bad':
-            <div
-        key={storage.id}
-        className="border-4 border-red-300 w-40 h-40 rounded-full"
-      ><div className="rounded-full bg-neutral-200 w-[9.5rem] h-[9.5rem] flex justify-center items-center">
-      <p>
-        {storage.storageAvailable()}% of storage {storage.name}
-      </p>
-    </div>
-  </div>
-            break;
-      
-        
+      );
+    } else if (storage.checkCapacity() === "good") {
+      return (
+        <div
+          key={storage.id}
+          className="border-4 border-yellow-300 w-40 h-40 rounded-full"
+        >
+          <div className="rounded-full bg-neutral-200 w-[9.5rem] h-[9.5rem] flex justify-center items-center">
+            <p>
+              {storage.storageAvailable()}% of storage {storage.name}
+            </p>
+          </div>
+        </div>
+      );
+    } else
+      return (
+        <div
+          key={storage.id}
+          className="border-4 border-red-300 w-40 h-40 rounded-full"
+        >
+          <div className="rounded-full bg-neutral-200 w-[9.5rem] h-[9.5rem] flex justify-center items-center">
+            <p>
+              {storage.storageAvailable()}% of storage {storage.name}
+            </p>
+          </div>
+        </div>
+      );
   });
 
   return (
