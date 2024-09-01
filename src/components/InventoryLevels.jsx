@@ -3,11 +3,11 @@ import { useEffect } from "react";
 
 export default function InventoryLevels() {
   class Storage {
-    constructor(name, used, capacity) {
+    constructor(name, used, capacity, id) {
       this.name = name;
       this.used = used;
       this.capacity = capacity;
-      this.id = new Date();
+      this.id = id;
     }
     storageAvailable() {
       return this.capacity - this.used;
@@ -23,9 +23,9 @@ export default function InventoryLevels() {
   }
   const [memo, setMemo] = useState();
   useEffect(() => {
-    const storageA = new Storage("A", 2, 20);
-    const storageB = new Storage("B", 10, 20);
-    const storageC = new Storage("C", 8, 20);
+    const storageA = new Storage("A", 2, 20, 0);
+    const storageB = new Storage("B", 10, 20, 1);
+    const storageC = new Storage("C", 8, 20, 2);
     const storages = [storageA, storageB, storageC];
 
     const levels = storages.map((storage) => {
