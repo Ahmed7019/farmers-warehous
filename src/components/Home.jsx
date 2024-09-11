@@ -5,7 +5,8 @@ export default function Home() {
     <>
       <div className="ml-40 relative grid place-items-center justify-center ">
         <header className="mt-8">
-          <p className="font-bold text-3xl ">Farmers Warehouse</p>
+          <p className="font-bold text-4xl mb-8">Farmers Warehouse</p>
+          <div className="w-32 h-3 rounded-sm bg-green-400 animate-pulse mb-4"></div>
           <div className=" my-2 flex justify-center">
             <div className="flex flex-col gap-y-4 pr-4">
               <h1>
@@ -23,7 +24,7 @@ export default function Home() {
                   importance of proper storage in preserving the quality of your
                   harvest.
                 </p>
-                <button className="p-2 rounded font-semibold bg-neutral-200">
+                <button className="p-2 rounded font-semibold bg-neutral-200 hover:text-neutral-200 hover:bg-black transition-colors">
                   Get started
                 </button>
               </div>

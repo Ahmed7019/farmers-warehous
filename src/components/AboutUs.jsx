@@ -3,7 +3,7 @@ export default function AboutUs() {
     <>
       <div className="relative grid ml-40">
         <div className=" mt-8">
-          <h1>AboutUs</h1>
+          <h1 className="font-bold text-xl my-2">AboutUs</h1>
           <section>
             <p className="text-2xl font-bold">Who We Are:</p>
             <p>
