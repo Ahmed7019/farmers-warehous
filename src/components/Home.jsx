@@ -1,12 +1,27 @@
 /* eslint-disable react/no-unescaped-entities */
 import InventoryLevels from "./InventoryLevels";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaXTwitter,
+} from "react-icons/fa6";
+
 export default function Home() {
   return (
     <>
       <body className="ml-40 relative grid place-items-center justify-center selection:bg-green-600 selection:text-neutral-50">
         <header className="mt-8">
           <p className="font-bold text-4xl mb-8">Farmers Warehouse</p>
-          <div className="w-32 h-3 rounded-sm bg-green-400 animate-pulse mb-4"></div>
+          <div className="flex justify-between">
+            <div className="w-32 h-3 rounded-sm bg-green-600 animate-pulse mb-4"></div>
+            <div className="flex gap-x-2">
+              <FaLinkedin className="hover:text-green-600 cursor-pointer" />
+              <FaXTwitter className="hover:text-green-600 cursor-pointer" />
+              <FaInstagram className="hover:text-green-600 cursor-pointer" />
+              <FaFacebook className="hover:text-green-600 cursor-pointer" />
+            </div>
+          </div>
           <div className=" my-2 flex justify-center">
             <div className="flex flex-col gap-y-4 pr-4 bg-green-600 p-4 rounded-l-md">
               <h1 className="text-3xl font-semibold text-white">
