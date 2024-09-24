@@ -1,13 +1,12 @@
-import Navigation from "./components/Navigation";
 import { Route, Routes } from "react-router";
-import Inventory from "./components/Inventory";
-import AboutUs from "./components/AboutUs";
-import ContactUs from "./components/ContactUs";
-import Storages from "./components/Storages";
-import Loading from "./components/Loading";
 import { lazy, Suspense } from "react";
 
+import Loading from "./components/Loading";
 const Home = lazy(() => import("./components/Home"));
+const Navigation = lazy(() => import("./components/Navigation"));
+const AboutUs = lazy(() => import("./components/AboutUs"));
+const ContactUs = lazy(() => import("./components/ContactUs"));
+const Storages = lazy(() => import("./components/Storages"));
 const App = () => {
   return (
     <>
