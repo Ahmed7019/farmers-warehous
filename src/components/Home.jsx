@@ -3,7 +3,7 @@ import InventoryLevels from "./InventoryLevels";
 export default function Home() {
   return (
     <>
-      <div className="ml-40 relative grid place-items-center justify-center selection:bg-green-600 selection:text-neutral-50">
+      <body className="ml-40 relative grid place-items-center justify-center selection:bg-green-600 selection:text-neutral-50">
         <header className="mt-8">
           <p className="font-bold text-4xl mb-8">Farmers Warehouse</p>
           <div className="w-32 h-3 rounded-sm bg-green-400 animate-pulse mb-4"></div>
@@ -74,7 +74,7 @@ export default function Home() {
             </div>
           </section>
         </footer>
-      </div>
+      </body>
     </>
   );
 }
