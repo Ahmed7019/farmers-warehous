@@ -3,6 +3,7 @@ import { lazy, Suspense } from "react";
 
 import Loading from "./components/Loading";
 const Home = lazy(() => import("./components/Home"));
+const Inventory = lazy(() => import("./components/Inventory"));
 const Navigation = lazy(() => import("./components/Navigation"));
 const AboutUs = lazy(() => import("./components/AboutUs"));
 const ContactUs = lazy(() => import("./components/ContactUs"));
