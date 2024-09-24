@@ -1,10 +1,13 @@
 import { Link, Outlet } from "react-router-dom";
-
+import Logo from "../assets/logo.jpg";
 export default function Navigation() {
   return (
     <>
       <header className="mr-8">
-        <nav className="flex flex-col gap-y-4 justify-center w-32 text-center bg-neutral-500/50 backdrop-blur-lg text-neutral-100 fixed left-0 h-full my-8 font-bold rounded-lg overflow-hidden px-2">
+        <nav className="flex flex-col gap-y-4 justify-center w-32 text-center bg-green-900 shadow-md backdrop-blur-lg text-neutral-100 fixed left-0 h-full my-8 font-bold rounded-lg overflow-hidden px-2">
+          <div>
+            <img src={Logo} alt="/" className="w-24 h-24 object-cover relative bottom-24 rounded-full" />
+          </div>
           <Link
             to={"/"}
             className="bg-green-600 w-full rounded-sm p-2 hover:text-green-600 hover:bg-neutral-200 hover:shadow-lg hover:scale-90 transition-all"

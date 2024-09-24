@@ -73,6 +73,7 @@ export default function Home() {
               <p>&copy; 2024 Farmer's Warehouse. All Rights Reserved.</p>
             </div>
           </section>
+          
         </footer>
       </body>
     </>
