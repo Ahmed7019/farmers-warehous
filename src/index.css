@@ -1,3 +1,39 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+@layer {
+  @keyframes move-left {
+    0% {
+      opacity: 0.1;
+      transform: translateX(-100rem);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-scrolling-l {
+    transition: ease-in-out;
+    animation: move-left linear 2s;
+    /* animation-timeline: view(); */
+  }
+
+  @keyframes move-right {
+    0% {
+      opacity: 0.1;
+      transform: translateX(100rem);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-scrolling-r {
+    transition: ease-in-out;
+    animation: move-right linear 3s;
+    /* animation-timeline: view(); */
+  }
+}

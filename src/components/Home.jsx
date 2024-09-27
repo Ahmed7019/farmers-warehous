@@ -1,4 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
+
+// Import styling for animation
+import "../index.css";
 import InventoryLevels from "./InventoryLevels";
 import {
   FaFacebook,
@@ -22,36 +25,38 @@ export default function Home() {
               <FaFacebook className="hover:text-green-600 cursor-pointer" />
             </div>
           </div>
-          <div className=" my-2 flex justify-center">
-            <div className="flex flex-col gap-y-4 pr-4 bg-green-600 p-4 rounded-l-md">
-              <h1 className="text-3xl font-semibold text-white">
-                Protect Your Produce: Our Warehouse is Your Safe Haven
-              </h1>
-              <p className="font-thin text-neutral-200">
-                At Our Farmers Warehouse, we take pride in offering premium
-                storage solutions for your valuable crops. With a focus on
-                quality and excellence, we provide a secure and reliable
-                environment to store your produce, ensuring that it maintains
-                its freshness and value.
-              </p>
-              <div className="flex flex-col gap-y-4 justify-start items-start ">
+          <div className="relative">
+            <div className=" my-2 flex justify-center relative ">
+              <div className="flex flex-col gap-y-4 pr-4 bg-green-600 p-4 rounded-l-md animate-scrolling-l">
+                <h1 className="text-3xl font-semibold text-white">
+                  Protect Your Produce: Our Warehouse is Your Safe Heaven
+                </h1>
                 <p className="font-thin text-neutral-200">
-                  We are a dedicated team committed to supporting farmers by
-                  providing top-notch storage facilities for their crops. With
-                  years of experience in the industry, we understand the
-                  importance of proper storage in preserving the quality of your
-                  harvest.
+                  At Our Farmers Warehouse, we take pride in offering premium
+                  storage solutions for your valuable crops. With a focus on
+                  quality and excellence, we provide a secure and reliable
+                  environment to store your produce, ensuring that it maintains
+                  its freshness and value.
                 </p>
-                <button className="p-2 rounded font-semibold bg-neutral-200 hover:text-neutral-100 hover:bg-green-600 transition-colors">
-                  Get started
-                </button>
+                <div className="flex flex-col gap-y-4 justify-start items-start ">
+                  <p className="font-thin text-neutral-200">
+                    We are a dedicated team committed to supporting farmers by
+                    providing top-notch storage facilities for their crops. With
+                    years of experience in the industry, we understand the
+                    importance of proper storage in preserving the quality of
+                    your harvest.
+                  </p>
+                  <button className="p-2 rounded font-semibold bg-neutral-200 hover:text-neutral-100 hover:bg-green-600 transition-colors">
+                    Get started
+                  </button>
+                </div>
               </div>
+              <img
+                src="https://plus.unsplash.com/premium_photo-1661849446191-8793e93a27c2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODF8fGNyb3BzJTIwc3RvcmFnZXxlbnwwfHwwfHx8MA%3D%3D"
+                alt="crops"
+                className="rounded-r-md animate-scrolling-r"
+              />
             </div>
-            <img
-              src="https://plus.unsplash.com/premium_photo-1661849446191-8793e93a27c2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODF8fGNyb3BzJTIwc3RvcmFnZXxlbnwwfHwwfHx8MA%3D%3D"
-              alt="crops"
-              className="rounded-r-md"
-            />
           </div>
         </header>
 
