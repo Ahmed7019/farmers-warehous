@@ -2,6 +2,7 @@
 
 // Import styling for animation
 import "../index.css";
+import { Link } from "react-router-dom";
 import InventoryLevels from "./InventoryLevels";
 import {
   FaFacebook,
@@ -15,7 +16,13 @@ export default function Home() {
     <>
       <body className=" ml-40 relative grid place-items-center justify-center selection:bg-green-600 selection:text-neutral-50">
         <header className="mt-8">
-          <p className="font-bold text-4xl mb-8">Farmers Warehouse</p>
+          <div className="flex items-center justify-between">
+            <p className="font-bold text-4xl mb-8">Farmers Warehouse</p>
+            <div className="flex gap-x-2">
+              <Link to={""} className="hover:text-green-600 hover:bg-neutral-300/50 hover:shadow-md transition-colors bg-green-600 text-neutral-200 p-2 rounded">Login</Link>
+              <Link to={""} className="hover:text-green-600 hover:bg-neutral-300/50 hover:shadow-md transition-colors bg-green-600 text-neutral-200 p-2 rounded">Sign Up</Link>
+            </div>
+          </div>
           <div className="flex justify-between">
             <div className="w-32 h-3 rounded-sm bg-green-600 animate-pulse mb-4"></div>
             <div className="flex gap-x-2">
