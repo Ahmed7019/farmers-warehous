@@ -1,5 +1,9 @@
 import { Link, Outlet } from "react-router-dom";
 import Logo from "../assets/logo.jpg";
+import { CiHome } from "react-icons/ci";
+// import { FaQuestion } from "react-icons/fa";
+// import { MdConnectWithoutContact } from "react-icons/md";
+
 export default function Navigation() {
   return (
     <>
@@ -16,20 +20,28 @@ export default function Navigation() {
             to={"/"}
             className="bg-green-600 w-full rounded-sm p-2 hover:text-green-600 hover:bg-neutral-200 hover:shadow-lg hover:scale-90 transition-all"
           >
-            {" "}
-            Home
+            <div className="flex justify-center gap-x-2 items-center">
+              <CiHome className="text-xl" />
+              <p>Home</p>
+            </div>
           </Link>
           <Link
             to={"/Inventory"}
             className="bg-green-600 w-full rounded-sm p-2 hover:text-green-600 hover:bg-neutral-200 hover:shadow-lg hover:scale-90 transition-all"
           >
-            Inventory
+            <div className="flex items-center justify-center">
+              {/* <FaQuestion className="text-xl font-bold" />   */}
+              <p>Inventory</p>
+            </div>
           </Link>
           <Link
             to={"/AboutUs"}
             className="bg-green-600 w-full rounded-sm p-2 hover:text-green-600 hover:bg-neutral-200 hover:shadow-lg hover:scale-90 transition-all"
           >
-            About us
+            <div className="flex items-center justify-center">
+              {/* <MdConnectWithoutContact className="text-xl font-bold" /> */}
+              <p>Contact Us</p>
+            </div>
           </Link>
           <Link
             to={"/ContactUs"}

@@ -13,7 +13,7 @@ import {
 export default function Home() {
   return (
     <>
-      <body className="ml-40 relative grid place-items-center justify-center selection:bg-green-600 selection:text-neutral-50">
+      <body className=" ml-40 relative grid place-items-center justify-center selection:bg-green-600 selection:text-neutral-50">
         <header className="mt-8">
           <p className="font-bold text-4xl mb-8">Farmers Warehouse</p>
           <div className="flex justify-between">

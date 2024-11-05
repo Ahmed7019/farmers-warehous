@@ -12,51 +12,53 @@ const Storages = lazy(() => import("./components/Storages"));
 const App = () => {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Navigation />}>
-          <Route
-            exact
-            path="/"
-            element={
-              <Suspense fallback={<Loading />}>
-                <Home />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/Inventory"
-            element={
-              <Suspense fallback={<Loading />}>
-                <Inventory />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/AboutUs"
-            element={
-              <Suspense fallback={<Loading />}>
-                <AboutUs />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/ContactUs"
-            element={
-              <Suspense fallback={<Loading />}>
-                <ContactUs />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/Storages"
-            element={
-              <Suspense fallback={<Loading />}>
-                <Storages />
-              </Suspense>
-            }
-          />
-        </Route>
-      </Routes>
+      <div className="bg-neutral-200">
+        <Routes>
+          <Route path="/" element={<Navigation />}>
+            <Route
+              exact
+              path="/"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <Home />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/Inventory"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <Inventory />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/AboutUs"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <AboutUs />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/ContactUs"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <ContactUs />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/Storages"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <Storages />
+                </Suspense>
+              }
+            />
+          </Route>
+        </Routes>
+      </div>
     </>
   );
 };

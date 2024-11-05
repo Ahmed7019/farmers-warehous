@@ -18,7 +18,6 @@
     transition: ease-in-out;
     animation: move-left ease-out 2s;
     animation-fill-mode: forwards;
-    /* animation-timeline: view(); */
   }
 
   @keyframes move-right {
@@ -32,9 +31,8 @@
 
   .animate-scrolling-r {
     transition: ease-in-out;
-    animation-delay: .5s;
+    animation-delay: 0.5s;
     animation: move-right 3s;
     animation-fill-mode: forwards;
-    /* animation-timeline: view(); */
   }
 }

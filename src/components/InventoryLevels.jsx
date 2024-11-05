@@ -33,9 +33,9 @@ export default function InventoryLevels() {
         return (
           <div
             key={storage.id}
-            className="border-4 border-green-300 w-40 h-40 rounded-full"
+            className="border-4 border-green-500 w-40 h-40 rounded-md cursor-pointer hover:skew-x-6  transition-transform ease-in-out"
           >
-            <div className="rounded-full bg-neutral-200 w-[9.5rem] h-[9.5rem] flex justify-center items-center">
+            <div className="text-green-500  rounded-full bg-neutral-200 w-[9.5rem] h-[9.5rem] flex justify-center items-center">
               <p>
                 {storage.storageAvailable()}% of storage {storage.name}
               </p>
@@ -46,9 +46,9 @@ export default function InventoryLevels() {
         return (
           <div
             key={storage.id}
-            className="border-4 border-yellow-300 w-40 h-40 rounded-full"
+            className="border-4 border-yellow-500 w-40 h-40 rounded-md"
           >
-            <div className="rounded-full bg-neutral-200 w-[9.5rem] h-[9.5rem] flex justify-center items-center">
+            <div className="rounded-full bg-neutral-700 w-[9.5rem] h-[9.5rem] flex justify-center items-center">
               <p>
                 {storage.storageAvailable()}% of storage {storage.name}
               </p>
@@ -59,9 +59,9 @@ export default function InventoryLevels() {
         return (
           <div
             key={storage.id}
-            className="border-4 border-red-300 w-40 h-40 rounded-full"
+            className="border-4 border-red-500 w-40 h-40 rounded-md"
           >
-            <div className="rounded-full bg-neutral-200 w-[9.5rem] h-[9.5rem] flex justify-center items-center">
+            <div className="rounded-full bg-neutral-500 w-[9.5rem] h-[9.5rem] flex justify-center items-center">
               <p>
                 {storage.storageAvailable()}% of storage {storage.name}
               </p>
