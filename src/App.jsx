@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router";
 import { lazy, Suspense } from "react";
 import Loading from "./components/Loading";
+import Signin from "./components/Signin";
 const Home = lazy(() => import("./components/Home"));
 const Inventory = lazy(() => import("./components/Inventory"));
 const Navigation = lazy(() => import("./components/Navigation"));
@@ -60,6 +61,14 @@ const App = () => {
               element={
                 <Suspense fallback={<Loading />}>
                   <Signup />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/Signin"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <Signin />
                 </Suspense>
               }
             />

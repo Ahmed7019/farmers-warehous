@@ -32,6 +32,10 @@ export default function Signin() {
                     required
                   />
                 </div>
+                <div className="flex gap-2">
+                  <input type="checkbox" name="remember-me" id="remember-me" />
+                  <label htmlFor="remember-me">Remember Me</label>
+                </div>
                 <div className="w-full flex items-center justify-center">
                   <button className="px-2 py-3 text-neutral-50 bg-green-400 w-full rounded-md hover:text-neutral-100 hover:bg-green-300">
                     Login

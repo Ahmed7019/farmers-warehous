@@ -21,7 +21,7 @@ export default function Home() {
             <p className="font-bold text-4xl mb-8">Farmers Warehouse</p>
             <div className="flex gap-x-2">
               <Link
-                to={""}
+                to="/Signin"
                 className="hover:text-green-600 hover:bg-neutral-300/50 hover:shadow-md transition-colors bg-green-600 text-neutral-200 p-2 rounded"
               >
                 Login
