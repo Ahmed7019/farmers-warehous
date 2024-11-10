@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
+// import App from "./App.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/Home.jsx";
@@ -12,44 +12,17 @@ import Navigation from "./components/Navigation.jsx";
 import Search from "./components/Search.jsx";
 import Signup from "./components/Signup.jsx";
 import Storages from "./components/Storages.jsx";
+import App from "./App.jsx";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Home />,
+    path: "*",
+    element: <App />,
   },
   {
-    path: "/AboutUs",
-    element: <AboutUs />,
-  },
-  {
-    path: "/ContactUs",
-    element: <ContactUs />,
-  },
-  {
-    path: "/Inventory",
-    element: <Inventory />,
-  },
-  {
-    path: "/InventoryLevels",
-    element: <InventoryLevels />,
-  },
-  {
-    path: "/Navigation",
-    element: <Navigation />,
-  },
-  {
-    path: "/Search",
-    element: <Search />,
-  },
-  {
-    path: "/Signup",
-    element: <Signup />,
-  },
-  {
-    path: "/Storages",
-    element: <Storages />,
-  },
+    path:'/Signup',
+    element:<Signup/>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

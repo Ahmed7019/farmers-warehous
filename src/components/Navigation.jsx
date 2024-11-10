@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import Logo from "../assets/logo.jpg";
 import { CiHome } from "react-icons/ci";
 // import { FaQuestion } from "react-icons/fa";
@@ -7,7 +7,7 @@ import { CiHome } from "react-icons/ci";
 export default function Navigation() {
   return (
     <>
-      <header className="mr-8">
+      <div className="mr-8">
         <nav className="flex flex-col gap-y-4 justify-center w-32 text-center bg-green-900 shadow-md backdrop-blur-lg text-neutral-100 fixed left-0 h-full my-8 font-bold rounded-lg overflow-hidden px-2">
           <div className="flex justify-center items-center">
             <img
@@ -16,7 +16,7 @@ export default function Navigation() {
               className="w-24 h-24 object-cover relative bottom-24 rounded-full"
             />
           </div>
-          <Link
+          <NavLink
             to={"/"}
             className="bg-green-600 w-full rounded-sm p-2 hover:text-green-600 hover:bg-neutral-200 hover:shadow-lg hover:scale-90 transition-all"
           >
@@ -24,8 +24,8 @@ export default function Navigation() {
               <CiHome className="text-xl" />
               <p>Home</p>
             </div>
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to={"/Inventory"}
             className="bg-green-600 w-full rounded-sm p-2 hover:text-green-600 hover:bg-neutral-200 hover:shadow-lg hover:scale-90 transition-all"
           >
@@ -33,31 +33,31 @@ export default function Navigation() {
               {/* <FaQuestion className="text-xl font-bold" />   */}
               <p>Inventory</p>
             </div>
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to={"/AboutUs"}
             className="bg-green-600 w-full rounded-sm p-2 hover:text-green-600 hover:bg-neutral-200 hover:shadow-lg hover:scale-90 transition-all"
           >
             <div className="flex items-center justify-center">
               {/* <MdConnectWithoutContact className="text-xl font-bold" /> */}
-              <p>Contact Us</p>
+              <p>About Us</p>
             </div>
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to={"/ContactUs"}
             className="bg-green-600 w-full rounded-sm p-2 hover:text-green-600 hover:bg-neutral-200 hover:shadow-lg hover:scale-90 transition-all"
           >
             Contact Us
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to={"/Storages"}
             className="bg-green-600 w-full rounded-sm p-2 hover:text-green-600 hover:bg-neutral-200 hover:shadow-lg hover:scale-90 transition-all"
           >
             Storages
-          </Link>
+          </NavLink>
         </nav>
         <Outlet />
-      </header>
+      </div>
     </>
   );
 }
