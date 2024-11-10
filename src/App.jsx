@@ -11,7 +11,7 @@ const Signup = lazy(() => import("./components/Signup"));
 const App = () => {
   return (
     <>
-      <div className="bg-neutral-200">
+      <div className="bg-gray-300">
         <Routes>
           <Route path="/" element={<Navigation />}>
             <Route

@@ -7,7 +7,7 @@ import { CiHome } from "react-icons/ci";
 export default function Navigation() {
   return (
     <>
-      <div className="mr-8">
+      <div className="mr-8 bg-gray-300">
         <nav className="flex flex-col gap-y-4 justify-center w-32 text-center bg-green-900 shadow-md backdrop-blur-lg text-neutral-100 fixed left-0 h-full my-8 font-bold rounded-lg overflow-hidden px-2">
           <div className="flex justify-center items-center">
             <img
