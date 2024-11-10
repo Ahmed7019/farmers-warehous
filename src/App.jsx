@@ -8,7 +8,7 @@ const Navigation = lazy(() => import("./components/Navigation"));
 const AboutUs = lazy(() => import("./components/AboutUs"));
 const ContactUs = lazy(() => import("./components/ContactUs"));
 const Storages = lazy(() => import("./components/Storages"));
-
+// const Signup = import("./components/Signup");
 const App = () => {
   return (
     <>

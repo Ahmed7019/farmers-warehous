@@ -10,7 +10,8 @@ import {
   FaLinkedin,
   FaXTwitter,
 } from "react-icons/fa6";
-
+// import { Routes, Route } from "react-router-dom";
+// import Signup from "./Signup";
 export default function Home() {
   return (
     <>
@@ -19,8 +20,18 @@ export default function Home() {
           <div className="flex items-center justify-between">
             <p className="font-bold text-4xl mb-8">Farmers Warehouse</p>
             <div className="flex gap-x-2">
-              <Link to={""} className="hover:text-green-600 hover:bg-neutral-300/50 hover:shadow-md transition-colors bg-green-600 text-neutral-200 p-2 rounded">Login</Link>
-              <Link to={""} className="hover:text-green-600 hover:bg-neutral-300/50 hover:shadow-md transition-colors bg-green-600 text-neutral-200 p-2 rounded">Sign Up</Link>
+              <Link
+                to="/Signup"
+                className="hover:text-green-600 hover:bg-neutral-300/50 hover:shadow-md transition-colors bg-green-600 text-neutral-200 p-2 rounded"
+              >
+                Login
+              </Link>
+              <Link
+                to={""}
+                className="hover:text-green-600 hover:bg-neutral-300/50 hover:shadow-md transition-colors bg-green-600 text-neutral-200 p-2 rounded"
+              >
+                Sign Up
+              </Link>
             </div>
           </div>
           <div className="flex justify-between">
