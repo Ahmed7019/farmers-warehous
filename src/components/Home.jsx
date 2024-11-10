@@ -64,9 +64,9 @@ export default function Home() {
                     importance of proper storage in preserving the quality of
                     your harvest.
                   </p>
-                  <button className="p-2 rounded font-semibold bg-neutral-200 hover:text-neutral-100 hover:bg-green-600 transition-colors">
+                  <Link to='/Signup' className="p-2 rounded font-semibold bg-neutral-200 hover:text-neutral-100 hover:bg-green-600 transition-colors">
                     Get started
-                  </button>
+                  </Link>
                 </div>
               </div>
               <img
