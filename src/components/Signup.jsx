@@ -7,8 +7,9 @@ export default function Signup() {
       <div className="bg-gray-300 w-full h-full">
         <div className="flex gap-x-72">
           <Navigation />
-          <div className="relative top-8 ">
+          <div className="relative top-8 left-40">
             <form className="bg-white drop-shadow-md shadow-lg max-w-[432px] rounded-md">
+                <p className="text-green-400 font-bold text-xl p-4">Register</p>
               <div className="px-4 py-3 flex flex-col gap-x-2 gap-y-3">
                 <div className="flex gap-2">
                   <input
@@ -17,6 +18,7 @@ export default function Signup() {
                     id="first-name"
                     placeholder="First Name"
                     className="ring-1 ring-gray-400 outline-none p-2 rounded-md bg-gray-100"
+                    required
                   />
                   <input
                     type="text"
@@ -24,6 +26,7 @@ export default function Signup() {
                     id="surname"
                     placeholder="Surname"
                     className="ring-1 ring-gray-400 outline-none p-2 rounded-md bg-gray-100 "
+                    required
                   />
                 </div>
                 <div className="w-full">
@@ -33,6 +36,7 @@ export default function Signup() {
                     id="email"
                     placeholder="Email Address"
                     className="ring-1 ring-gray-400 outline-none p-2 rounded-md bg-gray-100 w-full focus:placeholder:gray-5"
+                    required
                   />
                 </div>
                 <div>
@@ -42,6 +46,7 @@ export default function Signup() {
                     id="password"
                     placeholder="New Password"
                     className="ring-1 ring-gray-400 outline-none p-2 rounded-md bg-gray-100 w-full focus:placeholder:gray-5"
+                    required
                   />
                 </div>
                 <div>
@@ -50,6 +55,7 @@ export default function Signup() {
                     <select
                       name="day"
                       className="text-md flex-1 px-1 py-1.5 ring-1 ring-gray-400 rounded-md outline-none"
+                      required
                     >
                       <option>1</option>
                       <option>2</option>
@@ -86,6 +92,7 @@ export default function Signup() {
                     <select
                       name="month"
                       className="text-md flex-1 px-1 py-1.5 ring-1 ring-gray-400 rounded-md outline-none"
+                      required
                     >
                       <option>January</option>
                       <option>February</option>
@@ -103,6 +110,7 @@ export default function Signup() {
                     <select
                       name="year"
                       className="text-md flex-1 px-1 py-1.5 ring-1 ring-gray-400 rounded-md outline-none"
+                      required
                     >
                       <option>1990</option>
                       <option>1991</option>
@@ -147,11 +155,11 @@ export default function Signup() {
                   <div className="flex gap-2">
                     <label htmlFor="female" className="flex gap-2">
                       <span>Female</span>
-                      <input type="radio" name="gender" id="female" />
+                      <input type="radio" name="gender" id="female" required/>
                     </label>
                     <label htmlFor="male" className="flex gap-2">
                       <span>Male</span>
-                      <input type="radio" name="gender" id="male" />
+                      <input type="radio" name="gender" id="male" required/>
                     </label>
                   </div>
                 </div>
