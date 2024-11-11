@@ -12,7 +12,7 @@ const Signup = lazy(() => import("./components/Signup"));
 const App = () => {
   return (
     <>
-      <div className="bg-gray-300">
+      <div>
         <Routes>
           <Route path="/" element={<Navigation />}>
             <Route
@@ -73,7 +73,6 @@ const App = () => {
               }
             />
           </Route>
-          <Route path="/" element={<Home />}></Route>
         </Routes>
       </div>
     </>

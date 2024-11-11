@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 export default function Signup() {
   return (
     <>
-      <div className="bg-gray-300 w-full h-full">
+      <div className=" w-full h-full">
         <div className="flex gap-x-72">
           <Navigation />
           <div className="relative top-8 left-40">
             <form className="bg-white drop-shadow-md shadow-lg max-w-[432px] rounded-md">
-                <p className="text-green-400 font-bold text-xl p-4">Register</p>
+              <p className="text-green-400 font-bold text-xl p-4">Register</p>
               <div className="px-4 py-3 flex flex-col gap-x-2 gap-y-3">
                 <div className="flex gap-2">
                   <input
@@ -155,11 +155,11 @@ export default function Signup() {
                   <div className="flex gap-2">
                     <label htmlFor="female" className="flex gap-2">
                       <span>Female</span>
-                      <input type="radio" name="gender" id="female" required/>
+                      <input type="radio" name="gender" id="female" required />
                     </label>
                     <label htmlFor="male" className="flex gap-2">
                       <span>Male</span>
-                      <input type="radio" name="gender" id="male" required/>
+                      <input type="radio" name="gender" id="male" required />
                     </label>
                   </div>
                 </div>
@@ -185,7 +185,9 @@ export default function Signup() {
                 </div>
 
                 <div className="w-full flex items-center justify-center">
-                  <button className="px-2 py-3 text-neutral-50 bg-green-400 w-full rounded-md hover:text-neutral-100 hover:bg-green-300">Sign Up</button>
+                  <button className="px-2 py-3 text-neutral-50 bg-green-400 w-full rounded-md hover:text-neutral-100 hover:bg-green-300">
+                    Sign Up
+                  </button>
                 </div>
               </div>
             </form>
