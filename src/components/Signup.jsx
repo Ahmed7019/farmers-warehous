@@ -1,7 +1,13 @@
 import { Outlet } from "react-router";
 import Navigation from "./Navigation";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 export default function Signup() {
+  const [password, setPassword] = useState("password");
+  const showPassword = () => {
+    // A function for showing / hiding password
+    password === "password" ? setPassword("text") : setPassword("password");
+  };
   return (
     <>
       <div className=" w-full h-full">
@@ -39,15 +45,16 @@ export default function Signup() {
                     required
                   />
                 </div>
-                <div>
+                <div className="flex justify-between items-center ring-1 ring-gray-400 p-2 rounded-md bg-gray-100 w-full focus:placeholder:text-gray-500">
                   <input
-                    type="password"
+                    type={password}
                     name="password"
                     id="password"
                     placeholder="New Password"
-                    className="ring-1 ring-gray-400 outline-none p-2 rounded-md bg-gray-100 w-full focus:placeholder:gray-5"
+                    className=" outline-none bg-transparent"
                     required
                   />
+                  <span className="text-sm text-gray-400 hover:underline hover:underline-offset-2 cursor-pointer" onClick={showPassword}>Show password</span>
                 </div>
                 <div>
                   <p className="text-gray-500 text-sm mb-2">Date of birth</p>

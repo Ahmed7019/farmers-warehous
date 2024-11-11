@@ -26,7 +26,7 @@ export default function Signin() {
                   required
                 />
               </div>
-              <div className="flex justify-between ring-1 ring-gray-400 p-2 bg-gray-100 w-full focus:placeholder:text-gray-500 rounded-md ">
+              <div className="flex justify-between items-center ring-1 ring-gray-400 p-2 bg-gray-100 w-full focus:placeholder:text-gray-500 rounded-md ">
                 <input
                   type={`${password}`}
                   name="password"
@@ -35,7 +35,7 @@ export default function Signin() {
                   className=" outline-none bg-transparent"
                   required
                 />
-                <span onClick={showPassword}>show password</span>
+                <span className="text-sm text-gray-400 hover:underline hover:underline-offset-2 cursor-pointer" onClick={showPassword}>show password</span>
               </div>
               <div className="flex gap-2">
                 <input type="checkbox" name="remember-me" id="remember-me" />
