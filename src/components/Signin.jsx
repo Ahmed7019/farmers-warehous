@@ -1,5 +1,12 @@
+import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 export default function Signin() {
+  const [password, setPassword] = useState("password");
+
+  const showPassword = () => {
+    // A function for showing / hiding password
+    password === "password" ? setPassword("text") : setPassword("password");
+  };
   return (
     <>
       <div className="grid place-items-center min-h-[100vh]">
@@ -19,15 +26,16 @@ export default function Signin() {
                   required
                 />
               </div>
-              <div>
+              <div className="flex justify-between ring-1 ring-gray-400 p-2 bg-gray-100 w-full focus:placeholder:text-gray-500 rounded-md ">
                 <input
-                  type="password"
+                  type={`${password}`}
                   name="password"
                   id="password"
                   placeholder="New Password"
-                  className="ring-1 ring-gray-400 outline-none p-2 rounded-md bg-gray-100 w-full focus:placeholder:gray-5"
+                  className=" outline-none bg-transparent"
                   required
                 />
+                <span onClick={showPassword}>show password</span>
               </div>
               <div className="flex gap-2">
                 <input type="checkbox" name="remember-me" id="remember-me" />
