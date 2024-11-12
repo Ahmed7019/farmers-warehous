@@ -51,10 +51,15 @@ export default function Signup() {
                     name="password"
                     id="password"
                     placeholder="New Password"
-                    className=" outline-none bg-transparent"
+                    className=" outline-none bg-transparent w-[75%]"
                     required
                   />
-                  <span className="text-sm text-gray-400 hover:underline hover:underline-offset-2 cursor-pointer" onClick={showPassword}>Show password</span>
+                  <span
+                    className="text-sm text-gray-400 hover:underline hover:underline-offset-2 cursor-pointer"
+                    onClick={showPassword}
+                  >
+                    Show password
+                  </span>
                 </div>
                 <div>
                   <p className="text-gray-500 text-sm mb-2">Date of birth</p>
