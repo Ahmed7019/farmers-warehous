@@ -51,7 +51,7 @@ export default function Signup() {
                     name="password"
                     id="password"
                     placeholder="New Password"
-                    className=" outline-none bg-transparent w-[75%]"
+                    className=" outline-none bg-transparent w-[70%]"
                     required
                   />
                   <span

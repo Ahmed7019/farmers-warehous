@@ -30,7 +30,6 @@ export default function Navigation() {
             className="bg-green-600 w-full rounded-sm p-2 hover:text-green-600 hover:bg-neutral-200 hover:shadow-lg hover:scale-90 transition-all"
           >
             <div className="flex items-center justify-center">
-              {/* <FaQuestion className="text-xl font-bold" />   */}
               <p>Inventory</p>
             </div>
           </NavLink>
@@ -39,7 +38,6 @@ export default function Navigation() {
             className="bg-green-600 w-full rounded-sm p-2 hover:text-green-600 hover:bg-neutral-200 hover:shadow-lg hover:scale-90 transition-all"
           >
             <div className="flex items-center justify-center">
-              {/* <MdConnectWithoutContact className="text-xl font-bold" /> */}
               <p>About Us</p>
             </div>
           </NavLink>
