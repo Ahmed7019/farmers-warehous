@@ -10,7 +10,7 @@ class User {
 }
 
 export function createUser(fN, lN, pwd, email, gender, bd) {
-  const user = User(fN, lN, pwd, email, gender, bd);
+  const user = new User(fN, lN, pwd, email, gender, bd);
   console.log(user);
   return user;
 }

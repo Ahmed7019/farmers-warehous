@@ -2,8 +2,37 @@ import { Outlet } from "react-router";
 import Navigation from "./Navigation";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { createUser } from "./js/signup/createUser";
+
 export default function Signup() {
   const [password, setPassword] = useState("password");
+  // Users information
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    pwd: "",
+    gender: "",
+    birthDate: {
+      birthDay: "",
+      birthMonth: "",
+      birthYear: "",
+    },
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData([
+      {
+        ...formData,
+        [name]: value,
+      },
+    ]);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   const showPassword = () => {
     // A function for showing / hiding password
     password === "password" ? setPassword("text") : setPassword("password");
@@ -14,7 +43,10 @@ export default function Signup() {
         <div className="flex gap-x-72">
           <Navigation />
           <div className="relative top-8 left-40">
-            <form className="bg-white drop-shadow-md shadow-lg max-w-[432px] rounded-md">
+            <form
+              className="bg-white drop-shadow-md shadow-lg max-w-[432px] rounded-md"
+              onSubmit={handleSubmit}
+            >
               <p className="text-green-400 font-bold text-xl p-4">Register</p>
               <div className="px-4 py-3 flex flex-col gap-x-2 gap-y-3">
                 <div className="flex gap-2">
@@ -24,6 +56,7 @@ export default function Signup() {
                     id="first-name"
                     placeholder="First Name"
                     className="ring-1 ring-gray-400 outline-none p-2 rounded-md bg-gray-100"
+                    value={formData.firstName}
                     required
                   />
                   <input
@@ -32,6 +65,7 @@ export default function Signup() {
                     id="surname"
                     placeholder="Surname"
                     className="ring-1 ring-gray-400 outline-none p-2 rounded-md bg-gray-100 "
+                    value={formData.lastName}
                     required
                   />
                 </div>
@@ -42,6 +76,7 @@ export default function Signup() {
                     id="email"
                     placeholder="Email Address"
                     className="ring-1 ring-gray-400 outline-none p-2 rounded-md bg-gray-100 w-full focus:placeholder:gray-5"
+                    value={formData.email}
                     required
                   />
                 </div>
@@ -52,6 +87,7 @@ export default function Signup() {
                     id="password"
                     placeholder="New Password"
                     className=" outline-none bg-transparent w-[70%]"
+                    value={formData.pwd}
                     required
                   />
                   <span
@@ -68,6 +104,7 @@ export default function Signup() {
                       name="day"
                       className="text-md flex-1 px-1 py-1.5 ring-1 ring-gray-400 rounded-md outline-none"
                       required
+                      value={formData.birthDate.birthDay}
                     >
                       <option>1</option>
                       <option>2</option>
@@ -104,6 +141,7 @@ export default function Signup() {
                     <select
                       name="month"
                       className="text-md flex-1 px-1 py-1.5 ring-1 ring-gray-400 rounded-md outline-none"
+                      value={formData.birthDate.birthMonth}
                       required
                     >
                       <option>January</option>
@@ -122,6 +160,7 @@ export default function Signup() {
                     <select
                       name="year"
                       className="text-md flex-1 px-1 py-1.5 ring-1 ring-gray-400 rounded-md outline-none"
+                      value={formData.birthDate.birthYear}
                       required
                     >
                       <option>1990</option>
@@ -167,11 +206,23 @@ export default function Signup() {
                   <div className="flex gap-2">
                     <label htmlFor="female" className="flex gap-2">
                       <span>Female</span>
-                      <input type="radio" name="gender" id="female" required />
+                      <input
+                        type="radio"
+                        name="gender"
+                        id="female"
+                        required
+                        value={formData.gender}
+                      />
                     </label>
                     <label htmlFor="male" className="flex gap-2">
                       <span>Male</span>
-                      <input type="radio" name="gender" id="male" required />
+                      <input
+                        type="radio"
+                        name="gender"
+                        id="male"
+                        required
+                        value={formData.gender}
+                      />
                     </label>
                   </div>
                 </div>
@@ -197,7 +248,20 @@ export default function Signup() {
                 </div>
 
                 <div className="w-full flex items-center justify-center">
-                  <button className="px-2 py-3 text-neutral-50 bg-green-400 w-full rounded-md hover:text-neutral-100 hover:bg-green-300">
+                  <button
+                    className="px-2 py-3 text-neutral-50 bg-green-400 w-full rounded-md hover:text-neutral-100 hover:bg-green-300"
+                    onClick={() => {
+                      handleChange();
+                      createUser(
+                        formData.firstName,
+                        formData.lastName,
+                        formData.pwd,
+                        formData.email,
+                        formData.gender,
+                        formData.birthDate
+                      );
+                    }}
+                  >
                     Sign Up
                   </button>
                 </div>
