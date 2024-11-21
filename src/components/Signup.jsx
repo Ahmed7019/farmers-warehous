@@ -57,6 +57,7 @@ export default function Signup() {
                     placeholder="First Name"
                     className="ring-1 ring-gray-400 outline-none p-2 rounded-md bg-gray-100"
                     value={formData.firstName}
+                    onChange={handleChange}
                     required
                   />
                   <input
@@ -66,6 +67,7 @@ export default function Signup() {
                     placeholder="Surname"
                     className="ring-1 ring-gray-400 outline-none p-2 rounded-md bg-gray-100 "
                     value={formData.lastName}
+                    onChange={handleChange}
                     required
                   />
                 </div>
@@ -77,6 +79,7 @@ export default function Signup() {
                     placeholder="Email Address"
                     className="ring-1 ring-gray-400 outline-none p-2 rounded-md bg-gray-100 w-full focus:placeholder:gray-5"
                     value={formData.email}
+                    onChange={handleChange}
                     required
                   />
                 </div>
@@ -88,6 +91,7 @@ export default function Signup() {
                     placeholder="New Password"
                     className=" outline-none bg-transparent w-[70%]"
                     value={formData.pwd}
+                    onChange={handleChange}
                     required
                   />
                   <span
@@ -105,6 +109,7 @@ export default function Signup() {
                       className="text-md flex-1 px-1 py-1.5 ring-1 ring-gray-400 rounded-md outline-none"
                       required
                       value={formData.birthDate.birthDay}
+                      onChange={handleChange}
                     >
                       <option>1</option>
                       <option>2</option>
@@ -142,6 +147,7 @@ export default function Signup() {
                       name="month"
                       className="text-md flex-1 px-1 py-1.5 ring-1 ring-gray-400 rounded-md outline-none"
                       value={formData.birthDate.birthMonth}
+                      onChange={handleChange}
                       required
                     >
                       <option>January</option>
@@ -161,6 +167,7 @@ export default function Signup() {
                       name="year"
                       className="text-md flex-1 px-1 py-1.5 ring-1 ring-gray-400 rounded-md outline-none"
                       value={formData.birthDate.birthYear}
+                      onChange={handleChange}
                       required
                     >
                       <option>1990</option>
@@ -212,6 +219,7 @@ export default function Signup() {
                         id="female"
                         required
                         value={formData.gender}
+                        onChange={handleChange}
                       />
                     </label>
                     <label htmlFor="male" className="flex gap-2">
@@ -222,6 +230,7 @@ export default function Signup() {
                         id="male"
                         required
                         value={formData.gender}
+                        onChange={handleChange}
                       />
                     </label>
                   </div>
@@ -251,7 +260,6 @@ export default function Signup() {
                   <button
                     className="px-2 py-3 text-neutral-50 bg-green-400 w-full rounded-md hover:text-neutral-100 hover:bg-green-300"
                     onClick={() => {
-                      handleChange();
                       createUser(
                         formData.firstName,
                         formData.lastName,
