@@ -13,21 +13,15 @@ export default function Signup() {
     email: "",
     pwd: "",
     gender: "",
-    birthDate: {
-      birthDay: "",
-      birthMonth: "",
-      birthYear: "",
-    },
+    birthDate: "",
   });
-
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData([
-      {
-        ...formData,
-        [name]: value,
-      },
-    ]);
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+    console.log(formData);
   };
 
   const handleSubmit = (e) => {
@@ -52,7 +46,7 @@ export default function Signup() {
                 <div className="flex gap-2">
                   <input
                     type="text"
-                    name="first-name"
+                    name="firstName"
                     id="first-name"
                     placeholder="First Name"
                     className="ring-1 ring-gray-400 outline-none p-2 rounded-md bg-gray-100"
@@ -62,7 +56,7 @@ export default function Signup() {
                   />
                   <input
                     type="text"
-                    name="surname"
+                    name="lastName"
                     id="surname"
                     placeholder="Surname"
                     className="ring-1 ring-gray-400 outline-none p-2 rounded-md bg-gray-100 "
@@ -74,7 +68,7 @@ export default function Signup() {
                 <div className="w-full">
                   <input
                     type="email"
-                    name="emai"
+                    name="email"
                     id="email"
                     placeholder="Email Address"
                     className="ring-1 ring-gray-400 outline-none p-2 rounded-md bg-gray-100 w-full focus:placeholder:gray-5"
@@ -86,7 +80,7 @@ export default function Signup() {
                 <div className="flex justify-between items-center ring-1 ring-gray-400 p-2 rounded-md bg-gray-100 w-full focus:placeholder:text-gray-500">
                   <input
                     type={password}
-                    name="password"
+                    name="pwd"
                     id="password"
                     placeholder="New Password"
                     className=" outline-none bg-transparent w-[70%]"
@@ -108,7 +102,7 @@ export default function Signup() {
                       name="day"
                       className="text-md flex-1 px-1 py-1.5 ring-1 ring-gray-400 rounded-md outline-none"
                       required
-                      value={formData.birthDate.birthDay}
+                      value={formData.birthDate}
                       onChange={handleChange}
                     >
                       <option>1</option>
@@ -146,7 +140,7 @@ export default function Signup() {
                     <select
                       name="month"
                       className="text-md flex-1 px-1 py-1.5 ring-1 ring-gray-400 rounded-md outline-none"
-                      value={formData.birthDate.birthMonth}
+                      value={formData.birthDate}
                       onChange={handleChange}
                       required
                     >
@@ -166,7 +160,7 @@ export default function Signup() {
                     <select
                       name="year"
                       className="text-md flex-1 px-1 py-1.5 ring-1 ring-gray-400 rounded-md outline-none"
-                      value={formData.birthDate.birthYear}
+                      value={formData.birthDate}
                       onChange={handleChange}
                       required
                     >
@@ -258,6 +252,7 @@ export default function Signup() {
 
                 <div className="w-full flex items-center justify-center">
                   <button
+                    type="submit"
                     className="px-2 py-3 text-neutral-50 bg-green-400 w-full rounded-md hover:text-neutral-100 hover:bg-green-300"
                     onClick={() => {
                       createUser(
