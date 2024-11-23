@@ -15,6 +15,7 @@ export default function Signup() {
     gender: "",
     birthDate: "",
   });
+  // Function to handle the change of inputs
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -23,7 +24,14 @@ export default function Signup() {
     });
     console.log(formData);
   };
-
+  // Function to handle the change in gender inputs
+  // const handleGender = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData({
+  //     ...formData,
+  //     [name]: value,
+  //   });
+  // };
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -212,8 +220,8 @@ export default function Signup() {
                         name="gender"
                         id="female"
                         required
-                        value={formData.gender}
-                        onChange={handleChange}
+                        value="female"
+                        onClick={handleChange}
                       />
                     </label>
                     <label htmlFor="male" className="flex gap-2">
@@ -223,8 +231,8 @@ export default function Signup() {
                         name="gender"
                         id="male"
                         required
-                        value={formData.gender}
-                        onChange={handleChange}
+                        value="male"
+                        onClick={handleChange}
                       />
                     </label>
                   </div>
