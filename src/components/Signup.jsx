@@ -24,14 +24,7 @@ export default function Signup() {
     });
     console.log(formData);
   };
-  // Function to handle the change in gender inputs
-  // const handleGender = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData({
-  //     ...formData,
-  //     [name]: value,
-  //   });
-  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
