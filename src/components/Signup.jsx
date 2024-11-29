@@ -13,7 +13,11 @@ export default function Signup() {
     email: "",
     pwd: "",
     gender: "",
-    birthDate: "",
+    birthDate: {
+      birthDay:"",
+      birthMonth:"",
+      birthYear:"",
+    },
   });
   // Function to handle the change of inputs
   const handleChange = (event) => {
@@ -103,7 +107,7 @@ export default function Signup() {
                       name="day"
                       className="text-md flex-1 px-1 py-1.5 ring-1 ring-gray-400 rounded-md outline-none"
                       required
-                      value={formData.birthDate}
+                      value={formData.birthDate.birthDay}
                       onChange={handleChange}
                     >
                       <option>1</option>
@@ -141,7 +145,7 @@ export default function Signup() {
                     <select
                       name="month"
                       className="text-md flex-1 px-1 py-1.5 ring-1 ring-gray-400 rounded-md outline-none"
-                      value={formData.birthDate}
+                      value={formData.birthDate.birthMonth}
                       onChange={handleChange}
                       required
                     >
@@ -161,7 +165,7 @@ export default function Signup() {
                     <select
                       name="year"
                       className="text-md flex-1 px-1 py-1.5 ring-1 ring-gray-400 rounded-md outline-none"
-                      value={formData.birthDate}
+                      value={formData.birthDate.birthYear}
                       onChange={handleChange}
                       required
                     >
@@ -262,7 +266,7 @@ export default function Signup() {
                         formData.pwd,
                         formData.email,
                         formData.gender,
-                        formData.birthDate
+                        formData.birthDate.birthDay
                       );
                     }}
                   >
