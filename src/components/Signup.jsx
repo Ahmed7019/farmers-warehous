@@ -13,11 +13,9 @@ export default function Signup() {
     email: "",
     pwd: "",
     gender: "",
-    birthDate: {
-      birthDay:"",
-      birthMonth:"",
-      birthYear:"",
-    },
+    birthDay: "1",
+    birthMonth: "January",
+    birthYear: "1990",
   });
   // Function to handle the change of inputs
   const handleChange = (event) => {
@@ -31,6 +29,27 @@ export default function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    createUser(
+      formData.firstName,
+      formData.lastName,
+      formData.pwd,
+      formData.email,
+      formData.gender,
+      formData.birthDay,
+      formData.birthMonth,
+      formData.birthYear
+    );
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      pwd: "",
+      gender: "",
+      birthDay: "",
+      birthMonth: "",
+      birthYear: "",
+    });
   };
   const showPassword = () => {
     // A function for showing / hiding password
@@ -104,10 +123,10 @@ export default function Signup() {
                   <p className="text-gray-500 text-sm mb-2">Date of birth</p>
                   <div className="flex gap-2">
                     <select
-                      name="day"
+                      name="birthDay"
                       className="text-md flex-1 px-1 py-1.5 ring-1 ring-gray-400 rounded-md outline-none"
                       required
-                      value={formData.birthDate.birthDay}
+                      value={formData.birthDay}
                       onChange={handleChange}
                     >
                       <option>1</option>
@@ -143,9 +162,9 @@ export default function Signup() {
                       <option>31</option>
                     </select>
                     <select
-                      name="month"
+                      name="birthMonth"
                       className="text-md flex-1 px-1 py-1.5 ring-1 ring-gray-400 rounded-md outline-none"
-                      value={formData.birthDate.birthMonth}
+                      value={formData.birthMonth}
                       onChange={handleChange}
                       required
                     >
@@ -163,9 +182,9 @@ export default function Signup() {
                       <option>December</option>
                     </select>
                     <select
-                      name="year"
+                      name="birthYear"
                       className="text-md flex-1 px-1 py-1.5 ring-1 ring-gray-400 rounded-md outline-none"
-                      value={formData.birthDate.birthYear}
+                      value={formData.birthYear}
                       onChange={handleChange}
                       required
                     >
@@ -259,16 +278,7 @@ export default function Signup() {
                   <button
                     type="submit"
                     className="px-2 py-3 text-neutral-50 bg-green-400 w-full rounded-md hover:text-neutral-100 hover:bg-green-300"
-                    onClick={() => {
-                      createUser(
-                        formData.firstName,
-                        formData.lastName,
-                        formData.pwd,
-                        formData.email,
-                        formData.gender,
-                        formData.birthDate.birthDay
-                      );
-                    }}
+                    // onClick={handle}
                   >
                     Sign Up
                   </button>
