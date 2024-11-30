@@ -2,17 +2,21 @@
 export default function AboutUs() {
   return (
     <>
-      <div className="relative grid ml-40">
-        <div className=" mt-8">
-          <h1 className="font-bold text-xl my-2">AboutUs</h1>
-          <section>
-            <p className="text-2xl font-bold">Who We Are:</p>
+      <div className="relative  ml-40">
+        <h1 className="font-bold text-xl my-2 relative top-10">
+          Our Solutions
+        </h1>
+        <div className=" mt-32 grid grid-cols-2 gap-2">
+          <section className="bg-green-200 p-2 rounded-md row-start-1 row-span-2 ">
+            <p className="text-2xl font-bold">About us</p>
             <p>
               We are a dedicated team committed to supporting farmers by
               providing top-notch storage facilities for their crops. With years
               of experience in the industry, we understand the importance of
               proper storage in preserving the quality of your harvest.
             </p>
+          </section>
+          <section className="bg-green-200 p-2 rounded-md row-start-4 col-start-2">
             <p className="text-2xl font-bold">What We Do:</p>
             <p>
               Our primary goal is to offer farmers a trusted space to store
