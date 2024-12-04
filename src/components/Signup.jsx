@@ -2,59 +2,48 @@ import { Outlet } from "react-router";
 import Navigation from "./Navigation";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { createUser } from "./js/signup/createUser";
+import { useForm } from "react-hook-form";
+// import { createUser } from "./js/signup/createUser";
 
+// js functions
+import saveToLocalStorage from "./js/signup/saveUsersToLocaleStorage";
 export default function Signup() {
   const [password, setPassword] = useState("password");
   // Users information
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    pwd: "",
-    gender: "",
-    birthDay: "1",
-    birthMonth: "January",
-    birthYear: "1990",
-  });
-  // Function to handle the change of inputs
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-    console.log(formData);
-  };
+  // const [data, setData] = useState({
+  //   firstName: "",
+  //   lastName: "",
+  //   email: "",
+  //   pwd: "",
+  //   gender: "",
+  //   birthDay: "1",
+  //   birthMonth: "January",
+  //   birthYear: "1990",
+  // });
+  // const [formData, setFormData] = useState([]);
+  // // Function to handle the change of inputs
+  // const handleChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setData({
+  //     [name]: value,
+  //   });
+  // };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // s
 
-    createUser(
-      formData.firstName,
-      formData.lastName,
-      formData.pwd,
-      formData.email,
-      formData.gender,
-      formData.birthDay,
-      formData.birthMonth,
-      formData.birthYear
-    );
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      pwd: "",
-      gender: "",
-      birthDay: "",
-      birthMonth: "",
-      birthYear: "",
-    });
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setFormData([...formData, data]);
+  //   saveToLocalStorage(formData);
+  // };
+
   const showPassword = () => {
     // A function for showing / hiding password
     password === "password" ? setPassword("text") : setPassword("password");
   };
+
+  // Form submittiong
+  const { register, handleSubmit } = useForm();
   return (
     <>
       <div className=" w-full h-full">
@@ -63,53 +52,50 @@ export default function Signup() {
           <div className="relative top-8 left-40">
             <form
               className="bg-white drop-shadow-md shadow-lg max-w-[432px] rounded-md"
-              onSubmit={handleSubmit}
+              onSubmit={handleSubmit(saveToLocalStorage)}
             >
               <p className="text-green-400 font-bold text-xl p-4">Register</p>
               <div className="px-4 py-3 flex flex-col gap-x-2 gap-y-3">
                 <div className="flex gap-2">
                   <input
-                    type="text"
-                    name="firstName"
-                    id="first-name"
+                    {...register("firstName")}
+                    required
                     placeholder="First Name"
                     className="ring-1 ring-gray-400 outline-none p-2 rounded-md bg-gray-100"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    required
+                    // value={formData.firstName}
+                    // onChange={handleChange}
                   />
                   <input
-                    type="text"
-                    name="lastName"
-                    id="surname"
+                    {...register("lastName")}
                     placeholder="Surname"
                     className="ring-1 ring-gray-400 outline-none p-2 rounded-md bg-gray-100 "
-                    value={formData.lastName}
-                    onChange={handleChange}
+                    // value={formData.lastName}
+                    // onChange={handleChange}
                     required
                   />
                 </div>
                 <div className="w-full">
                   <input
                     type="email"
-                    name="email"
-                    id="email"
+                    {...register("Email")}
+                    // id="email"
                     placeholder="Email Address"
                     className="ring-1 ring-gray-400 outline-none p-2 rounded-md bg-gray-100 w-full focus:placeholder:gray-5"
-                    value={formData.email}
-                    onChange={handleChange}
+                    // value={formData.email}
+                    // onChange={handleChange}
                     required
                   />
                 </div>
                 <div className="flex justify-between items-center ring-1 ring-gray-400 p-2 rounded-md bg-gray-100 w-full focus:placeholder:text-gray-500">
                   <input
                     type={password}
-                    name="pwd"
-                    id="password"
+                    // name="pwd"
+                    {...register("password")}
+                    // id="password"
                     placeholder="New Password"
                     className=" outline-none bg-transparent w-[70%]"
-                    value={formData.pwd}
-                    onChange={handleChange}
+                    // value={formData.pwd}
+                    // onChange={handleChange}
                     required
                   />
                   <span
@@ -123,11 +109,12 @@ export default function Signup() {
                   <p className="text-gray-500 text-sm mb-2">Date of birth</p>
                   <div className="flex gap-2">
                     <select
-                      name="birthDay"
+                      // name="birthDay"
+                      {...register("birthday")}
                       className="text-md flex-1 px-1 py-1.5 ring-1 ring-gray-400 rounded-md outline-none"
                       required
-                      value={formData.birthDay}
-                      onChange={handleChange}
+                      // value={formData.birthDay}
+                      // onChange={handleChange}
                     >
                       <option>1</option>
                       <option>2</option>
@@ -162,10 +149,10 @@ export default function Signup() {
                       <option>31</option>
                     </select>
                     <select
-                      name="birthMonth"
+                      {...register("birthMonth")}
                       className="text-md flex-1 px-1 py-1.5 ring-1 ring-gray-400 rounded-md outline-none"
-                      value={formData.birthMonth}
-                      onChange={handleChange}
+                      // value={formData.birthMonth}
+                      // onChange={handleChange}
                       required
                     >
                       <option>January</option>
@@ -182,10 +169,10 @@ export default function Signup() {
                       <option>December</option>
                     </select>
                     <select
-                      name="birthYear"
+                      {...register("birthYear")}
                       className="text-md flex-1 px-1 py-1.5 ring-1 ring-gray-400 rounded-md outline-none"
-                      value={formData.birthYear}
-                      onChange={handleChange}
+                      // value={formData.birthYear}
+                      // onChange={handleChange}
                       required
                     >
                       <option>1990</option>
@@ -233,22 +220,22 @@ export default function Signup() {
                       <span>Female</span>
                       <input
                         type="radio"
-                        name="gender"
-                        id="female"
+                        {...register("gender")}
+                        // id="female"
                         required
                         value="female"
-                        onClick={handleChange}
+                        // onClick={handleChange}
                       />
                     </label>
                     <label htmlFor="male" className="flex gap-2">
                       <span>Male</span>
                       <input
                         type="radio"
-                        name="gender"
+                        {...register("gender")}
                         id="male"
                         required
                         value="male"
-                        onClick={handleChange}
+                        // onClick={handleChange}
                       />
                     </label>
                   </div>

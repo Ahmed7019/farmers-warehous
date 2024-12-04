@@ -16,7 +16,6 @@ export default function Storages() {
   // let nextId = 1;
   const [farmsData, setFarmsData] = useState(data);
   let handleClick = () => {
-    // if (data.length > 0) {
     setId((id) => id + 1);
     setFarmsData([
       ...farmsData,
@@ -31,8 +30,6 @@ export default function Storages() {
         batchNum: batchNum,
       },
     ]);
-
-    // }
   };
   useEffect(() => {
     if (farmsData.length > 0)
