@@ -3,10 +3,10 @@ import Navigation from "./Navigation";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-// import { createUser } from "./js/signup/createUser";
 
 // js functions
 import saveToLocalStorage from "./js/signup/saveUsersToLocaleStorage";
+import getFromLocalStorage from "./js/signup/loadFromLocalStorage";
 export default function Signup() {
   const [password, setPassword] = useState("password");
 
@@ -20,8 +20,13 @@ export default function Signup() {
   const { register, handleSubmit } = useForm();
   const [data, setData] = useState([]);
 
+  // On render load from local storage
+  useEffect(() => {
+    if (data.length > 0) {
+      getFromLocalStorage("user");
+    }
+  });
 
-  
   useEffect(() => {
     if (data.length > 0) {
       saveToLocalStorage(data);
