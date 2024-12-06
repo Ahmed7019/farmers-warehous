@@ -20,6 +20,8 @@ export default function Signup() {
   const { register, handleSubmit } = useForm();
   const [data, setData] = useState([]);
 
+
+  
   useEffect(() => {
     if (data.length > 0) {
       saveToLocalStorage(data);
