@@ -6,19 +6,33 @@ export default function AboutUs() {
         <h1 className="font-bold text-xl my-2 relative top-10">
           Our Solutions
         </h1>
-        <div className=" mt-32 grid grid-cols-2 gap-2">
-          <section className="bg-green-200 p-2 rounded-md row-start-1 row-span-2 ">
-            <p className="text-2xl font-bold">About us</p>
-            <p>
-              We are a dedicated team committed to supporting farmers by
-              providing top-notch storage facilities for their crops. With years
-              of experience in the industry, we understand the importance of
-              proper storage in preserving the quality of your harvest.
-            </p>
+        <div className=" mt-32 grid grid-cols-2">
+          <section className="bg-green-200 p-2 rounded-t-md row-start-1 col-span-2 flex gap-2">
+            <div className="flex flex-col">
+              <p className="text-2xl font-bold my-2">About us</p>
+              <p className="text-lg text-neutral-800">
+                We are a dedicated team committed to supporting farmers by
+                providing top-notch storage facilities for their crops. With
+                years of experience in the industry, we understand the
+                importance of proper storage in preserving the quality of your
+                harvest.
+              </p>
+            </div>
+            <div className="overflow-hidden ">
+              <img
+                src="https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fGNyb3BzfGVufDB8fDB8fHww"
+                alt="warehoues"
+                className="rounded w-[1080px]"
+              />
+            </div>
           </section>
-          <section className="bg-green-200 p-2 rounded-md row-start-4 col-start-2">
-            <p className="text-2xl font-bold">What We Do:</p>
-            <p>
+          <section className="bg-green-200 p-2 rounded-b-md  col-span-2 flex gap-2">
+            <img
+              src="https://plus.unsplash.com/premium_photo-1661295675442-f151fdf7ba52?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHRydXN0fGVufDB8fDB8fHww"
+              alt="shaking with trust"
+              className="rounded"
+            />
+            <p className="text-lg text-neutral-800 mx-8">
               Our primary goal is to offer farmers a trusted space to store
               their crops with the highest standards of care. From
               temperature-controlled environments to vigilant security measures,
