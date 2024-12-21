@@ -3,10 +3,12 @@ import Navigation from "./Navigation";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-
+// import { useNavigate } from "react-router";
+// Firebase
 // js functions
 import saveToLocalStorage from "./js/signup/saveUsersToLocaleStorage";
 import getFromLocalStorage from "./js/signup/loadFromLocalStorage";
+// import Home from "./Home";
 export default function Signup() {
   const [password, setPassword] = useState("password");
 
@@ -33,9 +35,26 @@ export default function Signup() {
     }
   }, [data]);
 
+  
+  // const navigate = useNavigate();
   const handleFormSubmit = (d) => {
     setData([...data, d]);
-    return saveToLocalStorage(data);
+    // createUserWithEmailAndPassword(auth, d.email, d.password)
+    //   .then((userCredential) => {
+    //     // Signed up
+    //     const email = userCredential.email;
+    //     const userPassword = userCredential.userPassword;
+    //     console.log(email);
+    //     console.log(userPassword);
+    //     navigate("../");
+    //     // ...
+    //   })
+    //   .catch((error) => {
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //     console.log(errorMessage);
+    //     // ..
+    //   });
   };
 
   return (
@@ -67,7 +86,7 @@ export default function Signup() {
                 <div className="w-full">
                   <input
                     type="email"
-                    {...register("Email")}
+                    {...register("email")}
                     placeholder="Email Address"
                     className="ring-1 ring-gray-400 outline-none p-2 rounded-md bg-gray-100 w-full focus:placeholder:gray-5"
                     required

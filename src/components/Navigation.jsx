@@ -25,14 +25,14 @@ export default function Navigation() {
               <p>Home</p>
             </div>
           </NavLink>
-          <NavLink
+          {/* <NavLink
             to={"/Inventory"}
             className="bg-green-600 w-full rounded-sm p-2 hover:text-green-600 hover:bg-neutral-200 hover:shadow-lg hover:scale-90 transition-all"
           >
             <div className="flex items-center justify-center">
               <p>Inventory</p>
             </div>
-          </NavLink>
+          </NavLink> */}
           <NavLink
             to={"/AboutUs"}
             className="bg-green-600 w-full rounded-sm p-2 hover:text-green-600 hover:bg-neutral-200 hover:shadow-lg hover:scale-90 transition-all"
@@ -46,12 +46,6 @@ export default function Navigation() {
             className="bg-green-600 w-full rounded-sm p-2 hover:text-green-600 hover:bg-neutral-200 hover:shadow-lg hover:scale-90 transition-all"
           >
             Contact Us
-          </NavLink>
-          <NavLink
-            to={"/Storages"}
-            className="bg-green-600 w-full rounded-sm p-2 hover:text-green-600 hover:bg-neutral-200 hover:shadow-lg hover:scale-90 transition-all"
-          >
-            Storages
           </NavLink>
         </nav>
         <Outlet />

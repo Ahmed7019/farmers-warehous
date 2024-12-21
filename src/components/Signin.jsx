@@ -35,7 +35,12 @@ export default function Signin() {
                   className=" outline-none bg-transparent w-[75%] "
                   required
                 />
-                <span className="text-xs text-gray-400 hover:underline hover:underline-offset-2 cursor-pointer" onClick={showPassword}>show password</span>
+                <span
+                  className="text-xs text-gray-400 hover:underline hover:underline-offset-2 cursor-pointer"
+                  onClick={showPassword}
+                >
+                  show password
+                </span>
               </div>
               <div className="flex gap-2">
                 <input type="checkbox" name="remember-me" id="remember-me" />

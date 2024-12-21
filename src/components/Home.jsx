@@ -3,7 +3,10 @@
 // Import styling for animation
 import "../index.css";
 import { Link } from "react-router-dom";
-import InventoryLevels from "./InventoryLevels";
+import { initializeApp } from "firebase/app";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+// TODO: Add SDKs for Firebase products that you want to use
+// import InventoryLevels from "./InventoryLevels";
 import {
   FaFacebook,
   FaInstagram,
@@ -13,10 +16,17 @@ import {
 // import { Routes, Route } from "react-router-dom";
 // import Signup from "./Signup";
 export default function Home() {
+  // Import the functions you need from the SDKs you need
+
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  
   return (
     <>
-      <body className=" ml-40 relative grid place-items-center justify-center selection:bg-green-600 selection:text-neutral-50">
-        <header className="mt-8">
+      <div className=" ml-40 relative grid place-items-center justify-center selection:bg-green-600 selection:text-neutral-50">
+        <div className="mt-8">
           <div className="flex items-center justify-between">
             <p className="font-bold text-4xl mb-8">Farmers Warehouse</p>
             <div className="flex gap-x-2">
@@ -64,7 +74,10 @@ export default function Home() {
                     importance of proper storage in preserving the quality of
                     your harvest.
                   </p>
-                  <Link to='/Signup' className="p-2 rounded font-semibold bg-neutral-200 hover:text-neutral-100 hover:bg-green-600 transition-colors">
+                  <Link
+                    to="/Signup"
+                    className="p-2 rounded font-semibold bg-neutral-200 hover:text-neutral-100 hover:bg-green-600 transition-colors"
+                  >
                     Get started
                   </Link>
                 </div>
@@ -76,9 +89,9 @@ export default function Home() {
               />
             </div>
           </div>
-        </header>
+        </div>
 
-        <main className="my-8">
+        <div className="my-8">
           <section>
             <div className="flex gap-x-8 my-2 justify-center bg-green-600 p-4 rounded-md">
               <img
@@ -103,12 +116,8 @@ export default function Home() {
               </div>
             </div>
           </section>
-
-          <section className="my-10">
-            <InventoryLevels />
-          </section>
-        </main>
-        <footer className=" w-full overflow-hidden bg-green-600 rounded-t-xl">
+        </div>
+        <div className=" w-full overflow-hidden bg-green-600 rounded-t-xl">
           <section className="text-neutral-200 grid p-4 grid-cols-3">
             <div>
               <p>Phone: 123-456-7890</p>
@@ -119,8 +128,8 @@ export default function Home() {
               <p>&copy; 2024 Farmer's Warehouse. All Rights Reserved.</p>
             </div>
           </section>
-        </footer>
-      </body>
+        </div>
+      </div>
     </>
   );
 }
