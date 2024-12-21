@@ -3,32 +3,33 @@
 // Import styling for animation
 import "../index.css";
 import { Link } from "react-router-dom";
-import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-// TODO: Add SDKs for Firebase products that you want to use
-// import InventoryLevels from "./InventoryLevels";
 import {
   FaFacebook,
   FaInstagram,
   FaLinkedin,
   FaXTwitter,
 } from "react-icons/fa6";
-// import { Routes, Route } from "react-router-dom";
-// import Signup from "./Signup";
+
+import { useAuth } from "../contexts/authContext";
+
 export default function Home() {
-  // Import the functions you need from the SDKs you need
-
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  
+  const { userLoggedIn } = useAuth();
   return (
     <>
       <div className=" ml-40 relative grid place-items-center justify-center selection:bg-green-600 selection:text-neutral-50">
         <div className="mt-8">
-          <div className="flex items-center justify-between">
-            <p className="font-bold text-4xl mb-8">Farmers Warehouse</p>
+          {/* When User is logged in show these */}
+          {userLoggedIn && (
+            <div className="flex items-center justify-between gap-x-2 my-2">
+              <p className="text-3xl font-bold">Welcome !</p>
+              <button className="bg-red-600 text-neutral-200 p-2 rounded-md">
+                Logout
+              </button>
+            </div>
+          )}
+
+          {/* When user is not logged in show these */}
+          {!userLoggedIn && (
             <div className="flex gap-x-2">
               <Link
                 to="/Signin"
@@ -43,7 +44,7 @@ export default function Home() {
                 Sign Up
               </Link>
             </div>
-          </div>
+          )}
           <div className="flex justify-between">
             <div className="w-32 h-3 rounded-sm bg-green-600 animate-pulse mb-4"></div>
             <div className="flex gap-x-2">
@@ -56,11 +57,8 @@ export default function Home() {
           <div className="relative">
             <div className=" my-2 flex justify-center relative ">
               <div className="flex flex-col gap-y-4 pr-4 bg-green-600 p-4 rounded-l-md animate-scrolling-l">
-                <h1 className="text-3xl font-semibold text-white">
-                  Protect Your Produce: Our Warehouse is Your Safe Heaven
-                </h1>
+                <h1 className="text-3xl font-semibold text-white"></h1>
                 <p className="font-thin text-neutral-200">
-                  At Our Farmers Warehouse, we take pride in offering premium
                   storage solutions for your valuable crops. With a focus on
                   quality and excellence, we provide a secure and reliable
                   environment to store your produce, ensuring that it maintains
@@ -110,7 +108,6 @@ export default function Home() {
                   measures, we ensure that your produce remains in optimal
                   condition until it's ready for market. Experience peace of
                   mind knowing that your crops are in safe hands at Our Farmers
-                  Warehouse. Let us help you safeguard your harvest and maintain
                   its quality for the market ahead.
                 </p>
               </div>
@@ -121,12 +118,9 @@ export default function Home() {
           <section className="text-neutral-200 grid p-4 grid-cols-3">
             <div>
               <p>Phone: 123-456-7890</p>
-              <p>Email: info@farmerswarehouse.com</p>
               <p>Address: 123 Main Street, City, Country</p>
             </div>
-            <div className="flex flex-col items-center justify-center font-bold">
-              <p>&copy; 2024 Farmer's Warehouse. All Rights Reserved.</p>
-            </div>
+            <div className="flex flex-col items-center justify-center font-bold"></div>
           </section>
         </div>
       </div>

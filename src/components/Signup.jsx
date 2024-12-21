@@ -3,11 +3,15 @@ import Navigation from "./Navigation";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-// import { useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 // Firebase
 // js functions
 import saveToLocalStorage from "./js/signup/saveUsersToLocaleStorage";
 import getFromLocalStorage from "./js/signup/loadFromLocalStorage";
+import {
+  doCreateUserWithEmailAndPassword,
+  doSignInWithEmailAndPassword,
+} from "./js/Firebase/auth";
 // import Home from "./Home";
 export default function Signup() {
   const [password, setPassword] = useState("password");
@@ -20,7 +24,7 @@ export default function Signup() {
   // Form submittion
 
   const { register, handleSubmit } = useForm();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({});
 
   // On render load from local storage
   useEffect(() => {
@@ -35,26 +39,12 @@ export default function Signup() {
     }
   }, [data]);
 
-  
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const handleFormSubmit = (d) => {
-    setData([...data, d]);
-    // createUserWithEmailAndPassword(auth, d.email, d.password)
-    //   .then((userCredential) => {
-    //     // Signed up
-    //     const email = userCredential.email;
-    //     const userPassword = userCredential.userPassword;
-    //     console.log(email);
-    //     console.log(userPassword);
-    //     navigate("../");
-    //     // ...
-    //   })
-    //   .catch((error) => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //     console.log(errorMessage);
-    //     // ..
-    //   });
+    setData(d);
+    doCreateUserWithEmailAndPassword(d.email, d.password);
+    doSignInWithEmailAndPassword(d.email, d.password);
+    navigate("../");
   };
 
   return (
