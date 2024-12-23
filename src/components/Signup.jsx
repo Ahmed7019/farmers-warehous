@@ -40,10 +40,10 @@ export default function Signup() {
   }, [data]);
 
   const navigate = useNavigate();
-  const handleFormSubmit = (d) => {
-    setData(d);
-    doCreateUserWithEmailAndPassword(d.email, d.password);
-    doSignInWithEmailAndPassword(d.email, d.password);
+  const handleFormSubmit = async (formData) => {
+    setData(formData);
+    doCreateUserWithEmailAndPassword(formData.email, formData.password);
+    await doSignInWithEmailAndPassword(formData.email, formData.password);
     navigate("../");
   };
 

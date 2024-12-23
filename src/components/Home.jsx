@@ -9,11 +9,14 @@ import {
   FaLinkedin,
   FaXTwitter,
 } from "react-icons/fa6";
-
 import { useAuth } from "../contexts/authContext";
+import { doSignOut } from "./js/Firebase/auth";
 
 export default function Home() {
-  const { userLoggedIn } = useAuth();
+  let { userLoggedIn } = useAuth();
+  const handleSignOut = () => {
+    doSignOut();
+  };
   return (
     <>
       <div className=" ml-40 relative grid place-items-center justify-center selection:bg-green-600 selection:text-neutral-50">
@@ -22,27 +25,34 @@ export default function Home() {
           {userLoggedIn && (
             <div className="flex items-center justify-between gap-x-2 my-2">
               <p className="text-3xl font-bold">Welcome !</p>
-              <button className="bg-red-600 text-neutral-200 p-2 rounded-md">
+              <Link
+                className="bg-red-600 text-neutral-200 p-2 rounded-md"
+                onClick={handleSignOut}
+                to={"../"}
+              >
                 Logout
-              </button>
+              </Link>
             </div>
           )}
 
           {/* When user is not logged in show these */}
           {!userLoggedIn && (
-            <div className="flex gap-x-2">
-              <Link
-                to="/Signin"
-                className="hover:text-green-600 hover:bg-neutral-300/50 hover:shadow-md transition-colors bg-green-600 text-neutral-200 p-2 rounded"
-              >
-                Login
-              </Link>
-              <Link
-                to="/Signup"
-                className="hover:text-green-600 hover:bg-neutral-300/50 hover:shadow-md transition-colors bg-green-600 text-neutral-200 p-2 rounded"
-              >
-                Sign Up
-              </Link>
+            <div className="flex items-center justify-between gap-x-2 my-2">
+              <p>Farmers Warehouse</p>
+              <div className="flex gap-x-2">
+                <Link
+                  to="/Signin"
+                  className="hover:text-green-600 hover:bg-neutral-300/50 hover:shadow-md transition-colors bg-green-600 text-neutral-200 p-2 rounded"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/Signup"
+                  className="hover:text-green-600 hover:bg-neutral-300/50 hover:shadow-md transition-colors bg-green-600 text-neutral-200 p-2 rounded"
+                >
+                  Sign Up
+                </Link>
+              </div>
             </div>
           )}
           <div className="flex justify-between">
