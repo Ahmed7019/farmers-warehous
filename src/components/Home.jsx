@@ -2,7 +2,7 @@
 
 // Import styling for animation
 import "../index.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   FaFacebook,
   FaInstagram,
@@ -11,11 +11,25 @@ import {
 } from "react-icons/fa6";
 import { useAuth } from "../contexts/authContext";
 import { doSignOut } from "./js/Firebase/auth";
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  let { userLoggedIn } = useAuth();
+  const [isUserLoggedIn, setisUserLoggedIn] = useState(false);
+  const { userLoggedIn } = useAuth();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (userLoggedIn) {
+      setisUserLoggedIn(true);
+    } else {
+      setisUserLoggedIn(false);
+    }
+  }, [userLoggedIn]);
+
   const handleSignOut = () => {
-    doSignOut();
+    doSignOut().then(() => {
+      navigate("./Signin");
+    });
+    setisUserLoggedIn(false);
   };
   return (
     <>

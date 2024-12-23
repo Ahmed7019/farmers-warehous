@@ -1,5 +1,7 @@
-import { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
+import { doSignInWithEmailAndPassword } from "./js/Firebase/auth";
+import { useAuth } from "../contexts/authContext";
 export default function Signin() {
   const [password, setPassword] = useState("password");
 
@@ -7,11 +9,35 @@ export default function Signin() {
     // A function for showing / hiding password
     password === "password" ? setPassword("text") : setPassword("password");
   };
+
+  const { userLoggedIn } = useAuth();
+  useEffect(() => {
+    if (userLoggedIn) {
+      setisUserSignedIn(true);
+    } else {
+      setisUserSignedIn(false);
+    }
+  }, [userLoggedIn]);
+  const [pass, setPass] = useState("");
+  const [email, setEmail] = useState("");
+  const [isUserSignedIn, setisUserSignedIn] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!isUserSignedIn) {
+      setisUserSignedIn(true);
+      await doSignInWithEmailAndPassword(email, pass);
+    }
+  };
   return (
     <>
+      {userLoggedIn && <Navigate to={"../"} replace={true} />}
       <div className="grid place-items-center min-h-[100vh]">
         <div className="relative">
-          <form className="bg-green-50 drop-shadow-md w-[400px] shadow-lg rounded-md ">
+          <form
+            className="bg-green-50 drop-shadow-md w-[400px] shadow-lg rounded-md "
+            onSubmit={handleSubmit}
+          >
             <p className="text-green-400 font-bold text-xl p-4 flex justify-center">
               Sign in
             </p>
@@ -23,6 +49,8 @@ export default function Signin() {
                   id="email"
                   placeholder="Email Address"
                   className="ring-1 ring-gray-400 outline-none p-2 rounded-md bg-gray-100 w-full focus:placeholder:gray-5"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </div>
@@ -33,6 +61,8 @@ export default function Signin() {
                   id="password"
                   placeholder="New Password"
                   className=" outline-none bg-transparent w-[75%] "
+                  value={pass}
+                  onChange={(e) => setPass(e.target.value)}
                   required
                 />
                 <span
