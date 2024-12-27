@@ -15,8 +15,11 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [isUserLoggedIn, setisUserLoggedIn] = useState(false);
+
   const { userLoggedIn } = useAuth();
+  const { currentUser } = useAuth();
   const navigate = useNavigate();
+
   useEffect(() => {
     if (userLoggedIn) {
       setisUserLoggedIn(true);
@@ -31,6 +34,7 @@ export default function Home() {
     });
     setisUserLoggedIn(false);
   };
+
   return (
     <>
       <div className=" ml-40 relative grid place-items-center justify-center selection:bg-green-600 selection:text-neutral-50">
@@ -38,7 +42,9 @@ export default function Home() {
           {/* When User is logged in show these */}
           {userLoggedIn && (
             <div className="flex items-center justify-between gap-x-2 my-2">
-              <p className="text-3xl font-bold">Welcome !</p>
+              <p className="text-3xl font-bold">
+                Welcome {currentUser.displayName} !
+              </p>
               <Link
                 className="bg-red-600 text-neutral-200 p-2 rounded-md"
                 onClick={handleSignOut}
@@ -69,6 +75,7 @@ export default function Home() {
               </div>
             </div>
           )}
+
           <div className="flex justify-between">
             <div className="w-32 h-3 rounded-sm bg-green-600 animate-pulse mb-4"></div>
             <div className="flex gap-x-2">
@@ -78,6 +85,7 @@ export default function Home() {
               <FaFacebook className="hover:text-green-600 cursor-pointer" />
             </div>
           </div>
+
           <div className="relative">
             <div className=" my-2 flex justify-center relative ">
               <div className="flex flex-col gap-y-4 pr-4 bg-green-600 p-4 rounded-l-md animate-scrolling-l">
@@ -88,6 +96,7 @@ export default function Home() {
                   environment to store your produce, ensuring that it maintains
                   its freshness and value.
                 </p>
+
                 <div className="flex flex-col gap-y-4 justify-start items-start ">
                   <p className="font-thin text-neutral-200">
                     We are a dedicated team committed to supporting farmers by
@@ -96,6 +105,7 @@ export default function Home() {
                     importance of proper storage in preserving the quality of
                     your harvest.
                   </p>
+
                   <Link
                     to="/Signup"
                     className="p-2 rounded font-semibold bg-neutral-200 hover:text-neutral-100 hover:bg-green-600 transition-colors"

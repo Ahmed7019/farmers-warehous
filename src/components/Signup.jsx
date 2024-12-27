@@ -44,6 +44,7 @@ export default function Signup() {
     e.preventDefault();
     if (!isUserRegistering) {
       setisUserRegistering(true);
+      handleSubmit();
       return await doCreateUserWithEmailAndPassword(email, pwd);
     }
   };
