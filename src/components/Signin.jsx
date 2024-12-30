@@ -11,21 +11,13 @@ export default function Signin() {
   };
 
   const { userLoggedIn } = useAuth();
-  useEffect(() => {
-    if (userLoggedIn) {
-      setisUserSignedIn(true);
-    } else {
-      setisUserSignedIn(false);
-    }
-  }, [userLoggedIn]);
+
   const [pass, setPass] = useState("");
   const [email, setEmail] = useState("");
-  const [isUserSignedIn, setisUserSignedIn] = useState(false);
   const nav = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!userLoggedIn) {
-      setisUserSignedIn(true);
       doSignInWithEmailAndPassword(email, pass);
     }
   };
