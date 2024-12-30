@@ -10,7 +10,9 @@ export const doCreateUserWithEmailAndPassword = async (email, password) => {
 };
 
 export const doSignInWithEmailAndPassword = (email, password) => {
-  return signInWithEmailAndPassword(auth, email, password);
+  signInWithEmailAndPassword(auth, email, password).catch((err) => {
+    console.log(err);
+  });
 };
 
 export const doSignOut = (auth) => {

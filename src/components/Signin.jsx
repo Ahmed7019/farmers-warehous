@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { doSignInWithEmailAndPassword } from "./js/Firebase/auth";
 import { useAuth } from "../contexts/authContext";
 export default function Signin() {
@@ -21,17 +21,17 @@ export default function Signin() {
   const [pass, setPass] = useState("");
   const [email, setEmail] = useState("");
   const [isUserSignedIn, setisUserSignedIn] = useState(false);
-
-  const handleSubmit = async (e) => {
+  const nav = useNavigate();
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (!isUserSignedIn) {
+    if (!userLoggedIn) {
       setisUserSignedIn(true);
-      await doSignInWithEmailAndPassword(email, pass);
+      doSignInWithEmailAndPassword(email, pass);
     }
   };
   return (
     <>
-      {userLoggedIn && <Navigate to={"../"} replace={true} />}
+      {userLoggedIn == true && nav("../")}
       <div className="grid place-items-center min-h-[100vh]">
         <div className="relative">
           <form

@@ -19,7 +19,6 @@ export default function Home() {
 
   const { userLoggedIn } = useAuth();
   const { currentUser } = useAuth();
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (userLoggedIn) {
@@ -30,7 +29,6 @@ export default function Home() {
   }, [userLoggedIn]);
 
   const handleSignOut = () => {
-    // e.preventDefault();
     doSignOut(auth);
     setisUserLoggedIn(false);
   };
