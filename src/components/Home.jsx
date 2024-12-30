@@ -11,26 +11,14 @@ import {
 } from "react-icons/fa6";
 import { useAuth } from "../contexts/authContext";
 import { doSignOut } from "./js/Firebase/auth";
-import { useEffect, useState } from "react";
 import { auth } from "./js/Firebase/firebase";
 
 export default function Home() {
-  const [isUserLoggedIn, setisUserLoggedIn] = useState(false);
-
   const { userLoggedIn } = useAuth();
   const { currentUser } = useAuth();
 
-  useEffect(() => {
-    if (userLoggedIn) {
-      setisUserLoggedIn(true);
-    } else {
-      setisUserLoggedIn(false);
-    }
-  }, [userLoggedIn]);
-
   const handleSignOut = () => {
     doSignOut(auth);
-    setisUserLoggedIn(false);
   };
 
   return (
@@ -38,7 +26,7 @@ export default function Home() {
       <div className=" ml-40 relative grid place-items-center justify-center selection:bg-green-600 selection:text-neutral-50">
         <div className="mt-8">
           {/* When User is logged in show these */}
-          {isUserLoggedIn == true && (
+          {userLoggedIn == true && (
             <div className="flex items-center justify-between gap-x-2 my-2">
               <p className="text-3xl font-bold">
                 Welcome {currentUser.email} !
@@ -54,7 +42,7 @@ export default function Home() {
           )}
 
           {/* When user is not logged in show these */}
-          {isUserLoggedIn == false && (
+          {userLoggedIn == false && (
             <div className="flex items-center justify-between gap-x-2 my-2">
               <p>Farmers Warehouse</p>
               <div className="flex gap-x-2">

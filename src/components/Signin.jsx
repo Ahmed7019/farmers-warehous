@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { doSignInWithEmailAndPassword } from "./js/Firebase/auth";
 import { useAuth } from "../contexts/authContext";
