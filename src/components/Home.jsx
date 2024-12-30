@@ -12,6 +12,7 @@ import {
 import { useAuth } from "../contexts/authContext";
 import { doSignOut } from "./js/Firebase/auth";
 import { useEffect, useState } from "react";
+import { auth } from "./js/Firebase/firebase";
 
 export default function Home() {
   const [isUserLoggedIn, setisUserLoggedIn] = useState(false);
@@ -29,9 +30,8 @@ export default function Home() {
   }, [userLoggedIn]);
 
   const handleSignOut = () => {
-    doSignOut().then(() => {
-      navigate("./Signin");
-    });
+    // e.preventDefault();
+    doSignOut(auth);
     setisUserLoggedIn(false);
   };
 
@@ -40,10 +40,10 @@ export default function Home() {
       <div className=" ml-40 relative grid place-items-center justify-center selection:bg-green-600 selection:text-neutral-50">
         <div className="mt-8">
           {/* When User is logged in show these */}
-          {userLoggedIn && (
+          {isUserLoggedIn == true && (
             <div className="flex items-center justify-between gap-x-2 my-2">
               <p className="text-3xl font-bold">
-                Welcome {currentUser.displayName} !
+                Welcome {currentUser.email} !
               </p>
               <Link
                 className="bg-red-600 text-neutral-200 p-2 rounded-md"
@@ -56,7 +56,7 @@ export default function Home() {
           )}
 
           {/* When user is not logged in show these */}
-          {!userLoggedIn && (
+          {isUserLoggedIn == false && (
             <div className="flex items-center justify-between gap-x-2 my-2">
               <p>Farmers Warehouse</p>
               <div className="flex gap-x-2">
@@ -89,8 +89,11 @@ export default function Home() {
           <div className="relative">
             <div className=" my-2 flex justify-center relative ">
               <div className="flex flex-col gap-y-4 pr-4 bg-green-600 p-4 rounded-l-md animate-scrolling-l">
-                <h1 className="text-3xl font-semibold text-white"></h1>
+                <h1 className="text-3xl font-semibold text-white">
+                  Protect Your Produce: Our Warehouse is Your Safe Heaven
+                </h1>
                 <p className="font-thin text-neutral-200">
+                  At Our Farmers Warehouse, we take pride in offering premium
                   storage solutions for your valuable crops. With a focus on
                   quality and excellence, we provide a secure and reliable
                   environment to store your produce, ensuring that it maintains

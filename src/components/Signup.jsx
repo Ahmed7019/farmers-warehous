@@ -1,12 +1,12 @@
 import { Navigate, Outlet } from "react-router";
 import Navigation from "./Navigation";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 // Firebase
 // js functions
-import saveToLocalStorage from "./js/signup/saveUsersToLocaleStorage";
-import getFromLocalStorage from "./js/signup/loadFromLocalStorage";
+// import saveToLocalStorage from "./js/signup/saveUsersToLocaleStorage";
+// import getFromLocalStorage from "./js/signup/loadFromLocalStorage";
 import { doCreateUserWithEmailAndPassword } from "./js/Firebase/auth";
 import { useAuth } from "../contexts/authContext";
 // import Home from "./Home";
@@ -22,22 +22,22 @@ export default function Signup() {
   // Form submittion
 
   const { register, handleSubmit } = useForm();
-  const [data, setData] = useState({});
+  // const [data, setData] = useState({});
   const [isUserRegistering, setisUserRegistering] = useState(false);
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
   // On render load from local storage
-  useEffect(() => {
-    if (data.length > 0) {
-      getFromLocalStorage("user");
-    }
-  });
+  // useEffect(() => {
+  //   if (data.length > 0) {
+  //     getFromLocalStorage("user");
+  //   }
+  // });
 
-  useEffect(() => {
-    if (data.length > 0) {
-      saveToLocalStorage(data);
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   if (data.length > 0) {
+  //     saveToLocalStorage(data);
+  //   }
+  // }, [data]);
 
   // const navigate = useNavigate();
   const handleFormSubmit = async (e) => {
