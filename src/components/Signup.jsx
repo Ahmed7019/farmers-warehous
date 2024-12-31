@@ -6,9 +6,7 @@ import { useForm } from "react-hook-form";
 // Firebase
 import { doCreateUserWithEmailAndPassword } from "./js/Firebase/auth";
 import { useAuth } from "../contexts/authContext";
-import { updateProfile } from "firebase/auth";
-import { auth } from "./js/Firebase/firebase";
-// import Home from "./Home";
+
 export default function Signup() {
   const [password, setPassword] = useState("password");
 
@@ -35,17 +33,7 @@ export default function Signup() {
   const handleFormSubmit = async (d) => {
     if (!isUserRegistering) {
       setisUserRegistering(true);
-      updateProfile(auth.currentUser, {
-        displayName: `${d.firstName} ${d.lastName}`,
-      });
-      setUser({
-        firstName: d.firstName,
-        lastName: d.lastName,
-        displayName: `${d.firstName} ${d.lastName}`,
-        birthYear: d.birthYear,
-        birthMonth: d.birthMonth,
-        birthDay: d.birthYbirthDay,
-      });
+      addUsersToDatabase(d);
       await doCreateUserWithEmailAndPassword(d.email, d.password);
     }
   };
