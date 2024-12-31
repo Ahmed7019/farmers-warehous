@@ -6,7 +6,9 @@ import {
 } from "firebase/auth";
 
 export const doCreateUserWithEmailAndPassword = async (email, password) => {
-  return createUserWithEmailAndPassword(auth, email, password);
+  await createUserWithEmailAndPassword(auth, email, password).catch((err) => {
+    console.log(err);
+  });
 };
 
 export const doSignInWithEmailAndPassword = (email, password) => {
@@ -17,4 +19,28 @@ export const doSignInWithEmailAndPassword = (email, password) => {
 
 export const doSignOut = (auth) => {
   return signOut(auth);
+};
+
+export const getUserProfile = () => {
+  const user = auth.currentUser;
+  if (user !== null) {
+    // The user object has basic properties such as display name, email, etc.
+    const displayName = user.displayName;
+    const email = user.email;
+    const photoURL = user.photoURL;
+    const emailVerified = user.emailVerified;
+
+    // The user's ID, unique to the Firebase project. Do NOT use
+    // this value to authenticate with your backend server, if
+    // you have one. Use User.getToken() instead.
+    // const uid = user.uid;
+    const userInfo = {
+      displayName,
+      email,
+      photoURL,
+      emailVerified,
+    };
+    console.log(userInfo);
+    return userInfo;
+  }
 };

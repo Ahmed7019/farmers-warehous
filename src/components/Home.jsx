@@ -2,7 +2,7 @@
 
 // Import styling for animation
 import "../index.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   FaFacebook,
   FaInstagram,
@@ -12,11 +12,9 @@ import {
 import { useAuth } from "../contexts/authContext";
 import { doSignOut } from "./js/Firebase/auth";
 import { auth } from "./js/Firebase/firebase";
-
 export default function Home() {
   const { userLoggedIn } = useAuth();
   const { currentUser } = useAuth();
-
   const handleSignOut = () => {
     doSignOut(auth);
   };
@@ -29,7 +27,7 @@ export default function Home() {
           {userLoggedIn == true && (
             <div className="flex items-center justify-between gap-x-2 my-2">
               <p className="text-3xl font-bold">
-                Welcome {currentUser.email} !
+                Welcome {currentUser.displayName} !
               </p>
               <Link
                 className="bg-red-600 text-neutral-200 p-2 rounded-md"

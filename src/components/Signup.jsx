@@ -4,11 +4,10 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 // Firebase
-// js functions
-// import saveToLocalStorage from "./js/signup/saveUsersToLocaleStorage";
-// import getFromLocalStorage from "./js/signup/loadFromLocalStorage";
 import { doCreateUserWithEmailAndPassword } from "./js/Firebase/auth";
 import { useAuth } from "../contexts/authContext";
+import { updateProfile } from "firebase/auth";
+import { auth } from "./js/Firebase/firebase";
 // import Home from "./Home";
 export default function Signup() {
   const [password, setPassword] = useState("password");
@@ -24,14 +23,7 @@ export default function Signup() {
   const { register, handleSubmit } = useForm();
   // const [data, setData] = useState({});
   const [isUserRegistering, setisUserRegistering] = useState(false);
-  const [email, setEmail] = useState("");
-  const [pwd, setPwd] = useState("");
-  // On render load from local storage
-  // useEffect(() => {
-  //   if (data.length > 0) {
-  //     getFromLocalStorage("user");
-  //   }
-  // });
+  let [user, setUser] = useState({});
 
   // useEffect(() => {
   //   if (data.length > 0) {
@@ -40,12 +32,21 @@ export default function Signup() {
   // }, [data]);
 
   // const navigate = useNavigate();
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
+  const handleFormSubmit = async (d) => {
     if (!isUserRegistering) {
       setisUserRegistering(true);
-      handleSubmit();
-      return await doCreateUserWithEmailAndPassword(email, pwd);
+      updateProfile(auth.currentUser, {
+        displayName: `${d.firstName} ${d.lastName}`,
+      });
+      setUser({
+        firstName: d.firstName,
+        lastName: d.lastName,
+        displayName: `${d.firstName} ${d.lastName}`,
+        birthYear: d.birthYear,
+        birthMonth: d.birthMonth,
+        birthDay: d.birthYbirthDay,
+      });
+      await doCreateUserWithEmailAndPassword(d.email, d.password);
     }
   };
 
@@ -58,7 +59,7 @@ export default function Signup() {
           <div className="relative top-8 left-40">
             <form
               className="bg-white drop-shadow-md shadow-lg max-w-[432px] rounded-md"
-              onSubmit={handleFormSubmit}
+              onSubmit={handleSubmit(handleFormSubmit)}
             >
               <p className="text-green-400 font-bold text-xl p-4">Register</p>
               <div className="px-4 py-3 flex flex-col gap-x-2 gap-y-3">
@@ -82,8 +83,6 @@ export default function Signup() {
                     {...register("email")}
                     placeholder="Email Address"
                     className="ring-1 ring-gray-400 outline-none p-2 rounded-md bg-gray-100 w-full focus:placeholder:gray-5"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
                     required
                   />
                 </div>
@@ -93,8 +92,6 @@ export default function Signup() {
                     {...register("password")}
                     placeholder="New Password"
                     className=" outline-none bg-transparent w-[70%]"
-                    value={pwd}
-                    onChange={(e) => setPwd(e.target.value)}
                     required
                   />
                   <span
