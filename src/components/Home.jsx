@@ -27,7 +27,7 @@ export default function Home() {
           {userLoggedIn == true && (
             <div className="flex items-center justify-between gap-x-2 my-2">
               <p className="text-3xl font-bold">
-                Welcome {currentUser.displayName} !
+                Welcome {currentUser.uid} !
               </p>
               <Link
                 className="bg-red-600 text-neutral-200 p-2 rounded-md"

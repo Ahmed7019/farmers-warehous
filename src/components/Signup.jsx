@@ -21,7 +21,6 @@ export default function Signup() {
   const { register, handleSubmit } = useForm();
   // const [data, setData] = useState({});
   const [isUserRegistering, setisUserRegistering] = useState(false);
-  let [user, setUser] = useState({});
 
   // useEffect(() => {
   //   if (data.length > 0) {
@@ -33,7 +32,7 @@ export default function Signup() {
   const handleFormSubmit = async (d) => {
     if (!isUserRegistering) {
       setisUserRegistering(true);
-      await addUsersToDatabase(d);
+      addUsersToDatabase(d);
       await doCreateUserWithEmailAndPassword(d.email, d.password);
     }
   };

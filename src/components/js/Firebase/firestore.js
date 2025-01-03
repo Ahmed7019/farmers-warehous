@@ -7,9 +7,9 @@ export default async function addUsersToDatabase(user) {
       first: user.firstName,
       last: user.lastName,
       email: user.email,
-      born: `${user.birthYear} ${user.birthMonth} ${user.birthDay}`,
+      born: `${user.birthYear} ${user.birthMonth} ${user.birthday}`,
       gender: user.gender,
-      id:docRef.id,
+      id: Date.now(),
     });
     console.log("Document written with ID: ", docRef.id);
   } catch (e) {
