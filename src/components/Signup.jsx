@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 // Firebase
 import { doCreateUserWithEmailAndPassword } from "./js/Firebase/auth";
 import { useAuth } from "../contexts/authContext";
-
+import addUsersToDatabase from "./js/Firebase/firestore";
 export default function Signup() {
   const [password, setPassword] = useState("password");
 
@@ -33,7 +33,7 @@ export default function Signup() {
   const handleFormSubmit = async (d) => {
     if (!isUserRegistering) {
       setisUserRegistering(true);
-      addUsersToDatabase(d);
+      await addUsersToDatabase(d);
       await doCreateUserWithEmailAndPassword(d.email, d.password);
     }
   };
