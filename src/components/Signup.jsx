@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from "react-router";
 import Navigation from "./Navigation";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 // Firebase
 import { doCreateUserWithEmailAndPassword } from "./js/Firebase/auth";
@@ -14,26 +14,19 @@ export default function Signup() {
     // A function for showing / hiding password
     password === "password" ? setPassword("text") : setPassword("password");
   };
-
   const { userLoggedIn } = useAuth();
+  useEffect(() => {}, []);
   // Form submittion
 
   const { register, handleSubmit } = useForm();
-  // const [data, setData] = useState({});
   const [isUserRegistering, setisUserRegistering] = useState(false);
 
-  // useEffect(() => {
-  //   if (data.length > 0) {
-  //     saveToLocalStorage(data);
-  //   }
-  // }, [data]);
-
-  // const navigate = useNavigate();
   const handleFormSubmit = async (d) => {
     if (!isUserRegistering) {
       setisUserRegistering(true);
-      addUsersToDatabase(d);
-      await doCreateUserWithEmailAndPassword(d.email, d.password);
+      await doCreateUserWithEmailAndPassword(d.email, d.password).then(() =>
+        addUsersToDatabase(d)
+      );
     }
   };
 

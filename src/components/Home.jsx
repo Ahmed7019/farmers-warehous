@@ -18,7 +18,6 @@ export default function Home() {
   const handleSignOut = () => {
     doSignOut(auth);
   };
-
   return (
     <>
       <div className=" ml-40 relative grid place-items-center justify-center selection:bg-green-600 selection:text-neutral-50">
@@ -27,7 +26,7 @@ export default function Home() {
           {userLoggedIn == true && (
             <div className="flex items-center justify-between gap-x-2 my-2">
               <p className="text-3xl font-bold">
-                Welcome {currentUser.uid} !
+                Welcome {currentUser.displayName} !
               </p>
               <Link
                 className="bg-red-600 text-neutral-200 p-2 rounded-md"
