@@ -21,9 +21,10 @@ export const doSignOut = (auth) => {
   return signOut(auth);
 };
 
-export const getUserProfile = () => {
-  const user = auth.currentUser;
-  if (user !== null) {
+const user = auth.currentUser;
+export const authCurrentUser = () => {
+  if (user) {
+    // If user is signed in
     // The user object has basic properties such as display name, email, etc.
     const displayName = user.displayName;
     const email = user.email;
@@ -40,7 +41,6 @@ export const getUserProfile = () => {
       photoURL,
       emailVerified,
     };
-    console.log(userInfo);
     return userInfo;
   }
 };
