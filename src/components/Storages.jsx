@@ -31,17 +31,17 @@ export default function Storages() {
       },
     ]);
   };
-  useEffect(() => {
-    if (farmsData.length > 0)
-      localStorage.setItem("farm", JSON.stringify(farmsData));
-  }, [farmsData]);
+  // useEffect(() => {
+  //   if (farmsData.length > 0)
+  //     localStorage.setItem("farm", JSON.stringify(farmsData));
+  // }, [farmsData]);
 
-  useEffect(() => {
-    const farmsData = JSON.parse(localStorage.getItem("farm"));
-    if (farmsData) {
-      setFarmsData(farmsData);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const farmsData = JSON.parse(localStorage.getItem("farm"));
+  //   if (farmsData) {
+  //     setFarmsData(farmsData);
+  //   }
+  // }, []);
 
   // Clear the input field
   return (

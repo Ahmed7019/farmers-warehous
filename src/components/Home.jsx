@@ -12,9 +12,17 @@ import {
 import { useAuth } from "../contexts/authContext";
 import { doSignOut } from "./js/Firebase/auth";
 import { auth } from "./js/Firebase/firebase";
+import { useEffect } from "react";
+import { getUser } from "./js/Firebase/firestore";
 export default function Home() {
   const { userLoggedIn } = useAuth();
   const { currentUser } = useAuth();
+  // Get user from DB
+  useEffect(() => {
+    if (userLoggedIn) {
+      getUser(currentUser);
+    }
+  }, [userLoggedIn]);
   const handleSignOut = () => {
     doSignOut(auth);
   };
@@ -25,7 +33,7 @@ export default function Home() {
           {/* When User is logged in show these */}
           {userLoggedIn == true && (
             <div className="flex items-center justify-between gap-x-2 my-2">
-              <p className="text-3xl font-bold">
+              <p className="text-3xl font-bold capitalize">
                 Welcome {currentUser.displayName} !
               </p>
               <Link
@@ -92,12 +100,22 @@ export default function Home() {
                     your harvest.
                   </p>
 
-                  <Link
-                    to="/Signup"
-                    className="p-2 rounded font-semibold bg-neutral-200 hover:text-neutral-100 hover:bg-green-600 transition-colors"
-                  >
-                    Get started
-                  </Link>
+                  {!userLoggedIn && (
+                    <Link
+                      to="/Signup"
+                      className="p-2 rounded font-semibold bg-neutral-200 hover:text-neutral-100 hover:bg-green-600 transition-colors"
+                    >
+                      Get started
+                    </Link>
+                  )}
+                  {userLoggedIn && (
+                    <Link
+                      to="/Storages"
+                      className="p-2 rounded font-semibold bg-neutral-200 hover:text-neutral-100 hover:bg-green-600 transition-colors"
+                    >
+                      Explore
+                    </Link>
+                  )}
                 </div>
               </div>
               <img
