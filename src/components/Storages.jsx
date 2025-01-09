@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useState } from "react";
-
+import { useAuth } from "../contexts/authContext";
+import { getUser } from "./js/Firebase/firestore";
 export default function Storages() {
   // Add the form to add new data
-
+  const { currentUser, userLoggedIn } = useAuth();
   const [id, setId] = useState(0);
-  const [name, setName] = useState("");
   const [cropType, setCropType] = useState("wheat");
   const [quantity, setQuantity] = useState(0);
   const [storageLocation, setStorageLocation] = useState("A1");
@@ -13,7 +13,6 @@ export default function Storages() {
   const [expDate, setExpDate] = useState("");
   const [batchNum, setBatchNum] = useState(0);
   let data = [];
-  // let nextId = 1;
   const [farmsData, setFarmsData] = useState(data);
   let handleClick = () => {
     setId((id) => id + 1);
@@ -21,7 +20,6 @@ export default function Storages() {
       ...farmsData,
       {
         id: id,
-        name: name,
         cropType: cropType,
         quantity: quantity,
         storageLocation: storageLocation,
@@ -31,22 +29,18 @@ export default function Storages() {
       },
     ]);
   };
-  // useEffect(() => {
-  //   if (farmsData.length > 0)
-  //     localStorage.setItem("farm", JSON.stringify(farmsData));
-  // }, [farmsData]);
-
-  // useEffect(() => {
-  //   const farmsData = JSON.parse(localStorage.getItem("farm"));
-  //   if (farmsData) {
-  //     setFarmsData(farmsData);
-  //   }
-  // }, []);
-
-  // Clear the input field
+  useEffect(() => {
+    if (userLoggedIn) getUser(currentUser);
+    console.log(currentUser);
+  }, [userLoggedIn]);
   return (
     <>
-      <div className="ml-40 relative top-8">
+      <div className="grid items-center justify-center h-[90vh] relative top-8">
+        {currentUser && (
+          <p className="capitalize font-bold text-2xl">
+            Hello {currentUser.displayName}
+          </p>
+        )}
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -55,16 +49,6 @@ export default function Storages() {
         >
           <div className="flex justify-between">
             <div className="flex flex-col gap-y-4">
-              <div className="flex gap-x-4">
-                <label htmlFor="name">Name: </label>
-                <input
-                  type="text"
-                  placeholder="Enter Only Two Names"
-                  className="border border-black p-1 rounded"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </div>
               <div className="flex gap-x-4">
                 <label htmlFor="crop">Crop Type: </label>
                 <select
