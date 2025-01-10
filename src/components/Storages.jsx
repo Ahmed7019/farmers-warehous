@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useAuth } from "../contexts/authContext";
 import { getUser } from "./js/Firebase/firestore";
+import { FaRegCircleQuestion } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 export default function Storages() {
   // Add the form to add new data
   const { currentUser, userLoggedIn } = useAuth();
@@ -35,17 +37,12 @@ export default function Storages() {
   }, [userLoggedIn]);
   return (
     <>
-      <div className="grid items-center justify-center h-[90vh] relative top-8">
-        {currentUser && (
-          <p className="capitalize font-bold text-2xl">
-            Hello {currentUser.displayName}
-          </p>
-        )}
+      <div className="grid items-center justify-center h-[80vh] relative top-8">
         <form
           onSubmit={(e) => {
             e.preventDefault();
           }}
-          className="border border-green-500 bg-neutral-200 p-4 rounded w-[50rem]"
+          className="border border-green-500 bg-neutral-100/50 backdrop-blur-md p-4 rounded w-[50rem]"
         >
           <div className="flex justify-between">
             <div className="flex flex-col gap-y-4">
@@ -137,6 +134,9 @@ export default function Storages() {
                     Climate-Controlled Storage Plan
                   </option>
                 </select>
+                <Link to="learnMore" title="Learn More">
+                  <FaRegCircleQuestion />
+                </Link>
               </div>
               <div className="flex gap-x-4">
                 <label htmlFor="ex-date">Expiration Date: </label>
@@ -158,8 +158,28 @@ export default function Storages() {
                   onChange={(e) => setBatchNum(e.target.value)}
                 />
               </div>
+              <div>
+                <ul className="list-disc list-inside text-sm p-2 flex flex-col gap-2 text-neutral-700">
+                  <li>
+                    This form allows you to easily add information about the
+                    crops you intend to store in our facilities. By providing
+                    these details, we can ensure optimal storage conditions for
+                    your crops, maximizing their quality and lifespan.
+                  </li>
+                  <li>
+                    Double-check all entered information before submitting the
+                    form to ensure accuracy.
+                  </li>
+                  <li>
+                    If you have any questions or require assistance while
+                    filling out the form, don't hesitate to contact our customer
+                    support team. They're happy to guide you through the
+                    process.
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div className=" flex flex-col justify-end">
+            <div className=" flex flex-col justify-end ">
               <input
                 type="button"
                 value="submit"
