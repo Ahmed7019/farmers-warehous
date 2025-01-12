@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <>
       <div className=" mt-4 mx-4 relative grid place-items-center justify-center selection:bg-green-600 selection:text-neutral-50">
-        <div className="mt-8">
+        <div className="mt-12">
           {/* When User is logged in show these */}
           {userLoggedIn == true && (
             <div className="flex items-center justify-between gap-x-2 my-2">

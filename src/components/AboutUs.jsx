@@ -7,10 +7,10 @@ export default function AboutUs() {
           Our Solutions
         </h1>
         <div className=" mt-32 grid grid-cols-2">
-          <section className="bg-green-200 p-2 rounded-t-md row-start-1 col-span-2 flex gap-2">
+          <section className="bg-green-600 text-neutral-200 p-2 rounded-t-md row-start-1 col-span-2 flex gap-2">
             <div className="flex flex-col">
               <p className="text-2xl font-bold my-2">About us</p>
-              <p className="text-lg text-neutral-800">
+              <p className="text-lg">
                 We are a dedicated team committed to supporting farmers by
                 providing top-notch storage facilities for their crops. With
                 years of experience in the industry, we understand the
@@ -26,13 +26,13 @@ export default function AboutUs() {
               />
             </div>
           </section>
-          <section className="bg-green-200 p-2 rounded-b-md  col-span-2 flex gap-2">
+          <section className="bg-green-500 text-neutral-200 p-2 rounded-b-md  col-span-2 flex gap-2">
             <img
               src="https://plus.unsplash.com/premium_photo-1661295675442-f151fdf7ba52?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHRydXN0fGVufDB8fDB8fHww"
               alt="shaking with trust"
               className="rounded"
             />
-            <p className="text-lg text-neutral-800 mx-8">
+            <p className="text-lg mx-8">
               Our primary goal is to offer farmers a trusted space to store
               their crops with the highest standards of care. From
               temperature-controlled environments to vigilant security measures,
