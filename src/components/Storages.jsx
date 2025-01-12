@@ -1,36 +1,14 @@
 import { useEffect } from "react";
-import { useState } from "react";
 import { useAuth } from "../contexts/authContext";
 import { getUser } from "./js/Firebase/firestore";
 import { FaRegCircleQuestion } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+
 export default function Storages() {
+  const { register, handleSubmit } = useForm();
   // Add the form to add new data
   const { currentUser, userLoggedIn } = useAuth();
-  const [id, setId] = useState(0);
-  const [cropType, setCropType] = useState("wheat");
-  const [quantity, setQuantity] = useState(0);
-  const [storageLocation, setStorageLocation] = useState("A1");
-  const [storageCondition, setStorageCondition] = useState("standard");
-  const [expDate, setExpDate] = useState("");
-  const [batchNum, setBatchNum] = useState(0);
-  let data = [];
-  const [farmsData, setFarmsData] = useState(data);
-  let handleClick = () => {
-    setId((id) => id + 1);
-    setFarmsData([
-      ...farmsData,
-      {
-        id: id,
-        cropType: cropType,
-        quantity: quantity,
-        storageLocation: storageLocation,
-        storageCondition: storageCondition,
-        expDate: expDate,
-        batchNum: batchNum,
-      },
-    ]);
-  };
   useEffect(() => {
     if (userLoggedIn) getUser(currentUser);
     console.log(currentUser);
@@ -39,9 +17,7 @@ export default function Storages() {
     <>
       <div className="grid items-center justify-center h-[80vh] relative top-8">
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
+          onSubmit={handleSubmit}
           className="border border-green-500 bg-neutral-100/50 backdrop-blur-md p-4 rounded w-[50rem]"
         >
           <div className="flex justify-between">
@@ -49,10 +25,11 @@ export default function Storages() {
               <div className="flex gap-x-4">
                 <label htmlFor="crop">Crop Type: </label>
                 <select
+                  {...register("crop-type")}
                   name="crop-type"
                   id="crop-type"
                   className="border border-black p-1 rounded"
-                  onChange={(e) => setCropType(e.target.value)}
+                  required
                 >
                   <optgroup label="Grains">
                     <option value="Wheat">Wheat</option>
@@ -83,19 +60,21 @@ export default function Storages() {
                 <label htmlFor="quantity">Quantity: </label>
                 <input
                   type="number"
+                  {...register("quantity")}
+                  required
                   name="quantity"
                   id="quantity"
                   className="border border-black p-1 rounded"
-                  onChange={(e) => setQuantity(e.target.value)}
                 />
               </div>
               <div className="flex gap-x-4">
                 <label htmlFor="storage-location">Storage Location</label>
                 <select
+                  {...register("storage-location")}
                   name="storage-location"
                   id="storage-location"
                   className="border border-black p-1 rounded"
-                  onChange={(e) => setStorageLocation(e.target.value)}
+                  required
                 >
                   <optgroup label="A">
                     <option value="A1">A1</option>
@@ -123,10 +102,11 @@ export default function Storages() {
               <div className="flex gap-x-4">
                 <label htmlFor="storage-condition">Storage Condition</label>
                 <select
+                  {...register("storage-condition")}
                   name="storage-condition"
                   id="storage-condition"
                   className="border border-black p-1 rounded"
-                  onChange={(e) => setStorageCondition(e.target.value)}
+                  required
                 >
                   <option value="standard">Standard Storage Plan</option>
                   <option value="premium">Premium Storage Plan</option>
@@ -139,25 +119,27 @@ export default function Storages() {
                 </Link>
               </div>
               <div className="flex gap-x-4">
-                <label htmlFor="ex-date">Expiration Date: </label>
+                <label htmlFor="expiration-date">Expiration Date: </label>
                 <input
                   type="date"
-                  name="ex-date"
-                  id="ex-date"
+                  {...register("expiration-date")}
+                  name="expiration-date"
+                  id="expiration-date"
                   className="border border-black p-1 rounded"
-                  onChange={(e) => setExpDate(e.target.value)}
+                  required
                 />
               </div>
-              <div className="flex gap-x-4">
+              {/* <div className="flex gap-x-4">
                 <label htmlFor="batch">Batch Number: </label>
                 <input
+                  {...register("batch")}
                   type="text"
                   name="batch"
                   id="batch"
                   className="border border-black p-1 rounded"
-                  onChange={(e) => setBatchNum(e.target.value)}
+                  required
                 />
-              </div>
+              </div> */}
               <div>
                 <ul className="list-disc list-inside text-sm p-2 flex flex-col gap-2 text-neutral-700">
                   <li>
