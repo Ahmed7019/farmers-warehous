@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useAuth } from "../contexts/authContext";
 import { getUser } from "./js/Firebase/firestore";
 import { FaRegCircleQuestion } from "react-icons/fa6";
+import { IoIosArrowBack } from "react-icons/io";
+
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
@@ -16,6 +18,9 @@ export default function Storages() {
   return (
     <>
       <div className="grid items-center justify-center h-[80vh] relative top-8">
+        <Link to="../">
+          <IoIosArrowBack />
+        </Link>
         <form
           onSubmit={handleSubmit}
           className="border border-green-500 bg-neutral-100/50 backdrop-blur-md p-4 rounded w-[50rem]"
@@ -129,17 +134,7 @@ export default function Storages() {
                   required
                 />
               </div>
-              {/* <div className="flex gap-x-4">
-                <label htmlFor="batch">Batch Number: </label>
-                <input
-                  {...register("batch")}
-                  type="text"
-                  name="batch"
-                  id="batch"
-                  className="border border-black p-1 rounded"
-                  required
-                />
-              </div> */}
+
               <div>
                 <ul className="list-disc list-inside text-sm p-2 flex flex-col gap-2 text-neutral-700">
                   <li>
@@ -162,12 +157,12 @@ export default function Storages() {
               </div>
             </div>
             <div className=" flex flex-col justify-end ">
-              <input
-                type="button"
-                value="submit"
-                className=" mt-4 bg-green-700 w-40 p-2 rounded-md text-neutral-200 cursor-pointer"
-                onClick={handleClick}
-              />
+              <button
+                type="submit"
+                className=" mt-4 bg-green-700 w-40 p-2 rounded-md text-neutral-200 hover:bg-green-500"
+              >
+                Save changes
+              </button>
             </div>
           </div>
         </form>
