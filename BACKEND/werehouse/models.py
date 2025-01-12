@@ -19,7 +19,10 @@ class warehouse(models.Model):
     
     email = models.EmailField()  
     date = models.DateField(auto_now=False, auto_now_add=False)
-    crop = models.CharField(choices=crop_type, max_length=255)
-    quantity = models.IntegerField()
-    storage_condition = models.CharField(choices=storage_c,max_length=2 )
-    storage_location = models.CharField(choices=location,max_length=2 )
+    crop = models.CharField(choices=crop_type, max_length=255, default="Wheat")
+    quantity = models.IntegerField(default=1)
+    storage_condition = models.CharField(choices=storage_c,max_length=2, default="climate" )
+    storage_location = models.CharField(choices=location,max_length=2, default="A1" )
+
+    def __str__(self):
+        return self.email+self.crop
