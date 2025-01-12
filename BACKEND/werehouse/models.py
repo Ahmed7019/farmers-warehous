@@ -4,12 +4,12 @@ from django.db import models
 
 class warehouse(models.Model):
     crop_type = {
-        "WH": "Wheat",
-        "TO": "Tomato",
+        "Wheat": "Wheat",
+        "Tomato": "Tomato",
     }  
     storage_c = {
-        "C" :"climate",
-        "W":"weather",
+        "climate" :"climate",
+        "weather":"weather",
     }
     location = {
         "A1":"A1",
@@ -21,8 +21,9 @@ class warehouse(models.Model):
     date = models.DateField(auto_now=False, auto_now_add=False)
     crop = models.CharField(choices=crop_type, max_length=255, default="Wheat")
     quantity = models.IntegerField(default=1)
-    storage_condition = models.CharField(choices=storage_c,max_length=2, default="climate" )
-    storage_location = models.CharField(choices=location,max_length=2, default="A1" )
+    storage_condition = models.CharField(choices=storage_c,max_length=255, default="climate" )
+    storage_location = models.CharField(choices=location,max_length=255, default="A1" )
+    batch = models.TextField(max_length=255, null=True, blank=True)
 
     def __str__(self):
-        return self.email+self.crop
+        return self.email+"_"+self.crop
