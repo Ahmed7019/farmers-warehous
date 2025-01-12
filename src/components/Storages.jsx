@@ -17,7 +17,7 @@ export default function Storages() {
   }, [userLoggedIn]);
   return (
     <>
-      <div className="grid items-center justify-center h-[80vh] relative top-8">
+      <div className=" m-4 grid items-center justify-center h-[80vh] relative top-8">
         <Link to="../">
           <IoIosArrowBack />
         </Link>

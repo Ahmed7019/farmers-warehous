@@ -2,7 +2,7 @@
 export default function AboutUs() {
   return (
     <>
-      <div className="relative  ml-40">
+      <div className="relative  mx-4 mt-4">
         <h1 className="font-bold text-xl my-2 relative top-10">
           Our Solutions
         </h1>

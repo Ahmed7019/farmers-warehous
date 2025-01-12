@@ -5,7 +5,7 @@ export default function Navigation() {
   return (
     <>
       <div>
-        <nav className="flex justify-center text-center bg-green-900/50 shadow-md backdrop-blur-lg text-neutral-100 fixed w-full z-10 top-0 gap-2 px-2">
+        <nav className="flex justify-center text-center bg-green-900/50 shadow-md backdrop-blur-lg text-neutral-100 fixed w-full z-10 top-0 gap-2 p-1 mb-2">
           <div className="flex justify-between items-center"></div>
           <NavLink
             to={"/"}

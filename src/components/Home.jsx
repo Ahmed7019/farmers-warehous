@@ -28,7 +28,7 @@ export default function Home() {
   };
   return (
     <>
-      <div className=" ml-40 relative grid place-items-center justify-center selection:bg-green-600 selection:text-neutral-50">
+      <div className=" mt-4 mx-4 relative grid place-items-center justify-center selection:bg-green-600 selection:text-neutral-50">
         <div className="mt-8">
           {/* When User is logged in show these */}
           {userLoggedIn == true && (
