@@ -6,6 +6,7 @@ import { IoIosArrowBack } from "react-icons/io";
 
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 export default function Storages() {
   const { register, handleSubmit } = useForm();
@@ -17,19 +18,21 @@ export default function Storages() {
   }, [userLoggedIn]);
 
   // Backend_Api
-
-  
-  const async formSubmit = (data) => {
-    
-  };
+  async function formSubmit(data) {
+    console.log(data);
+    await axios.post("http://127.0.0.1:8000/api/warehouse", {
+      email: currentUser.email,
+      ...data,
+    });
+  }
   return (
     <>
       <div className=" m-4 grid items-center justify-center h-[80vh] relative top-8">
         <Link to="../">
           <IoIosArrowBack />
         </Link>
-        <form 
-          onSubmit={handleSubmit}
+        <form
+          onSubmit={handleSubmit(formSubmit)}
           className="border border-green-500 bg-neutral-100/50 backdrop-blur-md p-4 rounded w-[50rem]"
         >
           <div className="flex justify-between">
