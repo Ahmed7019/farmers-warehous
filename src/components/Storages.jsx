@@ -131,7 +131,7 @@ export default function Storages() {
                 >
                   <option value="standard">Standard Storage Plan</option>
                   <option value="premium">Premium Storage Plan</option>
-                  <option value="climate-controlled">
+                  <option value="climate">
                     Climate-Controlled Storage Plan
                   </option>
                 </select>
