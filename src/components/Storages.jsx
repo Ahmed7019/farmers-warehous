@@ -131,9 +131,9 @@ export default function Storages() {
                   className="border border-black p-1 rounded"
                   required
                 >
-                  <option value="standard">Standard Storage Plan</option>
-                  <option value="premium">Premium Storage Plan</option>
-                  <option value="climate">
+                  <option value="Standard">Standard Storage Plan</option>
+                  <option value="Premium">Premium Storage Plan</option>
+                  <option value="Climate">
                     Climate-Controlled Storage Plan
                   </option>
                 </select>
