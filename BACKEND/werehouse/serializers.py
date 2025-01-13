@@ -9,7 +9,7 @@ class warehouseSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         crop = validated_data.get('crop')
         condition = validated_data.get('storage_condition')
-        batch = crop[:2] + condition[:2]
+        batch = crop[:2] + condition[:1]
         validated_data['batch'] = batch
         warehouse_instanse = warehouse.objects.create(**validated_data)
         return warehouse_instanse

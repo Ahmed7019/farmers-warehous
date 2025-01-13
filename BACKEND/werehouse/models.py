@@ -4,17 +4,39 @@ from django.db import models
 
 class warehouse(models.Model):
     crop_type = {
+        #grains
         "Wheat": "Wheat",
-        "Tomato": "Tomato",
+        "Rice" : "Rice",
+        "Corn": "Corn",
+        "Barely":"Barely",
+        "Oats":"Oats",
+        #fruits
+        "Apple":"Apple",
+        "Oranges":"Oranges",
+        "Bananas":"Bananas",
+        "Grapes":"Grapes",
+        "Strawberries":"Strawberries",
+        #vegtables
+        "Tomatoes":"Tomatoes",
+        "Carrots":"Carrots",
+        "Okra":"Okra",
+        "Onions":"Onions"
     }  
     storage_c = {
-        "climate" :"climate",
-        "weather":"weather",
+        "Standarad Storage Plan":"Standarad Storage Plan",
+        "Premium Storage Plan" :"Premium Storage Plan",
+        "Climate-Controlled Storage Plan":"Climate-Controlled Storage Plan",
     }
     location = {
         "A1":"A1",
+        "A2":"A2",
+        "A3":"A3",
         "B1":"B1",
+        "B2":"B2",
+        "B3":"B3",
         "C1":"C1",
+        "C2":"C2",
+        "C3":"C3",
     }
     
     email = models.EmailField()  
