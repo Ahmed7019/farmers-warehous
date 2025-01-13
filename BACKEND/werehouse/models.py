@@ -23,7 +23,7 @@ class warehouse(models.Model):
     quantity = models.IntegerField(default=1)
     storage_condition = models.CharField(choices=storage_c,max_length=255, default="climate" )
     storage_location = models.CharField(choices=location,max_length=255, default="A1" )
-    batch = models.TextField(max_length=255, null=True, blank=True)
+    batch = models.TextField(max_length=255, null=True, blank=True, unique=True)
 
     def __str__(self):
         return self.email+"_"+self.crop

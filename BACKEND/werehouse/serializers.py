@@ -4,7 +4,7 @@ from .models import warehouse
 class warehouseSerializer(serializers.ModelSerializer):
     class Meta:
         model = warehouse
-        fields = ['email' ,'date', 'crop', 'quantity', 'storage_condition', 'storage_location', 'batch']
+        fields = ['id','email' ,'date', 'crop', 'quantity', 'storage_condition', 'storage_location', 'batch']
 
     def create(self, validated_data):
         crop = validated_data.get('crop')
