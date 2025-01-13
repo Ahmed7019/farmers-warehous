@@ -23,9 +23,9 @@ class warehouse(models.Model):
         "Onions":"Onions"
     }  
     storage_c = {
-        "Standarad Storage Plan":"Standarad Storage Plan",
-        "Premium Storage Plan" :"Premium Storage Plan",
-        "Climate-Controlled Storage Plan":"Climate-Controlled Storage Plan",
+        "Standard":"Plan",
+        "Premium" :"Plan",
+        "Climate":"Climate",
     }
     location = {
         "A1":"A1",
