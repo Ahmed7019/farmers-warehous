@@ -3,6 +3,12 @@ from .models import warehouse
 from rest_framework.exceptions import ValidationError
 
 class warehouseSerializer(serializers.ModelSerializer):
+    # Specify the input format for the date field
+    date = serializers.DateField(
+        input_formats=['%d-%m-%Y'],  # Accept DD-MM-YYYY format
+        format='%d-%m-%Y'  # Ensure output is also in DD-MM-YYYY format
+    )
+
     class Meta:
         model = warehouse
         fields = ['id','email' ,'date', 'crop', 'quantity', 'storage_condition', 'storage_location', 'batch']
