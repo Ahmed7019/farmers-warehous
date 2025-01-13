@@ -119,7 +119,7 @@ export default function Home() {
                   {userLoggedIn && (
                     <Link
                       to="/Storages"
-                      className="p-2 rounded font-semibold bg-neutral-200 hover:text-neutral-100 hover:bg-green-600 transition-colors"
+                      className="p-2 rounded font-semibold bg-yellow-400 hover:text-neutral-100 hover:bg-yellow-700 transition-colors"
                     >
                       Explore
                     </Link>

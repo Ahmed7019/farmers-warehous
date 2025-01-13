@@ -41,7 +41,7 @@ export default function Navigation() {
             </NavLink>
             <NavLink
               to={"/ContactUs"}
-              className="bg-yellow-300 rounded-sm p-2 hover:text-neutral-200 hover:bg-yellow-700 hover:shadow-lg hover:scale-105 transition-all"
+              className="bg-yellow-300 rounded-sm p-2 hover:text-yellow-100 hover:bg-yellow-500 hover:shadow-lg transition-all"
             >
               Contact
             </NavLink>

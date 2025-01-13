@@ -14,13 +14,22 @@ export default function Storages() {
   const { currentUser, userLoggedIn } = useAuth();
   useEffect(() => {
     if (userLoggedIn) getUser(currentUser);
-    console.log(currentUser);
   }, [userLoggedIn]);
 
   // Backend_Api
   async function formSubmit(data) {
-    console.log(data);
-    await axios.post("http://127.0.0.1:8000/api/warehouse", data);
+    console.log(data.expirationDate);
+    await axios
+      .post("http://127.0.0.1:8000/api/warehouse", {
+        email: currentUser.email,
+        ...data,
+      })
+      .then((res) => {
+        console.log(res.status, res.data.token);
+      })
+      .catch((err) => {
+        console.log(Error, err.message);
+      });
   }
   return (
     <>
@@ -37,7 +46,7 @@ export default function Storages() {
               <div className="flex gap-x-4">
                 <label htmlFor="crop">Crop Type: </label>
                 <select
-                  {...register("crop-type")}
+                  {...register("crop")}
                   name="crop-type"
                   id="crop-type"
                   className="border border-black p-1 rounded"
@@ -82,7 +91,7 @@ export default function Storages() {
               <div className="flex gap-x-4">
                 <label htmlFor="storage-location">Storage Location</label>
                 <select
-                  {...register("storage-location")}
+                  {...register("storage_location")}
                   name="storage-location"
                   id="storage-location"
                   className="border border-black p-1 rounded"
@@ -114,7 +123,7 @@ export default function Storages() {
               <div className="flex gap-x-4">
                 <label htmlFor="storage-condition">Storage Condition</label>
                 <select
-                  {...register("storage-condition")}
+                  {...register("storage_condition")}
                   name="storage-condition"
                   id="storage-condition"
                   className="border border-black p-1 rounded"
@@ -134,7 +143,7 @@ export default function Storages() {
                 <label htmlFor="expiration-date">Expiration Date: </label>
                 <input
                   type="date"
-                  {...register("expiration-date")}
+                  {...register("date")}
                   name="expiration-date"
                   id="expiration-date"
                   className="border border-black p-1 rounded"
