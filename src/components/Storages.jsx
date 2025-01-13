@@ -20,10 +20,7 @@ export default function Storages() {
   // Backend_Api
   async function formSubmit(data) {
     console.log(data);
-    await axios.post("http://127.0.0.1:8000/api/warehouse", {
-      email: currentUser.email,
-      ...data,
-    });
+    await axios.post("http://127.0.0.1:8000/api/warehouse", data);
   }
   return (
     <>
