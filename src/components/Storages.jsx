@@ -18,13 +18,15 @@ export default function Storages() {
 
   // Backend_Api
   async function formSubmit(data) {
-    console.log(data.expirationDate);
+    console.log(data.date);
+    console.log(data);
     await axios
       .post("http://127.0.0.1:8000/api/warehouse", {
         email: currentUser.email,
         ...data,
       })
       .then((res) => {
+        console.log("Successful!");
         console.log(res.status, res.data.token);
       })
       .catch((err) => {
@@ -140,12 +142,12 @@ export default function Storages() {
                 </Link>
               </div>
               <div className="flex gap-x-4">
-                <label htmlFor="expiration-date">Expiration Date: </label>
+                <label htmlFor="date">Expiration Date: </label>
                 <input
                   type="date"
                   {...register("date")}
-                  name="expiration-date"
-                  id="expiration-date"
+                  name="date"
+                  id="date"
                   className="border border-black p-1 rounded"
                   required
                 />
