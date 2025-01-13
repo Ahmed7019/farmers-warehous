@@ -5,8 +5,8 @@ from rest_framework.exceptions import ValidationError
 class warehouseSerializer(serializers.ModelSerializer):
     # Specify the input format for the date field
     date = serializers.DateField(
-        input_formats=['%m-%d-%Y'],  # Accept DD-MM-YYYY format
-        format='%m-%d-%Y'  # Ensure output is also in DD-MM-YYYY format
+        input_formats=['%Y-%m-%d'],  # Accept DD-MM-YYYY format
+        format='%Y-%m-%d'  # Ensure output is also in DD-MM-YYYY format
     )
 
     class Meta:
@@ -16,7 +16,8 @@ class warehouseSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         crop = validated_data.get('crop')
         condition = validated_data.get('storage_condition')
-        batch = (crop[:2] + condition[:1]).upper()
+        email = validated_data.get('email')
+        batch = (email.split('@')[0] + crop[:2] + condition[:1]).upper()
         validated_data['batch'] = batch
 
         if warehouse.objects.filter(batch=batch).exists():
