@@ -26,6 +26,7 @@ export default function Home() {
   const handleSignOut = () => {
     doSignOut(auth);
   };
+
   return (
     <>
       <div className=" mt-4 mx-4 relative grid place-items-center justify-center selection:bg-green-600 selection:text-neutral-50">
@@ -57,7 +58,7 @@ export default function Home() {
           {/* When user is not logged in show these */}
           {userLoggedIn == false && (
             <div className="flex items-center justify-between gap-x-2 my-2">
-              <p>Farmers Warehouse</p>
+              <p className="text-3xl font-bold">Farmers Warehouse</p>
               <div className="flex gap-x-2">
                 <Link
                   to="/Signin"

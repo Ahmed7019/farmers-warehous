@@ -4,11 +4,13 @@ import { getUser } from "./js/Firebase/firestore";
 import { FaRegCircleQuestion } from "react-icons/fa6";
 import { IoIosArrowBack } from "react-icons/io";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
+import Swal from "sweetalert2";
 export default function Storages() {
+  const nav = useNavigate();
   const { register, handleSubmit } = useForm();
   // Add the form to add new data
   const { currentUser, userLoggedIn } = useAuth();
@@ -25,9 +27,17 @@ export default function Storages() {
         email: currentUser.email,
         ...data,
       })
-      .then((res) => {
-        console.log("Successful!");
-        console.log(res.status, res.data.token);
+      .then(() => {
+        Swal.fire({
+          title: "Success",
+          text: "Your crops in safe hands",
+          icon: "success",
+        });
+      })
+      .then(() => {
+        {
+          nav("../");
+        }
       })
       .catch((err) => {
         console.log(Error, err.message);
@@ -35,8 +45,8 @@ export default function Storages() {
   }
   return (
     <>
-      <div className=" m-4 grid items-center justify-center h-[80vh] relative top-8">
-        <Link to="../">
+      <div className=" mt-20 mx-4 grid items-center justify-center h-[80vh] ">
+        <Link to="../" className="my-2">
           <IoIosArrowBack />
         </Link>
         <form
@@ -170,6 +180,10 @@ export default function Storages() {
                     filling out the form, don't hesitate to contact our customer
                     support team. They're happy to guide you through the
                     process.
+                  </li>
+                  <li className="text-bold text-lg">
+                    Note that you can't add the same crops twice with the same
+                    storage conditioning plan
                   </li>
                 </ul>
               </div>
