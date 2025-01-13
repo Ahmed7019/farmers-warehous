@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import warehouse
+from rest_framework.exceptions import ValidationError
 
 class warehouseSerializer(serializers.ModelSerializer):
     class Meta:
@@ -9,7 +10,11 @@ class warehouseSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         crop = validated_data.get('crop')
         condition = validated_data.get('storage_condition')
-        batch = crop[:2] + condition[:1]
+        batch = (crop[:2] + condition[:1]).upper()
         validated_data['batch'] = batch
-        warehouse_instanse = warehouse.objects.create(**validated_data)
-        return warehouse_instanse
+
+        if warehouse.objects.filter(batch=batch).exists():
+            raise ValidationError({'batch': f"A warehouse entry with batch '{batch}' already exists."})
+        else:
+            warehouse_instanse = warehouse.objects.create(**validated_data)
+            return warehouse_instanse
