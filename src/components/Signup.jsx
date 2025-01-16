@@ -7,6 +7,9 @@ import { useForm } from "react-hook-form";
 import { doCreateUserWithEmailAndPassword } from "./js/Firebase/auth";
 import { useAuth } from "../contexts/authContext";
 import addUsersToDatabase from "./js/Firebase/firestore";
+
+// Sweat alert
+import Swal from "sweetalert2";
 export default function Signup() {
   const [password, setPassword] = useState("password");
 
@@ -24,9 +27,9 @@ export default function Signup() {
   const handleFormSubmit = async (d) => {
     if (!isUserRegistering) {
       setisUserRegistering(true);
-      await doCreateUserWithEmailAndPassword(d.email, d.password).then(() =>
-        addUsersToDatabase(d)
-      );
+      await doCreateUserWithEmailAndPassword(d.email, d.password).then(() => {
+        addUsersToDatabase(d);
+      });
     }
   };
 
@@ -34,9 +37,8 @@ export default function Signup() {
     <>
       {userLoggedIn && <Navigate to={"../"} replace={true} />}
       <div className=" w-full h-full">
-        <div className="flex gap-x-72">
-          <Navigation />
-          <div className="relative top-8 left-40">
+        <div className="flex justify-center items-center mt-16">
+          <div className="relative">
             <form
               className="bg-white drop-shadow-md shadow-lg max-w-[432px] rounded-md"
               onSubmit={handleSubmit(handleFormSubmit)}

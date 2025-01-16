@@ -16,12 +16,12 @@ export default function Storages() {
   const { currentUser, userLoggedIn } = useAuth();
   useEffect(() => {
     if (userLoggedIn) getUser(currentUser);
-  }, [userLoggedIn]);
+  }, [userLoggedIn, currentUser]);
 
   // Backend_Api
   async function formSubmit(data) {
-    console.log(data.date);
     console.log(data);
+
     await axios
       .post("http://127.0.0.1:8000/api/warehouse", {
         email: currentUser.email,
@@ -59,8 +59,8 @@ export default function Storages() {
                 <label htmlFor="crop">Crop Type: </label>
                 <select
                   {...register("crop")}
-                  name="crop-type"
-                  id="crop-type"
+                  name="crop"
+                  id="crop"
                   className="border border-black p-1 rounded"
                   required
                 >
@@ -101,11 +101,11 @@ export default function Storages() {
                 />
               </div>
               <div className="flex gap-x-4">
-                <label htmlFor="storage-location">Storage Location</label>
+                <label htmlFor="storage_location">Storage Location</label>
                 <select
-                  {...register("storage_location")}
-                  name="storage-location"
-                  id="storage-location"
+                  {...register("storage_location")} // Register with a unique name
+                  name="storage_location"
+                  id="storage_location"
                   className="border border-black p-1 rounded"
                   required
                 >
@@ -133,11 +133,11 @@ export default function Storages() {
                 </select>
               </div>
               <div className="flex gap-x-4">
-                <label htmlFor="storage-condition">Storage Condition</label>
+                <label htmlFor="storage_condition">Storage Condition</label>
                 <select
                   {...register("storage_condition")}
-                  name="storage-condition"
-                  id="storage-condition"
+                  name="storage_condition"
+                  id="storage_condition"
                   className="border border-black p-1 rounded"
                   required
                 >
