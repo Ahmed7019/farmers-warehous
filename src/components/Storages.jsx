@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 
 import Swal from "sweetalert2";
+import { API_URL } from "./js/api/api";
 export default function Storages() {
   const nav = useNavigate();
   const { register, handleSubmit } = useForm();
@@ -23,7 +24,7 @@ export default function Storages() {
     console.log(data);
 
     await axios
-      .post("http://127.0.0.1:8000/api/warehouse", {
+      .post(API_URL, {
         email: currentUser.email,
         ...data,
       })
