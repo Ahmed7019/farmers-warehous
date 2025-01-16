@@ -41,7 +41,12 @@ export default function Storages() {
         }
       })
       .catch((err) => {
-        console.log(Error, err.message);
+        console.error("Error:", err.message);
+        Swal.fire({
+          title: "Error",
+          text: "Failed to submit form. Please try again.",
+          icon: "error",
+        });
       });
   }
   return (
