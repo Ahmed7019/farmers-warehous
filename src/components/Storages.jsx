@@ -28,13 +28,13 @@ export default function Storages() {
         email: currentUser.email,
         ...data,
       })
-      .then(() => {
+      .then(() =>
         Swal.fire({
           title: "Success",
           text: "Your crops in safe hands",
           icon: "success",
-        });
-      })
+        })
+      )
       .then(() => {
         {
           nav("../");
