@@ -3,6 +3,7 @@
 // Import styling for animation
 import "../index.css";
 import { Link } from "react-router-dom";
+import Loading from "./Loading";
 import {
   FaFacebook,
   FaInstagram,
@@ -12,31 +13,42 @@ import {
 import { useAuth } from "../contexts/authContext";
 import { doSignOut } from "./js/Firebase/auth";
 import { auth } from "./js/Firebase/firebase";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getUser } from "./js/Firebase/firestore";
 export default function Home() {
   const { userLoggedIn } = useAuth();
   const { currentUser } = useAuth();
   // Get user from DB
+  const [userFound, setUserFound] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
+
   useEffect(() => {
-    if (userLoggedIn) {
-      getUser(currentUser);
+    if (userLoggedIn == true) {
+      setisLoading(true);
+      getUser(currentUser).then(() => {
+        setUserFound(true);
+        setisLoading(false);
+      });
     }
-  }, [userLoggedIn]);
+  }, [userLoggedIn, currentUser]);
+
   const handleSignOut = () => {
     doSignOut(auth);
   };
 
   return (
     <>
+      {isLoading && <Loading />}
       <div className=" mt-4 mx-4 relative grid place-items-center justify-center selection:bg-green-600 selection:text-neutral-50">
         <div className="mt-12">
           {/* When User is logged in show these */}
           {userLoggedIn == true && (
             <div className="flex items-center justify-between gap-x-2 my-2">
-              <p className="text-3xl font-bold capitalize">
-                Welcome {currentUser.displayName} !
-              </p>
+              {userFound && (
+                <p className="text-3xl font-bold capitalize">
+                  Welcome {currentUser.displayName} !
+                </p>
+              )}
 
               <Link
                 onClick={handleSignOut}

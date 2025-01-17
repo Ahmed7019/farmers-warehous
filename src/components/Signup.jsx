@@ -22,7 +22,7 @@ export default function Signup() {
 
   const { register, handleSubmit } = useForm();
   const [isUserRegistering, setisUserRegistering] = useState(false);
-
+  const [isLoading, setisLoading] = useState(false);
   async function handleFormSubmit(d) {
     if (!isUserRegistering) {
       setisUserRegistering(true);
