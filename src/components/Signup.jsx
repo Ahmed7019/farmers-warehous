@@ -1,5 +1,4 @@
 import { Navigate, Outlet } from "react-router";
-import Navigation from "./Navigation";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -12,7 +11,7 @@ import addUsersToDatabase from "./js/Firebase/firestore";
 import Swal from "sweetalert2";
 export default function Signup() {
   const [password, setPassword] = useState("password");
-
+  // const reRender = useRerender();
   const showPassword = () => {
     // A function for showing / hiding password
     password === "password" ? setPassword("text") : setPassword("password");
@@ -24,14 +23,18 @@ export default function Signup() {
   const { register, handleSubmit } = useForm();
   const [isUserRegistering, setisUserRegistering] = useState(false);
 
-  const handleFormSubmit = async (d) => {
+  async function handleFormSubmit(d) {
     if (!isUserRegistering) {
       setisUserRegistering(true);
-      await doCreateUserWithEmailAndPassword(d.email, d.password).then(() => {
-        addUsersToDatabase(d);
-      });
+      try {
+        await addUsersToDatabase(d);
+        await doCreateUserWithEmailAndPassword(d.email, d.password);
+        Swal.fire("Success", "User registered successfully!", "success");
+      } catch (e) {
+        Swal.fire("Error", e.message, "error");
+      }
     }
-  };
+  }
 
   return (
     <>

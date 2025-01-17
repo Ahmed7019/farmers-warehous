@@ -11,7 +11,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { API_URL } from "./js/api/api";
 export default function Storages() {
-  const nav = useNavigate();
+  const nav = useNavigate(); 
   const { register, handleSubmit } = useForm();
   // Add the form to add new data
   const { currentUser, userLoggedIn } = useAuth();
