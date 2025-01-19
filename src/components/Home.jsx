@@ -10,6 +10,7 @@ import {
   FaLinkedin,
   FaXTwitter,
 } from "react-icons/fa6";
+import { CiSettings } from "react-icons/ci";
 import { useAuth } from "../contexts/authContext";
 import { doSignOut } from "./js/Firebase/auth";
 import { auth } from "./js/Firebase/firebase";
@@ -50,7 +51,7 @@ export default function Home() {
                 </p>
               )}
 
-              <Link
+              {/* <Link
                 onClick={handleSignOut}
                 to={"../"}
                 className="group flex items-center justify-start w-11 h-11 bg-red-600 rounded-full cursor-pointer relative overflow-hidden transition-all duration-200 shadow-lg hover:w-32 hover:rounded-lg active:translate-x-1 active:translate-y-1"
@@ -63,7 +64,10 @@ export default function Home() {
                 <div className="absolute right-5 transform translate-x-full opacity-0 text-white text-lg font-semibold transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
                   Logout
                 </div>
-              </Link>
+              </Link> */}
+              <button className="bg-neutral-200 flex justify-center items-center p-2 rounded-md" title="Settings">
+                <CiSettings className="text-2xl"/>
+              </button>
             </div>
           )}
 
