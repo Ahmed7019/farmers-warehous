@@ -21,7 +21,7 @@ export default function Home() {
   // Get user from DB
   const [userFound, setUserFound] = useState(false);
   const [isLoading, setisLoading] = useState(false);
-
+  const [settings, showSettings] = useState(false);
   useEffect(() => {
     if (userLoggedIn == true) {
       setisLoading(true);
@@ -45,10 +45,13 @@ export default function Home() {
                   Welcome {currentUser.displayName} !
                 </p>
               )}
-              <Settings />
+              {settings == true && <Settings />}
               <button
                 className="bg-neutral-200 flex justify-center items-center p-2 rounded-md"
                 title="Settings"
+                onClick={() =>
+                  settings == false ? showSettings(true) : showSettings(false)
+                }
               >
                 <CiSettings className="text-2xl" />
               </button>

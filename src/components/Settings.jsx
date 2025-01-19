@@ -14,7 +14,7 @@ export default function Settings() {
   return (
     <>
       <div
-        className={`${display} right-0 top-12 z-10 bg-neutral-200 p-3 rounded-lg`}
+        className={`${display} right-0 top-12 z-10 bg-neutral-200 p-3 rounded-lg transition-all`}
       >
         <ul className="flex flex-col gap-2 text-sm text-neutral-600">
           <div className="flex self-end">
