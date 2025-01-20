@@ -15,7 +15,7 @@ const App = () => {
     <>
       <div>
         <AuthProvider>
-          <Routes>
+          <Routes basename="/farmers-warehous">
             <Route path="/" element={<Navigation />}>
               <Route
                 exact
