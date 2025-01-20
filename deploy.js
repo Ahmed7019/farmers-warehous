@@ -1,7 +1,11 @@
-/* eslint-disable no-undef */
-const { exec } = import("child_process");
-const fs = import("fs");
-const path = import("path");
+import { exec } from "child_process";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+// Convert the module URL to a file path
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /**
  * Deploys the React app to GitHub Pages.
