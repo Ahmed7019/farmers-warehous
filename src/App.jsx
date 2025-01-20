@@ -1,4 +1,4 @@
-import { Route, Router, Routes } from "react-router";
+import { Route, Routes } from "react-router";
 import { lazy, Suspense } from "react";
 import Loading from "./components/Loading";
 import Signin from "./components/Signin";
@@ -13,7 +13,7 @@ import { AuthProvider } from "./contexts/authContext";
 const App = () => {
   return (
     <>
-      <Router basename="/farmers-warehous">
+      <div>
         <AuthProvider>
           <Routes>
             <Route path="/" element={<Navigation />}>
@@ -77,7 +77,7 @@ const App = () => {
             </Route>
           </Routes>
         </AuthProvider>
-      </Router>
+      </div>
     </>
   );
 };

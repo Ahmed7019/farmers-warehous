@@ -9,7 +9,7 @@ const router = createBrowserRouter([
     path: "*",
     element: <App />,
   },
-]);
+]).basename("/farmers-warehous");
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
