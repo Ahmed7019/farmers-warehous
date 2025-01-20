@@ -28,7 +28,7 @@ export default function Settings() {
   useEffect(() => {
     window.addEventListener("keydown", handleEsc);
 
-    return window.removeEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
     // clear event listener
   }, []);
   return (
