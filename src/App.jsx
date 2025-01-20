@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router";
+import { Route, Router, Routes } from "react-router";
 import { lazy, Suspense } from "react";
 import Loading from "./components/Loading";
 import Signin from "./components/Signin";
@@ -13,9 +13,9 @@ import { AuthProvider } from "./contexts/authContext";
 const App = () => {
   return (
     <>
-      <div>
+      <Router basename="/farmers-warehous">
         <AuthProvider>
-          <Routes basename="/farmers-warehous">
+          <Routes>
             <Route path="/" element={<Navigation />}>
               <Route
                 exact
@@ -77,7 +77,7 @@ const App = () => {
             </Route>
           </Routes>
         </AuthProvider>
-      </div>
+      </Router>
     </>
   );
 };
