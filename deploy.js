@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
-const { exec } = require("child_process");
-const fs = require("fs");
-const path = require("path");
+const { exec } = import("child_process");
+const fs = import("fs");
+const path = import("path");
 
 /**
  * Deploys the React app to GitHub Pages.
