@@ -15,6 +15,7 @@ const AboutUs = lazy(() => import("./components/AboutUs"));
 const ContactUs = lazy(() => import("./components/ContactUs"));
 const Storages = lazy(() => import("./components/Storages"));
 const Signup = lazy(() => import("./components/Signup"));
+const Profile = lazy(() => import("./components/Profile"));
 
 // Create the router
 const router = createBrowserRouter(
@@ -80,6 +81,14 @@ const router = createBrowserRouter(
           element: (
             <Suspense fallback={<Loading />}>
               <Signin />
+            </Suspense>
+          ),
+        },
+        {
+          path: "/Profile",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <Profile />
             </Suspense>
           ),
         },

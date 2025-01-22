@@ -25,6 +25,7 @@ export default function Home() {
   useEffect(() => {
     if (userLoggedIn == true) {
       setisLoading(true);
+      console.log(currentUser);
       getUser(currentUser).then(() => {
         setUserFound(true);
         setisLoading(false);

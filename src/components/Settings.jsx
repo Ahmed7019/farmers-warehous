@@ -51,6 +51,7 @@ export default function Settings() {
           </div>
           <li>
             <Link
+              to={"./Profile"}
               className="flex items-center gap-x-2 hover:text-neutral-900"
               aria-label="Personal Information"
             >
