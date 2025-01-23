@@ -13,6 +13,7 @@ export default async function addUsersToDatabase(user) {
       {
         first: user.firstName || "",
         last: user.lastName || "",
+        username: `${user.firstName} ${user.lastName}` || "",
         email: user.email,
         born: new Date(`${user.birthYear}-${user.birthMonth}-${user.birthday}`), // Use a Date object
         gender: user.gender || "unknown",
@@ -33,6 +34,7 @@ export async function getUser(user) {
     if (docSnap.exists()) {
       await updateProfile(auth.currentUser, {
         displayName: docSnap.data().first,
+        username: `${docSnap.data().first} ${docSnap.data().last}`,
       });
       console.log("### Get User from db ### Successfull!");
     } else {

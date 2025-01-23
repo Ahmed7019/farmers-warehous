@@ -3,25 +3,11 @@ import { useAuth } from "../contexts/authContext";
 import { getUser } from "./js/Firebase/firestore";
 import { Link } from "react-router-dom";
 import Loading from "./Loading";
+import { FaLocationDot } from "react-icons/fa6";
 export default function Profile() {
   const [response, setResponse] = useState();
   const { currentUser } = useAuth();
   const [isLoading, setisLoading] = useState(false);
-
-  const months = [
-    "JAN",
-    "FEB",
-    "MAR",
-    "APR",
-    "MAY",
-    "JUN",
-    "JULY",
-    "AUG",
-    "SEP",
-    "OCT",
-    "NOV",
-    "DEC",
-  ];
 
   const getLocation = async () => {
     // Get user location using IP API
@@ -53,14 +39,15 @@ export default function Profile() {
   return (
     <>
       {!currentUser && <Loading />}
-      <div className="mt-24 mx-8">
+      <div className="mt-24 mx-8 border border-neutral-700 bg-neutral-100 p-3 rounded-md flex flex-col">
         <p>Profile page</p>
         <p className="capitalize">
-          Name : {currentUser == null ? "" : currentUser.displayName}
+          {currentUser == null ? "" : currentUser.displayName}
         </p>
-        <p className="font-bold">
-          Location: {response ? response.country_capital : "N/A"}
-        </p>
+        <div className="font-semibold flex gap-x-2 items-center">
+          <FaLocationDot />
+          <p>{response ? response.country_capital : "N/A"}</p>
+        </div>
         Farm Size: [Size in Acres/Hectares]
         <p>Storage Capacity: [Current Storage Details]</p>
         <p>Primary Crops: [List of Crops]</p>
@@ -82,11 +69,14 @@ export default function Profile() {
             verify now
           </Link>
         </div>
-        <p className="text-sm text-neutral-400">
-          Member since
+        <p className="text-sm text-neutral-700 self-end italic">
+          #Member since
           {currentUser == null ? "" : Date(currentUser.validSince).slice(3, 15)}
         </p>
+      </div>
+      <div className="mx-8 mt-8">
         <h3>Why Your Profile Matters ?</h3>
+
         <p>
           Your profile is more than just a dashboard—it’s a reflection of your
           hard work and dedication. By keeping it updated and engaging with our
