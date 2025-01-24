@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
+
 import { useAuth } from "../contexts/authContext";
 import { getUser } from "./js/Firebase/firestore";
+import { doEmailVerification } from "./js/Firebase/auth";
+
 import { Link } from "react-router-dom";
 import Loading from "./Loading";
 import { FaLocationDot } from "react-icons/fa6";
+
 export default function Profile() {
   const [response, setResponse] = useState();
   const { currentUser } = useAuth();
@@ -34,6 +38,7 @@ export default function Profile() {
     } else {
       setisLoading(false);
       getUser(currentUser);
+      console.log(currentUser);
     }
   }, [currentUser]);
   return (
@@ -64,10 +69,16 @@ export default function Profile() {
             {`Email is ${currentUser && currentUser.emailVerified ? "" : "not"}
             verified !`}
           </p>
-
-          <Link className="text-xs text-neutral-600 hover:underline underline-offset-2">
-            verify now
-          </Link>
+          {currentUser && currentUser.emailVerified ? (
+            ""
+          ) : (
+            <button
+              className="text-xs text-neutral-600 hover:underline underline-offset-2"
+              onClick={() => doEmailVerification(currentUser)}
+            >
+              verify now
+            </button>
+          )}
         </div>
         <p className="text-sm text-neutral-700 self-end italic">
           #Member since
@@ -75,8 +86,7 @@ export default function Profile() {
         </p>
       </div>
       <div className="mx-8 mt-8">
-        <h3>Why Your Profile Matters ?</h3>
-
+        <h3 className="font-bold text-2xl">Why Your Profile Matters ?</h3>
         <p>
           Your profile is more than just a dashboard—it’s a reflection of your
           hard work and dedication. By keeping it updated and engaging with our

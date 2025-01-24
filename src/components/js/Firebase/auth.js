@@ -1,5 +1,5 @@
 import { auth } from "./firebase";
-import { signOut } from "firebase/auth";
+import { sendEmailVerification, signOut } from "firebase/auth";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -43,4 +43,13 @@ export const authCurrentUser = () => {
     };
     return userInfo;
   }
+};
+
+export const doEmailVerification = (user) => {
+  console.log("... email verification called");
+  sendEmailVerification(user)
+    .then(() => {
+      console.log("Verificatoin Email sent Successfully");
+    })
+    .catch((err) => console.error("Error in sending verification email", err));
 };
