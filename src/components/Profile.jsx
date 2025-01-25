@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../contexts/authContext";
 import { getUser } from "./js/Firebase/firestore";
 import { doEmailVerification } from "./js/Firebase/auth";
+import { getAuth } from "firebase/auth";
 
 import { Link } from "react-router-dom";
 import Loading from "./Loading";
@@ -12,7 +13,7 @@ export default function Profile() {
   const [response, setResponse] = useState();
   const { currentUser } = useAuth();
   const [isLoading, setisLoading] = useState(false);
-
+  const [authedUser, setauthUser] = useState("");
   const getLocation = async () => {
     // Get user location using IP API
     try {
@@ -31,6 +32,9 @@ export default function Profile() {
 
   useEffect(() => {
     getLocation();
+    const auth = getAuth();
+    const user = auth.currentUser;
+    setauthUser(user);
   }, []);
   useEffect(() => {
     if (currentUser == null) {
@@ -74,7 +78,7 @@ export default function Profile() {
           ) : (
             <button
               className="text-xs text-neutral-600 hover:underline underline-offset-2"
-              onClick={() => doEmailVerification(currentUser)}
+              onClick={() => doEmailVerification(authedUser)}
             >
               verify now
             </button>

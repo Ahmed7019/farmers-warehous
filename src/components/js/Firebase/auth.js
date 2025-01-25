@@ -1,5 +1,5 @@
 import { auth } from "./firebase";
-import { sendEmailVerification, signOut } from "firebase/auth";
+import { sendEmailVerification,  signOut } from "firebase/auth";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
