@@ -5,14 +5,13 @@ import { getUser } from "./js/Firebase/firestore";
 import { doEmailVerification } from "./js/Firebase/auth";
 import { getAuth } from "firebase/auth";
 
-import { Link } from "react-router-dom";
 import Loading from "./Loading";
 import { FaLocationDot } from "react-icons/fa6";
 
 export default function Profile() {
   const [response, setResponse] = useState();
-  const { currentUser } = useAuth();
-  const [isLoading, setisLoading] = useState(false);
+  const { currentUser, isLoading } = useAuth();
+  // const [isLoading, setisLoading] = useState(false);
   const [authedUser, setauthUser] = useState("");
   const getLocation = async () => {
     // Get user location using IP API
@@ -37,14 +36,11 @@ export default function Profile() {
     setauthUser(user);
   }, []);
   useEffect(() => {
-    if (currentUser == null) {
-      setisLoading(true);
-    } else {
-      setisLoading(false);
+    if (isLoading) {
       getUser(currentUser);
-      console.log(currentUser);
+      console.log(authedUser);
     }
-  }, [currentUser]);
+  }, [currentUser, isLoading]);
   return (
     <>
       {!currentUser && <Loading />}

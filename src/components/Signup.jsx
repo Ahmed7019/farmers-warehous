@@ -22,16 +22,24 @@ export default function Signup() {
 
   const { register, handleSubmit } = useForm();
   const [isUserRegistering, setisUserRegistering] = useState(false);
-  const [isLoading, setisLoading] = useState(false);
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
   async function handleFormSubmit(d) {
     if (!isUserRegistering) {
       setisUserRegistering(true);
-      try {
-        await addUsersToDatabase(d);
-        await doCreateUserWithEmailAndPassword(d.email, d.password);
-        Swal.fire("Success", "User registered successfully!", "success");
-      } catch (e) {
-        Swal.fire("Error", e.message, "error");
+      if (isValidEmail(d.email)) {
+        // Check email syntax
+        try {
+          await addUsersToDatabase(d);
+          await doCreateUserWithEmailAndPassword(d.email, d.password);
+          Swal.fire("Success", "User registered successfully!", "success");
+        } catch (e) {
+          Swal.fire("Error", e.message, "error");
+        }
+      } else {
+        throw new Error("Invalid Email");
       }
     }
   }
