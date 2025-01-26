@@ -5,6 +5,7 @@ import { CgProfile } from "react-icons/cg";
 import { IoClose } from "react-icons/io5";
 import { FaSignOutAlt } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 export default function Settings() {
   const handleSignOut = async () => {
     try {
@@ -16,6 +17,43 @@ export default function Settings() {
   };
 
   const [isVisible, setisVisible] = useState(true);
+
+  // Logout Alert
+
+  const confirmLogout = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You will be logged out of your account.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, log me out!",
+      cancelButtonText: "Cancel",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // User confirmed, proceed with logout
+        handleSignOut()
+          .then(() => {
+            Swal.fire({
+              title: "Logged Out!",
+              text: "You have been successfully logged out.",
+              icon: "success",
+              confirmButtonColor: "#3085d6",
+            });
+          })
+          .catch((error) => {
+            Swal.fire({
+              title: "Error!",
+              text: "An error occurred while logging out. Please try again.",
+              icon: "error",
+              confirmButtonColor: "#3085d6",
+            });
+            console.error("Logout error:", error);
+          });
+      }
+    });
+  };
 
   // On pressing esc on keyboard hide the settings menu
   const hideMenu = () => {
@@ -30,7 +68,7 @@ export default function Settings() {
 
     return () => window.removeEventListener("keydown", handleEsc);
     // clear event listener
-  }, []);
+  });
   return (
     <>
       <div
@@ -68,14 +106,14 @@ export default function Settings() {
           </li>
           <hr className="border-black my-2" />
           <li className="text-center w-full">
-            <Link
-              onClick={handleSignOut}
-              to={"../"}
+            <button
               className="w-full p-2 rounded-md text-neutral-200 bg-red-600 flex items-center justify-center gap-x-2 hover:bg-red-500 hover:text-neutral-100"
               aria-label="Logout"
+              onClick={confirmLogout}
             >
-              <p>Logout</p> <FaSignOutAlt />
-            </Link>
+              Logout
+              <FaSignOutAlt />
+            </button>
           </li>
         </ul>
       </div>

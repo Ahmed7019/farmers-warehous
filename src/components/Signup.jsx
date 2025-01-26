@@ -22,10 +22,12 @@ export default function Signup() {
 
   const { register, handleSubmit } = useForm();
   const [isUserRegistering, setisUserRegistering] = useState(false);
+
   const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
+
   async function handleFormSubmit(d) {
     if (!isUserRegistering) {
       setisUserRegistering(true);
