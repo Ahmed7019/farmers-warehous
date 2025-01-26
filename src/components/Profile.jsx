@@ -7,10 +7,13 @@ import { getAuth } from "firebase/auth";
 
 import Loading from "./Loading";
 import { FaLocationDot } from "react-icons/fa6";
+import axios from "axios";
+import { API_URL } from "./js/api/api";
 
 export default function Profile() {
   const [response, setResponse] = useState();
   const { currentUser, isLoading } = useAuth();
+  const [userData, setuserData] = useState(null);
   // const [isLoading, setisLoading] = useState(false);
   const [authedUser, setauthUser] = useState("");
   const getLocation = async () => {
@@ -29,16 +32,28 @@ export default function Profile() {
     }
   };
 
+  const fetchData = () => {
+    axios.get(API_URL).then((res) => {
+      const data = res.data;
+      data.filter((item) => {
+        if (item.email === authedUser.email) {
+          setuserData(item);
+        }
+      });
+    });
+  };
   useEffect(() => {
-    getLocation();
     const auth = getAuth();
     const user = auth.currentUser;
     setauthUser(user);
+    fetchData();
+  }, []);
+  useEffect(() => {
+    getLocation();
   }, []);
   useEffect(() => {
     if (isLoading) {
       getUser(currentUser);
-      console.log(authedUser);
     }
   }, [currentUser, isLoading]);
   return (
@@ -55,7 +70,7 @@ export default function Profile() {
         </div>
         Farm Size: [Size in Acres/Hectares]
         <p>Storage Capacity: [Current Storage Details]</p>
-        <p>Primary Crops: [List of Crops]</p>
+        {userData && <p key={userData.id}>Primary Crops: {userData.crop}</p>}
         <div className="flex gap-2 items-center">
           <p>Email : {!currentUser ? "..." : currentUser.email}</p>
 
