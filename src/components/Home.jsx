@@ -16,26 +16,22 @@ import { useAuth } from "../contexts/authContext";
 import { useEffect, useState } from "react";
 import { getUser } from "./js/Firebase/firestore";
 export default function Home() {
-  const { userLoggedIn } = useAuth();
-  const { currentUser } = useAuth();
+  const { userLoggedIn, currentUser, isLoading } = useAuth();
   // Get user from DB
   const [userFound, setUserFound] = useState(false);
-  const [isLoading, setisLoading] = useState(false);
   const [settings, showSettings] = useState(false);
+  const [checkLoading, setLoading] = useState(true);
   useEffect(() => {
-    if (userLoggedIn == true) {
-      setisLoading(true);
-      console.log(currentUser);
+    if (userLoggedIn)
       getUser(currentUser).then(() => {
         setUserFound(true);
-        setisLoading(false);
+        setLoading(false);
       });
-    }
-  }, [userLoggedIn, currentUser]);
+  }, [userLoggedIn, currentUser, isLoading]);
 
   return (
     <>
-      {isLoading && <Loading />}
+      {checkLoading && <Loading />}
       <div className=" mt-4 mx-4 relative grid place-items-center justify-center selection:bg-green-600 selection:text-neutral-50">
         <div className="mt-12">
           {/* When User is logged in show these */}

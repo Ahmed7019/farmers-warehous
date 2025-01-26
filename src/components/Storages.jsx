@@ -31,7 +31,7 @@ export default function Storages() {
       .then(() =>
         Swal.fire({
           title: "Success",
-          text: "Your crops in safe hands",
+          text: "Data sent successfully",
           icon: "success",
         })
       )
