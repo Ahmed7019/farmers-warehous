@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://Ahmed7019.github.io/farmers-warehous/",
+  "homepage": "https://Ahmed7019.github.io/farmers-warehous",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
