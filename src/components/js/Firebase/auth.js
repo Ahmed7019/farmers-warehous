@@ -1,5 +1,9 @@
 import { auth } from "./firebase";
-import { sendEmailVerification,  signOut } from "firebase/auth";
+import {
+  sendEmailVerification,
+  sendPasswordResetEmail,
+  signOut,
+} from "firebase/auth";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -52,4 +56,15 @@ export const doEmailVerification = (user) => {
       console.log("Verificatoin Email sent Successfully");
     })
     .catch((err) => console.error("Error in sending verification email", err));
+};
+
+// Password reset email
+export const doSendPasswordResetEmail = (auth, email) => {
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      console.log("Password reset email sent successfully!");
+    })
+    .catch((err) => {
+      console.err("Error while sending password reset email !", err);
+    });
 };

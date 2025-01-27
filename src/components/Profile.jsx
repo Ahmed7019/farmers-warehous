@@ -42,12 +42,14 @@ export default function Profile() {
       });
     });
   };
+
   useEffect(() => {
     const auth = getAuth();
     const user = auth.currentUser;
     setauthUser(user);
     fetchData();
-  }, []);
+  });
+
   useEffect(() => {
     getLocation();
   }, []);
@@ -56,6 +58,7 @@ export default function Profile() {
       getUser(currentUser);
     }
   }, [currentUser, isLoading]);
+
   return (
     <>
       {!currentUser && <Loading />}
@@ -84,6 +87,7 @@ export default function Profile() {
             {`Email is ${currentUser && currentUser.emailVerified ? "" : "not"}
             verified !`}
           </p>
+
           {currentUser && currentUser.emailVerified ? (
             ""
           ) : (
@@ -100,6 +104,7 @@ export default function Profile() {
           {currentUser == null ? "" : Date(currentUser.validSince).slice(3, 15)}
         </p>
       </div>
+
       <div className="mx-8 mt-8">
         <h3 className="font-bold text-2xl">Why Your Profile Matters ?</h3>
         <p>

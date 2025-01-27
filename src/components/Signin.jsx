@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { doSignInWithEmailAndPassword } from "./js/Firebase/auth";
+import {
+  doSendPasswordResetEmail,
+  doSignInWithEmailAndPassword,
+} from "./js/Firebase/auth";
 import { useAuth } from "../contexts/authContext";
 export default function Signin() {
   const [password, setPassword] = useState("password");
-
   const showPassword = () => {
     // A function for showing / hiding password
     password === "password" ? setPassword("text") : setPassword("password");
@@ -74,6 +76,12 @@ export default function Signin() {
                 </button>
               </div>
               <div className="flex flex-col items-center justify-center gap-2 relative">
+                <button
+                  onClick={nav("./ForgotPassword")}
+                  className="text-sm font-bold hover:underline underline-offset-2"
+                >
+                  Forgot you password ?
+                </button>
                 <p className="text-gray-500 font-bold text-sm">Or</p>
                 <Link
                   to="/Signup"
