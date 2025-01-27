@@ -9,6 +9,8 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 
+import Swal from "sweetalert2"; // Sweat alert
+
 export const doCreateUserWithEmailAndPassword = async (email, password) => {
   await createUserWithEmailAndPassword(auth, email, password).catch((err) => {
     console.log(err);
@@ -59,12 +61,16 @@ export const doEmailVerification = (user) => {
 };
 
 // Password reset email
-export const doSendPasswordResetEmail = (auth, email) => {
-  sendPasswordResetEmail(auth, email)
-    .then(() => {
-      console.log("Password reset email sent successfully!");
-    })
+export const doSendPasswordResetEmail = async (auth, email) => {
+  await sendPasswordResetEmail(auth, email)
+    .then(() =>
+      Swal.fire(
+        "Reset Email",
+        "Reset email is sent to your email successfully",
+        "success"
+      )
+    )
     .catch((err) => {
-      console.err("Error while sending password reset email !", err);
+      Swal.fire("Error", err, "error");
     });
 };

@@ -1,14 +1,17 @@
 import { getAuth } from "firebase/auth";
 import { useState } from "react";
 import { doSendPasswordResetEmail } from "./js/Firebase/auth";
-
+import { useNavigate } from "react-router";
 export default function ForgotPassword() {
   const auth = getAuth();
   const [email, setEmail] = useState("");
-
+  const nav = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    doSendPasswordResetEmail(auth, email);
+    doSendPasswordResetEmail(auth, email).then(() => {
+      setEmail("");
+      nav("../");
+    });
   };
   return (
     <>
@@ -22,7 +25,12 @@ export default function ForgotPassword() {
               onChange={(e) => setEmail(e.target.value)}
               className="outline-none border border-neutral-800 rounded p-2 "
             />
-            <button type="submit" className="bg-green-500 rounded-sm p-3 text-neutral-200">Send</button>
+            <button
+              type="submit"
+              className="bg-green-500 rounded-sm p-3 text-neutral-200"
+            >
+              Send
+            </button>
           </div>
         </form>
       </div>
