@@ -27,6 +27,7 @@ export default function Home() {
         setUserFound(true);
         setLoading(false);
       });
+    else setLoading(false);
   }, [userLoggedIn, currentUser, isLoading]);
 
   return (
