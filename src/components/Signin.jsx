@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import {
-  doSendPasswordResetEmail,
-  doSignInWithEmailAndPassword,
-} from "./js/Firebase/auth";
+import { doSignInWithEmailAndPassword } from "./js/Firebase/auth";
 import { useAuth } from "../contexts/authContext";
 export default function Signin() {
   const [password, setPassword] = useState("password");
@@ -78,7 +75,7 @@ export default function Signin() {
               <div className="flex flex-col items-center justify-center gap-2 relative">
                 <button
                   onClick={nav("./ForgotPassword")}
-                  className="text-sm font-bold hover:underline underline-offset-2"
+                  className="relative text-sm font-bold hover:underline underline-offset-2"
                 >
                   Forgot you password ?
                 </button>

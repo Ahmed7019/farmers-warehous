@@ -6,7 +6,10 @@ import { doEmailVerification } from "./js/Firebase/auth";
 import { getAuth } from "firebase/auth";
 
 import Loading from "./Loading";
+
 import { FaLocationDot } from "react-icons/fa6";
+import { FaUserEdit } from "react-icons/fa";
+
 import axios from "axios";
 import { API_URL } from "./js/api/api";
 
@@ -32,6 +35,7 @@ export default function Profile() {
     }
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const fetchData = () => {
     axios.get(API_URL).then((res) => {
       const data = res.data;
@@ -42,13 +46,12 @@ export default function Profile() {
       });
     });
   };
-
   useEffect(() => {
     const auth = getAuth();
     const user = auth.currentUser;
     setauthUser(user);
     fetchData();
-  });
+  }, [fetchData]);
 
   useEffect(() => {
     getLocation();
@@ -62,7 +65,12 @@ export default function Profile() {
   return (
     <>
       {!currentUser && <Loading />}
-      <div className="mt-24 mx-8 border border-neutral-700 bg-neutral-100 p-3 rounded-md flex flex-col">
+      <div className="relative mt-24 mx-8 border border-neutral-700 bg-neutral-100 p-3 rounded-md flex flex-col">
+        <div className="absolute right-4">
+          <button className="text-3xl text-neutral-100  bg-neutral-500/50 rounded-xl p-2 text-center">
+            <FaUserEdit />
+          </button>
+        </div>
         <p>Profile page</p>
         <p className="capitalize">
           {currentUser == null ? "" : currentUser.displayName}
