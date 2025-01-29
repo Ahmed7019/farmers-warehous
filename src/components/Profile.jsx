@@ -6,6 +6,7 @@ import { doEmailVerification } from "./js/Firebase/auth";
 import { getAuth } from "firebase/auth";
 
 import Loading from "./Loading";
+import UpdateInfo from "./UpdateInfo";
 
 import { FaLocationDot } from "react-icons/fa6";
 import { FaUserEdit } from "react-icons/fa";
@@ -17,8 +18,13 @@ export default function Profile() {
   const [response, setResponse] = useState();
   const { currentUser, isLoading } = useAuth();
   const [userData, setuserData] = useState(null);
-  // const [isLoading, setisLoading] = useState(false);
+  const [updateInfo, setupdateInfo] = useState(false);
   const [authedUser, setauthUser] = useState("");
+
+  const toggleInfo = () => {
+    !updateInfo ? setupdateInfo(true) : setupdateInfo(false);
+  };
+
   const getLocation = async () => {
     // Get user location using IP API
     try {
@@ -67,50 +73,67 @@ export default function Profile() {
       {!currentUser && <Loading />}
       <div className="relative mt-24 mx-8 border border-neutral-700 bg-neutral-100 p-3 rounded-md flex flex-col">
         <div className="absolute right-4">
-          <button className="text-3xl text-neutral-100  bg-neutral-500/50 rounded-xl p-2 text-center">
+          <button
+            className="text-3xl text-neutral-100  bg-neutral-500/50 rounded-xl p-2 text-center"
+            onClick={toggleInfo}
+          >
             <FaUserEdit />
+            INFO
           </button>
         </div>
         <p>Profile page</p>
-        <p className="capitalize">
-          {currentUser == null ? "" : currentUser.displayName}
-        </p>
-        <div className="font-semibold flex gap-x-2 items-center">
-          <FaLocationDot />
-          <p>{response ? response.country_capital : "N/A"}</p>
-        </div>
-        Farm Size: [Size in Acres/Hectares]
-        <p>Storage Capacity: [Current Storage Details]</p>
-        {userData && <p key={userData.id}>Primary Crops: {userData.crop}</p>}
-        <div className="flex gap-2 items-center">
-          <p>Email : {!currentUser ? "..." : currentUser.email}</p>
 
-          <p
-            className={`${
-              currentUser && currentUser.emailVerified
-                ? "text-green-400"
-                : "text-red-600"
-            } text-xs font-bold`}
-          >
-            {`Email is ${currentUser && currentUser.emailVerified ? "" : "not"}
-            verified !`}
-          </p>
+        {updateInfo == true ? (
+          <UpdateInfo />
+        ) : (
+          <div className="flex flex-col">
+            <p className="capitalize">
+              {currentUser == null ? "" : currentUser.displayName}
+            </p>
+            <div className="font-semibold flex gap-x-2 items-center">
+              <FaLocationDot />
+              <p>{response ? response.country_capital : "N/A"}</p>
+            </div>
+            Farm Size: [Size in Acres/Hectares]
+            <p>Storage Capacity: [Current Storage Details]</p>
+            {userData && (
+              <p key={userData.id}>Primary Crops: {userData.crop}</p>
+            )}
+            <div className="flex gap-2 items-center">
+              <p>Email : {!currentUser ? "..." : currentUser.email}</p>
 
-          {currentUser && currentUser.emailVerified ? (
-            ""
-          ) : (
-            <button
-              className="text-xs text-neutral-600 hover:underline underline-offset-2"
-              onClick={() => doEmailVerification(authedUser)}
-            >
-              verify now
-            </button>
-          )}
-        </div>
-        <p className="text-sm text-neutral-700 self-end italic">
-          #Member since
-          {currentUser == null ? "" : Date(currentUser.validSince).slice(3, 15)}
-        </p>
+              <p
+                className={`${
+                  currentUser && currentUser.emailVerified
+                    ? "text-green-400"
+                    : "text-red-600"
+                } text-xs font-bold`}
+              >
+                {`Email is ${
+                  currentUser && currentUser.emailVerified ? "" : "not"
+                }
+              verified !`}
+              </p>
+
+              {currentUser && currentUser.emailVerified ? (
+                ""
+              ) : (
+                <button
+                  className="text-xs text-neutral-600 hover:underline underline-offset-2"
+                  onClick={() => doEmailVerification(authedUser)}
+                >
+                  verify now
+                </button>
+              )}
+            </div>
+            <p className="text-sm text-neutral-700 self-end italic">
+              #Member since
+              {currentUser == null
+                ? ""
+                : Date(currentUser.validSince).slice(3, 15)}
+            </p>
+          </div>
+        )}
       </div>
 
       <div className="mx-8 mt-8">
