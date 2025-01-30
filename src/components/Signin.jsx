@@ -74,7 +74,7 @@ export default function Signin() {
               </div>
               <div className="flex flex-col items-center justify-center gap-2 relative">
                 <button
-                  onClick={nav("./ForgotPassword")}
+                  onClick={nav("/ForgotPassword")}
                   className="relative text-sm font-bold hover:underline underline-offset-2"
                 >
                   Forgot you password ?

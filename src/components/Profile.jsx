@@ -10,6 +10,7 @@ import UpdateInfo from "./UpdateInfo";
 
 import { FaLocationDot } from "react-icons/fa6";
 import { FaUserEdit } from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
 
 import axios from "axios";
 import { API_URL } from "./js/api/api";
@@ -74,11 +75,14 @@ export default function Profile() {
       <div className="relative mt-24 mx-8 border border-neutral-700 bg-neutral-100 p-3 rounded-md flex flex-col">
         <div className="absolute right-4">
           <button
-            className="text-3xl text-neutral-100  bg-neutral-500/50 rounded-xl p-2 text-center"
+            className="text-3xl   bg-neutral-100/50 rounded-xl p-2 text-center"
             onClick={toggleInfo}
           >
-            <FaUserEdit />
-            INFO
+            {!updateInfo ? (
+              <FaUserEdit className="text-neutral-600" />
+            ) : (
+              <IoClose className="bg-red-600 rounded text-neutral-100" />
+            )}
           </button>
         </div>
         <p>Profile page</p>
