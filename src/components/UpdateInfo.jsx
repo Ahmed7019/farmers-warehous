@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../contexts/authContext";
 import Swal from "sweetalert2";
-import { doUpdatePassword } from "./js/Firebase/auth";
+import { doUpdateEmail, doUpdatePassword } from "./js/Firebase/auth";
 import { getAuth } from "firebase/auth";
 export default function UpdateInfo() {
   const { currentUser } = useAuth();
@@ -17,10 +17,13 @@ export default function UpdateInfo() {
       Swal.fire("Error!", "Passwords doesn't match", "error");
     else doUpdatePassword(user, pwd);
   };
-
+  function checkEmail() {
+    if (email !== user.email) doUpdateEmail(user, email);
+  }
   function handleSubmit(e) {
     e.preventDefault();
     checkPasswords();
+    checkEmail();
   }
   return (
     <>

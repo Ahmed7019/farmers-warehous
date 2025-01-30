@@ -3,6 +3,7 @@ import {
   sendEmailVerification,
   sendPasswordResetEmail,
   signOut,
+  updateEmail,
   updatePassword,
 } from "firebase/auth";
 import {
@@ -80,7 +81,23 @@ export const doSendPasswordResetEmail = async (auth, email) => {
 export const doUpdatePassword = async (user, pwd) => {
   await updatePassword(user, pwd)
     .then(() =>
-      Swal.fire("Password Update", "Password updated successfully !", "success")
+      Swal.fire(
+        "Password Updated",
+        "Password updated successfully !",
+        "success"
+      )
+    )
+    .catch((err) => {
+      Swal.fire("Error updating password", err, "error");
+      console.log("ERROR!!!", err);
+    });
+};
+
+// update email
+export const doUpdateEmail = async (user, email) => {
+  await updateEmail(user, email)
+    .then(() =>
+      Swal.fire("Email Updated", "Email updated successfully !", "success")
     )
     .catch((err) => {
       Swal.fire("Error updating password", err, "error");
