@@ -1,4 +1,4 @@
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "./firebase";
 import { getAuth, updateProfile } from "firebase/auth";
 
@@ -33,13 +33,25 @@ export async function getUser(user) {
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       await updateProfile(auth.currentUser, {
-        displayName: docSnap.data().first,
-        username: `${docSnap.data().first} ${docSnap.data().last}`,
+        displayName: `${docSnap.data().first} ${docSnap.data().last}`,
       });
       console.log("### Get User from db ### Successfull!");
     } else {
       console.log("### Get User from db ### User Not Found");
     }
+  } catch (e) {
+    console.log("Error!!", e);
+  }
+}
+
+export async function updateUserName(user, name) {
+  try {
+    const docRef = doc(db, "users", user.email);
+    await updateDoc(docRef, {
+      first: name.split(" ")[0],
+      last: name.split(" ")[1],
+    });
+    console.log("### Updated User Successfull!");
   } catch (e) {
     console.log("Error!!", e);
   }

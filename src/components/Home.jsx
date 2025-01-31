@@ -26,6 +26,7 @@ export default function Home() {
       getUser(currentUser).then(() => {
         setUserFound(true);
         setLoading(false);
+        console.log(currentUser);
       });
     else setLoading(false);
   }, [userLoggedIn, currentUser, isLoading]);
