@@ -11,7 +11,7 @@ import UpdateInfo from "./UpdateInfo";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaUserEdit } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
-
+import { CgProfile } from "react-icons/cg";
 import axios from "axios";
 import { API_URL } from "./js/api/api";
 
@@ -72,37 +72,36 @@ export default function Profile() {
   return (
     <>
       {!currentUser && <Loading />}
-      <div className="relative mt-24 mx-8 border border-neutral-700 bg-neutral-100 p-3 rounded-md flex flex-col">
+      <div className="relative mt-24 mx-8 border border-neutral-700 bg-slate-800 p-3 rounded-md flex flex-col">
         <div className="absolute right-4">
           <button
-            className="text-3xl   bg-neutral-100/50 rounded-xl p-2 text-center"
+            className="text-3xl   bg-zinc-600 rounded-xl p-2 text-center"
             onClick={toggleInfo}
           >
             {!updateInfo ? (
-              <FaUserEdit className="text-neutral-600" />
+              <FaUserEdit className="text-neutral-100" />
             ) : (
               <IoClose className="bg-red-600 rounded text-neutral-100" />
             )}
           </button>
         </div>
-        <p>Profile page</p>
+        <div className="flex items-center text-neutral-200 gap-3">
+          <CgProfile className="text-8xl text-neutral-200 " />
+          <div>
+            <p className="capitalize text-3xl font-semibold">
+              {currentUser == null ? "" : currentUser.displayName}
+            </p>
+            <div className="font-semibold flex gap-x-2 items-center">
+              <FaLocationDot className="text-xl text-orange-500" />
+              <p>{response ? response.country_capital : "N/A"}</p>
+            </div>
+          </div>
+        </div>
 
         {updateInfo == true ? (
           <UpdateInfo />
         ) : (
-          <div className="flex flex-col">
-            <p className="capitalize">
-              {currentUser == null ? "" : currentUser.displayName}
-            </p>
-            <div className="font-semibold flex gap-x-2 items-center">
-              <FaLocationDot />
-              <p>{response ? response.country_capital : "N/A"}</p>
-            </div>
-            Farm Size: [Size in Acres/Hectares]
-            <p>Storage Capacity: [Current Storage Details]</p>
-            {userData && (
-              <p key={userData.id}>Primary Crops: {userData.crop}</p>
-            )}
+          <div className="flex flex-col gap-2 text-neutral-300 text-sm">
             <div className="flex gap-2 items-center">
               <p>Email : {!currentUser ? "..." : currentUser.email}</p>
 
@@ -111,7 +110,7 @@ export default function Profile() {
                   currentUser && currentUser.emailVerified
                     ? "text-green-400"
                     : "text-red-600"
-                } text-xs font-bold`}
+                } text-md uppercase font-bold`}
               >
                 {`Email is ${
                   currentUser && currentUser.emailVerified ? "" : "not"
@@ -130,7 +129,12 @@ export default function Profile() {
                 </button>
               )}
             </div>
-            <p className="text-sm text-neutral-700 self-end italic">
+            <p>Farm Size: [Size in Acres/Hectares]</p>
+            <p>Storage Capacity: [Current Storage Details]</p>
+            {userData && (
+              <p key={userData.id}>Primary Crops: {userData.crop}</p>
+            )}
+            <p className=" self-end italic">
               #Member since
               {currentUser == null
                 ? ""

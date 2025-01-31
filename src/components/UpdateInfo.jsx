@@ -35,7 +35,7 @@ export default function UpdateInfo() {
     <>
       <div className="max-w-screen-md">
         <form
-          className="flex flex-col gap-2 bg-slate-200 p-4 rounded-md border border-black"
+          className="flex flex-col gap-2 bg-transparent p-4 rounded-md border border-neutral-200 my-2"
           onSubmit={handleSubmit}
         >
           <input
@@ -71,7 +71,7 @@ export default function UpdateInfo() {
           />
           <button
             type="submit"
-            className="p-2 border border-black rounded hover:text-slate-300 hover:bg-black transition-colors"
+            className="text-neutral-200 p-2 border border-neutral-200 rounded hover:text-black hover:bg-neutral-200 transition-colors"
           >
             Confirm
           </button>
