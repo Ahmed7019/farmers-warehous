@@ -57,9 +57,9 @@ export default function Storages() {
         </Link>
         <form
           onSubmit={handleSubmit(formSubmit)}
-          className="border border-green-500 bg-neutral-100/50 backdrop-blur-md p-4 rounded w-[50rem]"
+          className="border border-green-500 bg-neutral-100/50 backdrop-blur-md p-4 rounded sm:w-[50rem]"
         >
-          <div className="flex justify-between">
+          <div className="flex flex-col p-3 sm:flex-row justify-between text-xs">
             <div className="flex flex-col gap-y-4">
               <div className="flex gap-x-4">
                 <label htmlFor="crop">Crop Type: </label>
@@ -187,7 +187,7 @@ export default function Storages() {
                     support team. They're happy to guide you through the
                     process.
                   </li>
-                  <li className="text-bold text-lg">
+                  <li className="text-bold sm:text-lg">
                     Note that you can't add the same crops twice with the same
                     storage conditioning plan
                   </li>
@@ -197,7 +197,7 @@ export default function Storages() {
             <div className=" flex flex-col justify-end ">
               <button
                 type="submit"
-                className=" mt-4 bg-green-700 w-40 p-2 rounded-md text-neutral-200 hover:bg-green-500"
+                className=" mt-4 bg-green-700 sm:w-40 p-2 rounded-md text-neutral-200 hover:bg-green-500"
               >
                 Save changes
               </button>
