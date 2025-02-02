@@ -20,6 +20,10 @@ export default function Signin() {
       doSignInWithEmailAndPassword(email, pass);
     }
   };
+
+  function navToForgetPassword() {
+    nav("/ForgotPassword");
+  }
   return (
     <>
       {userLoggedIn == true && nav("../")}
@@ -74,7 +78,7 @@ export default function Signin() {
               </div>
               <div className="flex flex-col items-center justify-center gap-2 relative">
                 <button
-                  onClick={nav("/ForgotPassword")}
+                  onClick={navToForgetPassword}
                   className="relative text-sm font-bold hover:underline underline-offset-2"
                 >
                   Forgot you password ?
