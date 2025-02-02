@@ -72,10 +72,10 @@ export default function Profile() {
   return (
     <>
       {!currentUser && <Loading />}
-      <div className="relative mt-24 mx-8 border border-neutral-700 bg-slate-800 p-3 rounded-md flex flex-col">
+      <div className="relative mt-24 mx-8 border border-neutral-700 bg-slate-800 p-3 rounded-md flex flex-col ">
         <div className="absolute right-4">
           <button
-            className="text-3xl   bg-zinc-600 rounded-xl p-2 text-center"
+            className="text-lg sm:text-3xl   bg-zinc-600 rounded-xl p-2 text-center"
             onClick={toggleInfo}
           >
             {!updateInfo ? (
@@ -85,10 +85,13 @@ export default function Profile() {
             )}
           </button>
         </div>
-        <div className="flex items-center text-neutral-200 gap-3">
-          <CgProfile className="text-8xl text-neutral-200 " />
+        <div
+          className="flex items-center text-neutral-200 gap-3 mb-4
+        "
+        >
+          <CgProfile className="text-6xl sm:text-8xl text-neutral-200" />
           <div>
-            <p className="capitalize text-3xl font-semibold">
+            <p className="capitalize text-lg sm:text-3xl font-semibold">
               {currentUser == null ? "" : currentUser.displayName}
             </p>
             <div className="font-semibold flex gap-x-2 items-center">
@@ -101,7 +104,7 @@ export default function Profile() {
         {updateInfo == true ? (
           <UpdateInfo />
         ) : (
-          <div className="flex flex-col gap-2 text-neutral-300 text-sm">
+          <div className="flex flex-col gap-2 text-neutral-300 text-xs">
             <div className="flex gap-2 items-center">
               <p>Email : {!currentUser ? "..." : currentUser.email}</p>
 
@@ -110,7 +113,7 @@ export default function Profile() {
                   currentUser && currentUser.emailVerified
                     ? "text-green-400"
                     : "text-red-600"
-                } text-md uppercase font-bold`}
+                }  sm:text-md uppercase font-bold`}
               >
                 {`Email is ${
                   currentUser && currentUser.emailVerified ? "" : "not"
@@ -145,8 +148,10 @@ export default function Profile() {
       </div>
 
       <div className="mx-8 mt-8">
-        <h3 className="font-bold text-2xl">Why Your Profile Matters ?</h3>
-        <p>
+        <h3 className="font-bold text-lg sm:text-2xl">
+          Why Your Profile Matters ?
+        </h3>
+        <p className="text-sm sm:text-md">
           Your profile is more than just a dashboard—it’s a reflection of your
           hard work and dedication. By keeping it updated and engaging with our
           tools, you’re not just protecting your crops; you’re building a
