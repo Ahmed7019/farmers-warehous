@@ -6,8 +6,8 @@ export default function AboutUs() {
         <h1 className="font-bold text-xl my-2 relative top-10">
           Our Solutions
         </h1>
-        <div className=" mt-32 grid grid-cols-2">
-          <section className="bg-green-600 text-neutral-200 p-2 rounded-t-md row-start-1 col-span-2 flex gap-2">
+        <div className=" mt-32 grid sm:grid-cols-2">
+          <section className="bg-green-600 text-neutral-200 p-2 rounded-t-md row-start-1 col-span-2 flex flex-col sm:flex-row gap-2">
             <div className="flex flex-col">
               <p className="text-2xl font-bold my-2">About us</p>
               <p className="text-lg">
@@ -22,11 +22,11 @@ export default function AboutUs() {
               <img
                 src="https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fGNyb3BzfGVufDB8fDB8fHww"
                 alt="warehoues"
-                className="rounded w-[1080px]"
+                className="rounded sm:w-[1080px]"
               />
             </div>
           </section>
-          <section className="bg-green-500 text-neutral-200 p-2 rounded-b-md  col-span-2 flex gap-2">
+          <section className="bg-green-500 text-neutral-200 p-2 rounded-b-md  col-span-2 flex flex-col sm:flex-row gap-2">
             <img
               src="https://plus.unsplash.com/premium_photo-1661295675442-f151fdf7ba52?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHRydXN0fGVufDB8fDB8fHww"
               alt="shaking with trust"
