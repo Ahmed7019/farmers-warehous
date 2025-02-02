@@ -49,15 +49,15 @@ export default function Signup() {
   return (
     <>
       {userLoggedIn && <Navigate to={"../"} replace={true} />}
-      <div className=" w-full h-full">
-        <div className="flex justify-center items-center mt-16">
+      <div className="sm:w-full sm:h-full">
+        <div className="flex justify-center items-center mt-16 mx-16 sm:mx-0">
           <div className="relative">
             <form
-              className="bg-white drop-shadow-md shadow-lg max-w-[432px] rounded-md"
+              className="bg-white drop-shadow-md shadow-lg max-w-fit sm:max-w-[432px] rounded-md"
               onSubmit={handleSubmit(handleFormSubmit)}
             >
               <p className="text-green-400 font-bold text-xl p-4">Register</p>
-              <div className="px-4 py-3 flex flex-col gap-x-2 gap-y-3">
+              <div className="px-4 py-3 flex flex-col gap-x-2 gap-y-3 sm:text-lg text-sm">
                 <div className="flex gap-2">
                   <input
                     {...register("firstName")}
