@@ -27,6 +27,11 @@ export default function Navigation() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  const handleClickOnMenu = (e) => {
+    if (menuRef.current.contains(e.target)) setShowMenu("hidden");
+  };
+
   function toggleMenu() {
     if (showMenu === "hidden") setShowMenu("block");
     else setShowMenu("hidden");
@@ -45,7 +50,10 @@ export default function Navigation() {
           <button
             className="sm:hidden block text-2xl border p-2 rounded-md"
             title="Menu"
-            onClick={toggleMenu}
+            onClick={(e) => {
+              toggleMenu();
+              if (menuRef.current.contains(e.target)) setShowMenu("hidden");
+            }}
             ref={buttonRef}
           >
             <CiMenuBurger />
@@ -53,6 +61,7 @@ export default function Navigation() {
           <div
             className={`flex sm:flex-row sm:flex flex-col ${showMenu} absolute right-4 sm:relative sm:bg-transparent sm:top-0 sm:text-black  bg-neutral-100 shadow-sm shadow-neutral-500  top-16 w-44 sm:w-fit rounded-lg gap-x-2`}
             ref={menuRef}
+            onClick={handleClickOnMenu}
           >
             <NavLink
               to={"/"}
@@ -72,7 +81,7 @@ export default function Navigation() {
               </div>
             </NavLink>
             <NavLink
-              to={""}
+              to={"/Services"}
               className="text-center p-2 hover:text-green-600 transition-all"
             >
               <div className="flex items-center justify-center">

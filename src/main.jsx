@@ -17,6 +17,7 @@ const Storages = lazy(() => import("./components/Storages"));
 const Signup = lazy(() => import("./components/Signup"));
 const Profile = lazy(() => import("./components/Profile"));
 const ForgotPassword = lazy(() => import("./components/ForgotPassword"));
+const Services = lazy(() => import("./components/Services"));
 
 // Create the router
 const router = createBrowserRouter(
@@ -98,6 +99,14 @@ const router = createBrowserRouter(
           element: (
             <Suspense fallback={<Loading />}>
               <ForgotPassword />
+            </Suspense>
+          ),
+        },
+        {
+          path: "/Services",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <Services />
             </Suspense>
           ),
         },
