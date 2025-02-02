@@ -1,0 +1,1 @@
+import{j as e}from"./index-B4JYFXAY.js";function r(){return e.jsx(e.Fragment,{children:e.jsx("div",{className:"grid items-center justify-center min-h-[100vh]",children:e.jsx("p",{className:"text-4xl",children:"Coming soon ..."})})})}export{r as default};
