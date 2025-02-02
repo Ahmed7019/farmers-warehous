@@ -60,7 +60,7 @@ export default function Home() {
           {/* When user is not logged in show these */}
           {userLoggedIn == false && (
             <div className="flex items-center justify-between gap-x-2 my-2">
-              <p className="text-3xl font-bold">Farmers Warehouse</p>
+              <p className="sm:text-3xl font-bold">Farmers Warehouse</p>
               <div className="flex gap-x-2">
                 <Link
                   to="/Signin"
