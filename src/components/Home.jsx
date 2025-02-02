@@ -40,7 +40,7 @@ export default function Home() {
           {userLoggedIn == true && (
             <div className="flex items-center justify-between gap-x-2 my-2">
               {userFound && (
-                <p className="text-3xl font-bold capitalize">
+                <p className="text-md sm:text-3xl font-bold capitalize">
                   Welcome {currentUser.displayName} !
                 </p>
               )}
@@ -89,8 +89,8 @@ export default function Home() {
           </div>
 
           <div className="relative">
-            <div className=" my-2 flex justify-center relative ">
-              <div className="flex flex-col gap-y-4 pr-4 bg-green-600 p-4 rounded-l-md animate-scrolling-l">
+            <div className=" my-2 flex flex-col sm:flex-row justify-center relative ">
+              <div className="flex flex-col gap-y-4 pr-4 bg-green-600 p-4 rounded-t-md sm:rounded-l-md animate-scrolling-l">
                 <h1 className="text-3xl font-semibold text-white">
                   Protect Your Produce: Our Warehouse is Your Safe Heaven
                 </h1>
@@ -132,7 +132,7 @@ export default function Home() {
               <img
                 src="https://plus.unsplash.com/premium_photo-1661849446191-8793e93a27c2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODF8fGNyb3BzJTIwc3RvcmFnZXxlbnwwfHwwfHx8MA%3D%3D"
                 alt="crops"
-                className="rounded-r-md animate-scrolling-r"
+                className="rounded-b-md sm:rounded-r-md animate-scrolling-r"
               />
             </div>
           </div>
@@ -140,7 +140,7 @@ export default function Home() {
 
         <div className="my-8">
           <section>
-            <div className="flex gap-x-8 my-2 justify-center bg-green-600 p-4 rounded-md">
+            <div className="flex flex-col sm:flex-row gap-x-8 my-2 justify-center bg-green-600 p-4 rounded-md">
               <img
                 src="https://plus.unsplash.com/premium_photo-1664297166040-4f5dd279f234?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTN8fGNyb3BzJTIwc3RvcmFnZXxlbnwwfHwwfHx8MA%3D%3D"
                 alt="storing crops"
@@ -164,12 +164,14 @@ export default function Home() {
           </section>
         </div>
         <div className=" w-full overflow-hidden bg-green-600 rounded-t-xl">
-          <section className="text-neutral-200 grid p-4 grid-cols-3">
-            <div>
-              <p>Phone: 123-456-7890</p>
-              <p>Address: 123 Main Street, City, Country</p>
-            </div>
-            <div className="flex flex-col items-center justify-center font-bold"></div>
+          <section className="text-neutral-200  p-4 flex gap-x-2 sm:flex-col sm:gap-y-3 text-xs">
+            <p>
+              <span className="font-bold">Phone:</span> 123-456-7890
+            </p>
+            <p>
+              <span className="font-bold">Address:</span> 123 Main Street, City,
+              Country
+            </p>
           </section>
         </div>
       </div>
