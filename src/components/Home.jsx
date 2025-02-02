@@ -94,7 +94,7 @@ export default function Home() {
                 <h1 className="text-3xl font-semibold text-white">
                   Protect Your Produce: Our Warehouse is Your Safe Heaven
                 </h1>
-                <p className="font-thin text-neutral-200">
+                <p className="font-thin text-neutral-100">
                   At Our Farmers Warehouse, we take pride in offering premium
                   storage solutions for your valuable crops. With a focus on
                   quality and excellence, we provide a secure and reliable
@@ -103,7 +103,7 @@ export default function Home() {
                 </p>
 
                 <div className="flex flex-col gap-y-4 justify-start items-start ">
-                  <p className="font-thin text-neutral-200">
+                  <p className="font-thin text-neutral-100">
                     We are a dedicated team committed to supporting farmers by
                     providing top-notch storage facilities for their crops. With
                     years of experience in the industry, we understand the
