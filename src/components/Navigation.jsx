@@ -29,7 +29,7 @@ export default function Navigation() {
             <CiMenuBurger />
           </button>
           <div
-            className={`flex sm:flex-row flex-col ${showMenu} absolute right-4 sm:relative sm:bg-transparent sm:top-0 sm:text-black  bg-neutral-300  top-16 w-44 sm:w-fit rounded gap-x-2`}
+            className={`flex sm:flex-row sm:flex flex-col ${showMenu} absolute right-4 sm:relative sm:bg-transparent sm:top-0 sm:text-black  bg-neutral-300  top-16 w-44 sm:w-fit rounded gap-x-2`}
           >
             <NavLink
               to={"/"}
