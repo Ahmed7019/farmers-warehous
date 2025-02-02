@@ -7,6 +7,8 @@ import { doCreateUserWithEmailAndPassword } from "./js/Firebase/auth";
 import { useAuth } from "../contexts/authContext";
 import addUsersToDatabase from "./js/Firebase/firestore";
 
+import { FaRegEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 // Sweat alert
 import Swal from "sweetalert2";
 export default function Signup() {
@@ -53,12 +55,12 @@ export default function Signup() {
         <div className="flex justify-center items-center mt-16 mx-16 sm:mx-0">
           <div className="relative">
             <form
-              className="bg-white drop-shadow-md shadow-lg max-w-fit sm:max-w-[432px] rounded-md"
+              className="bg-white drop-shadow-md shadow-lg w-[300px] sm:max-w-[432px] rounded-md"
               onSubmit={handleSubmit(handleFormSubmit)}
             >
               <p className="text-green-400 font-bold text-xl p-4">Register</p>
               <div className="px-4 py-3 flex flex-col gap-x-2 gap-y-3 sm:text-lg text-sm">
-                <div className="flex gap-2">
+                <div className="flex sm:flex-row flex-col gap-2">
                   <input
                     {...register("firstName")}
                     required
@@ -89,12 +91,12 @@ export default function Signup() {
                     className=" outline-none bg-transparent w-[70%]"
                     required
                   />
-                  <span
+                  <button
                     className="text-sm text-gray-400 hover:underline hover:underline-offset-2 cursor-pointer"
                     onClick={showPassword}
                   >
-                    Show password
-                  </span>
+                    {password == "text" ? <FaRegEye /> : <FaEyeSlash />}
+                  </button>
                 </div>
                 <div>
                   <p className="text-gray-500 text-sm mb-2">Date of birth</p>

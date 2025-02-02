@@ -21,16 +21,13 @@ export default function Signin() {
     }
   };
 
-  function navToForgetPassword() {
-    nav("/ForgotPassword");
-  }
   return (
     <>
       {userLoggedIn == true && nav("../")}
       <div className="grid place-items-center min-h-[100vh]">
         <div className="relative">
           <form
-            className="bg-green-50 drop-shadow-md w-[400px] shadow-lg rounded-md "
+            className="bg-green-50 drop-shadow-md sm:w-[400px] shadow-lg rounded-md "
             onSubmit={handleSubmit}
           >
             <p className="text-green-400 font-bold text-xl p-4 flex justify-center">
@@ -78,7 +75,6 @@ export default function Signin() {
               </div>
               <div className="flex flex-col items-center justify-center gap-2 relative">
                 <Link
-                  // onClick={navToForgetPassword}
                   to={"/ForgotPassword"}
                   className="relative text-sm font-bold hover:underline underline-offset-2"
                 >
