@@ -77,12 +77,13 @@ export default function Signin() {
                 </button>
               </div>
               <div className="flex flex-col items-center justify-center gap-2 relative">
-                <button
-                  onClick={navToForgetPassword}
+                <Link
+                  // onClick={navToForgetPassword}
+                  to={"/ForgotPassword"}
                   className="relative text-sm font-bold hover:underline underline-offset-2"
                 >
                   Forgot you password ?
-                </button>
+                </Link>
                 <p className="text-gray-500 font-bold text-sm">Or</p>
                 <Link
                   to="/Signup"
