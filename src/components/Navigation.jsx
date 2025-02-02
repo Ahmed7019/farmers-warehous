@@ -1,7 +1,15 @@
 import { NavLink, Outlet } from "react-router-dom";
+import { useState } from "react";
 import { CiHome } from "react-icons/ci";
 import logo from "../assets/logo.jpg";
+import { CiMenuBurger } from "react-icons/ci";
 export default function Navigation() {
+  const [showMenu, setShowMenu] = useState("hidden");
+
+  function toggleMenu() {
+    if (showMenu === "hidden") setShowMenu("block");
+    else setShowMenu("hidden");
+  }
   return (
     <>
       <div>
@@ -13,7 +21,16 @@ export default function Navigation() {
               className="text-black w-[60px] h-[60px] p-2 rounded-full overflow-hidden object-cover"
             />
           </div>
-          <div className="flex gap-x-2">
+          <button
+            className="sm:hidden block text-2xl border p-2 rounded-md"
+            title="Menu"
+            onClick={toggleMenu}
+          >
+            <CiMenuBurger />
+          </button>
+          <div
+            className={`flex sm:flex-row flex-col ${showMenu} absolute right-4 sm:relative sm:bg-transparent sm:top-0 sm:text-black  bg-neutral-300  top-16 w-44 sm:w-fit rounded gap-x-2`}
+          >
             <NavLink
               to={"/"}
               className=" text-center p-2 hover:text-green-600 transition-all"
