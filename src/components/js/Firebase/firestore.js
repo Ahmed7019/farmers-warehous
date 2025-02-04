@@ -44,6 +44,21 @@ export async function getUser(user) {
   }
 }
 
+export async function getFarmSize(user) {
+  try {
+    const docRef = doc(db, "users", user.email);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      const farmSize = docSnap.data().farmSize;
+      console.log("### Get User from db ### Successfull!");
+    } else {
+      console.log("### Get User from db ### User Not Found");
+    }
+  } catch (e) {
+    console.log("Error!!", e);
+  }
+}
+
 export async function updateUserName(user, name) {
   try {
     const docRef = doc(db, "users", user.email);
@@ -52,6 +67,18 @@ export async function updateUserName(user, name) {
       last: name.split(" ")[1],
     });
     console.log("### Updated User Successfull!");
+  } catch (e) {
+    console.log("Error!!", e);
+  }
+}
+
+export async function updateFarmsize(user, farmSize) {
+  try {
+    const docRef = doc(db, "users", user.email);
+    await updateDoc(docRef, {
+      farmSize: farmSize,
+    });
+    console.log("### Updated Farm size Successfull!");
   } catch (e) {
     console.log("Error!!", e);
   }

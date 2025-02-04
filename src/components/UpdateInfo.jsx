@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../contexts/authContext";
 import Swal from "sweetalert2";
 import { doUpdateEmail, doUpdatePassword } from "./js/Firebase/auth";
 import { getAuth } from "firebase/auth";
-import { updateUserName } from "./js/Firebase/firestore";
+import {
+  updateFarmsize,
+  updateUserName,
+} from "./js/Firebase/firestore";
 export default function UpdateInfo() {
   const { currentUser } = useAuth();
   const [email, setEmail] = useState(currentUser.email);
   const [userName, setUserName] = useState(currentUser.displayName);
+  const [farmSize, setFarmSize] = useState("");
   const [pwd, setPwd] = useState();
   const [confPwd, setconfPwd] = useState();
   const [changePass, setChangePass] = useState(false);
@@ -25,12 +29,14 @@ export default function UpdateInfo() {
     if (email !== user.email) doUpdateEmail(user, email);
     if (userName !== user.displayName && userName !== "")
       updateUserName(user, userName);
+    if (farmSize !== "") updateFarmsize(user, farmSize);
   }
   function handleSubmit(e) {
     e.preventDefault();
     checkPasswords();
     checkInfo();
   }
+
   return (
     <>
       <div className="max-w-screen-md">
@@ -51,6 +57,13 @@ export default function UpdateInfo() {
             className="border border-neutral-700 p-2 outline-none rounded-md"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Farm size"
+            value={farmSize}
+            onChange={(e) => setFarmSize(e.target.value)}
+            className="border border-neutral-700 p-2 outline-none rounded-md"
           />
 
           <input

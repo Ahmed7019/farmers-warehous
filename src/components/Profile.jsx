@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { useAuth } from "../contexts/authContext";
-import { getUser } from "./js/Firebase/firestore";
+import { getFarmSize, getUser } from "./js/Firebase/firestore";
 import { doEmailVerification } from "./js/Firebase/auth";
 import { getAuth } from "firebase/auth";
 
@@ -21,7 +21,7 @@ export default function Profile() {
   const [userData, setuserData] = useState(null);
   const [updateInfo, setupdateInfo] = useState(false);
   const [authedUser, setauthUser] = useState("");
-
+  const [farmSize, setFarmSize] = useState(null);
   const toggleInfo = () => {
     !updateInfo ? setupdateInfo(true) : setupdateInfo(false);
   };
@@ -53,6 +53,12 @@ export default function Profile() {
       });
     });
   };
+
+  useEffect(() => {
+    if (getFarmSize() !== null) {
+      setFarmSize(getFarmSize);
+    }
+  });
   useEffect(() => {
     const auth = getAuth();
     const user = auth.currentUser;
@@ -132,7 +138,10 @@ export default function Profile() {
                 </button>
               )}
             </div>
-            <p>Farm Size: [Size in Acres/Hectares]</p>
+            <p>
+              Farm Size:
+              {farmSize !== null ? farmSize : ""} Hectaers
+            </p>
             <p>Storage Capacity: [Current Storage Details]</p>
             {userData && (
               <p key={userData.id}>Primary Crops: {userData.crop}</p>
